@@ -1,0 +1,30 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Full event card for a single interview (replace INTERVIEW_ID)
+SELECT ?event ?what ?who_label ?place_label ?when ?emotion_label ?activity_label
+WHERE {
+  ?interview voices:interviewId "8"^^<http://www.w3.org/2001/XMLSchema#integer> .
+  ?interview voices:hasSegment ?seg .
+  ?seg voices:segmentRefersToEvent ?event .
+
+  OPTIONAL { ?event voices:whatText ?what }
+  OPTIONAL {
+    ?event voices:hasParticipant ?who .
+    ?who rdfs:label ?who_label .
+  }
+  OPTIONAL {
+    ?event voices:hasLocation ?place .
+    ?place rdfs:label ?place_label .
+  }
+  OPTIONAL { ?event voices:whenText ?when }
+  OPTIONAL {
+    ?event voices:hasEmotion ?emo .
+    ?emo rdfs:label ?emotion_label .
+  }
+  OPTIONAL {
+    ?event voices:hasActivity ?act .
+    ?act rdfs:label ?activity_label .
+  }
+}
+LIMIT 100

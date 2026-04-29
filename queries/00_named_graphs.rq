@@ -1,0 +1,7 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+
+# Count quads per named graph
+SELECT ?graph (COUNT(*) AS ?count)
+WHERE { GRAPH ?graph { ?s ?p ?o } }
+GROUP BY ?graph
+ORDER BY DESC(?count)

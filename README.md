@@ -1,93 +1,191 @@
-# Voices-KG
+# VOICES Knowledge Graph — v2 (Thesaurus-free, Production-ready)
 
+Companion release to the ISWC 2026 Resources Track paper
 
+> **VOICES: An Ontology and Knowledge Graph for Modelling Multimodal
+> Holocaust Survivor Testimonies**
 
-## Getting started
+This repository contains a clean, publishable rebuild of the VOICES knowledge graph.
+Every dependency on the proprietary USC Shoah Foundation (SFI) thesaurus has been
+removed; places and alignments are re-minted under this project's own namespace, and
+the whole stack ships in a single `docker compose` for reviewer and public use.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+See [`idea.md`](./idea.md) for the design rationale and [`plan.md`](./plan.md) for
+the full implementation plan.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+---
 
-## Add your files
+## Quick start
 
-* [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+Prerequisites: Docker + Docker Compose, Python 3.11 (for the one-off re-materialization).
+
+```bash
+cd KG2026.paper_v2
+
+# 1. Set local env (copy + edit if needed)
+cp .env.example .env
+
+# 2. Build the thesaurus-free knowledge graph
+#    (reads from ../KG2026.paper/output/ by default; streams 3.4 GB once)
+make build
+
+# 3. Start the whole stack (Fuseki, Redis, Meilisearch, Admin API, Streamlit, Caddy)
+make up
+
+# 4. Load the KG + embeddings into Fuseki (first time only)
+make load
+
+# 5. Build search indexes and dropdown caches
+make index
+make precompute
+
+# 6. Create the first admin user (idempotent)
+make seed
+
+# 7. Run smoke tests
+make smoke
+```
+
+Then open **<https://localhost:8443>** in your browser and accept Caddy's self-signed
+certificate.
+
+### Demo credentials
+
+The first admin user is created from `.env` on startup:
+
+| Role  | Email                  | Password              |
+|-------|------------------------|-----------------------|
+| admin | `admin@voices.local`   | *(set via `ADMIN_PASSWORD` in `.env`)*   |
+
+**Set `ADMIN_PASSWORD` in `.env` before starting the stack.** Run `make seed` after any change.
+
+The admin console is reachable at **<https://localhost:8443/admin/>** — create
+reviewer-role users there; they can log in at the same URL and browse the exploration
+UI at `/`.
+
+---
+
+## Architecture
 
 ```
-cd existing_repo
-git remote add origin https://git.list.lu/voices/voices-kg.git
-git branch -M main
-git push -uf origin main
+             ┌──────────────────────────────── Caddy (HTTPS, :8443) ──────────────────────────────┐
+             │                                                                                     │
+Browser ───► │  /auth/*, /admin/*, /api/*          →  FastAPI  (auth, admin, REST)                  │
+             │  /sparql, /$/*                      →  Fuseki   (TDB2 + Jena Text Lucene)           │
+             │  /downloads/*, /ontology/*          →  static (Caddy file_server)                    │
+             │  /                                  →  Streamlit (gated by forward_auth)             │
+             │                                                                                     │
+             └────────────────────┬────────────────────┬──────────────────────┬────────────────────┘
+                                  │                    │                      │
+                              ┌───┴───┐          ┌─────┴─────┐          ┌─────┴──────┐
+                              │ Redis │  ◄──────│  FastAPI   │───►     │ Meilisearch │
+                              │(cache)│          │  + SQLite │          │ (full-text)│
+                              └───────┘          └───────────┘          └────────────┘
+                                                        │
+                                                        └─► SPARQL — Fuseki
 ```
 
-## Integrate with your tools
+- **Fuseki** — TDB2 triplestore with Lucene text index for label lookups.
+- **Redis** — shared query cache + session store (separate DBs per tenant).
+- **Meilisearch** — fuzzy full-text search over ~640 K transcript segments.
+- **FastAPI** (`admin/`) — auth (JWT in secure cookie), user management, REST API,
+  rate-limited public endpoints, `/auth/verify` for Caddy's `forward_auth`.
+- **Streamlit** (`app/`) — five-page exploration UI (home, interview browser,
+  question templates, full-text search, SPARQL console, downloads). Caches hot
+  data in Redis and reads dropdown options from pre-computed JSON snapshots.
+- **Caddy** — HTTPS termination (internal CA locally, Let's Encrypt on a real
+  domain), path routing, forward auth, gzip, HSTS.
 
-* [Set up project integrations](https://git.list.lu/voices/voices-kg/-/settings/integrations)
+### Service URLs
 
-## Collaborate with your team
+| Path                          | Service      | Auth                    |
+|-------------------------------|--------------|-------------------------|
+| `/`                           | Streamlit    | `REQUIRE_AUTH` toggle   |
+| `/admin/`                     | FastAPI      | admin role only         |
+| `/auth/login`                 | FastAPI      | public                  |
+| `/api/interviews`, `/api/events`, `/api/search`, `/api/places`, `/api/similar/{id}` | FastAPI | public, 60 req/min/IP |
+| `/sparql`                     | Fuseki       | public                  |
+| `/downloads/kg2026_v2.nq`     | static       | public                  |
+| `/ontology/voices_ontology_v2.ttl` | static  | public                  |
+| `/healthz`                    | Caddy        | public                  |
 
-* [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+---
 
-## Test and Deploy
+## Adding users
 
-Use the built-in continuous integration in GitLab.
+Two ways:
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+**From the admin UI** — log in at `https://localhost:8443/admin/`, go to
+*Users*, fill the form. New reviewers can log in immediately.
 
-***
+**From the CLI** — run inside the admin container:
 
-# Editing this README
+```bash
+docker compose exec admin python -c "
+from admin.database import get_session, init_db
+from admin.models import User, Role
+from admin.security import hash_password
+init_db()
+with next(get_session()) as s:
+    s.add(User(email='alice@example.org',
+               password_hash=hash_password('choose-a-password'),
+               role=Role.reviewer))
+    s.commit()
+"
+```
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+---
 
-## Suggestions for a good README
+## Rebuilding the KG from v1 source
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+`make build` runs two streaming passes over the v1 N-Quads:
 
-## Name
-Choose a self-explaining name for your project.
+1. **`src/rebuild/filter.py`** — line-based rewrite that drops the `concepts`
+   named graph, strips `voices:mentionsConcept` triples, and re-mints every
+   `http://voices.uni.lu/vocab/term/<id>` IRI as `urn:voices:place:<slug>`
+   using the English label carried in the events graph. Deterministic slug
+   collisions disambiguate by appending the numeric id. The published
+   dataset carries no SFI Shoah Foundation thesaurus content. External
+   alignments to GeoNames and Wikidata use `skos:exactMatch`, the W3C
+   convention used by both target authorities for cross-vocabulary
+   references.
+2. **`src/rebuild/relabel.py`** — appends any missing
+   `rdf:type voices:Place` / `rdfs:label` triples into the `metadata` graph
+   so every place has a declaration. Idempotent.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Output: `output/kg2026_v2.nq` + optional `.nqs` + `utterance_embeddings_v2.nq`
++ `output/stats.json` (machine-readable build summary).
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Post-build correctness checks (`make check`) fail loud if any
+SFI-thesaurus content reappears in the output: namely, any
+`vocab/term/`, the `graph:concepts` named graph, or the
+`mentionsConcept` predicate. SKOS itself is not blocked — it's a W3C
+vocabulary used by GeoNames and Wikidata, and we use it for outward
+alignment.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+---
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+## Deploying to a VM
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+The local stack is the same stack. For a real deployment:
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+1. DNS: point `voices.your-domain.org` at the VM's public IP.
+2. Caddyfile: replace `tls internal` with the domain (`voices.your-domain.org`)
+   and Caddy will fetch Let's Encrypt certs automatically.
+3. `.env`: set `PUBLIC_BASE_URL=https://voices.your-domain.org`, rotate
+   `JWT_SECRET`, `FUSEKI_ADMIN_PASSWORD`, `MEILI_MASTER_KEY`, `ADMIN_PASSWORD`.
+4. Open ports 80 and 443 in the VM firewall.
+5. `make all` on the VM after rsyncing the `output/` directory (or re-running
+   `make build` with the v1 source mounted).
+6. For public release (after acceptance), set `REQUIRE_AUTH=false` to drop
+   the login wall on `/`; `/admin/*` stays gated.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+---
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+## Licence
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+- **Code**: CC-BY 4.0 (same as the paper).
+- **Knowledge graph, ontology, alignments**: CC-BY 4.0.
+- **Transcripts**: belong to their original rights-holders; not redistributed here.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+The SFI thesaurus is deliberately absent; refer to the SFI VHA for that vocabulary.

@@ -1,0 +1,59 @@
+# VOICES KG v2 — Runtime configuration shared by app + admin.
+
+project:
+  name: "VOICES KG v2"
+  version: "2.0.0"
+  license: "CC-BY 4.0"
+  cite: "VOICES: An Ontology and Knowledge Graph for Modelling Multimodal Holocaust Survivor Testimonies (ISWC 2026)"
+
+graphs:
+  metadata:     "urn:voices:graph:metadata"
+  transcripts:  "urn:voices:graph:transcripts"
+  events:       "urn:voices:graph:events"
+  annotations:  "urn:voices:graph:annotations"
+  concepts:     "urn:voices:graph:concepts"          # Wikidata topics only (v2)
+  embeddings:   "urn:voices:graph:embeddings"
+  alignment:    "urn:voices:graph:alignment"          # re-keyed on local IRIs
+  provenance:   "urn:voices:graph:provenance"
+
+namespaces:
+  voices:   "http://voices.uni.lu/ontology#"
+  place:    "urn:voices:place:"
+  interview: "urn:voices:interview:"
+  event:    "urn:voices:event:"
+  segment:  "urn:voices:segment:"
+
+paths:
+  # Relative to the repo root.
+  v1_nq:            "data/source/kg2026_paper.nq"
+  v1_nqs:           "data/source/kg2026_paper.nqs"
+  v1_embeddings_nq: "data/source/utterance_embeddings.nq"
+  v2_nq:            "output/kg2026_v2.nq"
+  v2_nqs:           "output/kg2026_v2.nqs"
+  stats_json:       "output/stats.json"
+  caches_dir:       "output/caches"
+  faiss_index:      "output/similarity.faiss"
+  faiss_ids:        "output/similarity.ids.json"
+
+services:
+  fuseki_internal:       "http://fuseki:3030/voices"
+  fuseki_public_prefix:  "/sparql"
+  redis_url:             "redis://redis:6379/0"
+  meilisearch_url:       "http://meilisearch:7700"
+
+search:
+  segments_index: "voices-segments"
+  events_index:   "voices-events"
+
+cache:
+  default_ttl_seconds: 3600
+  dropdown_ttl_seconds: 86400
+
+app:
+  pages_order:
+    - "app.py"
+    - "01_Interview_Explorer.py"
+    - "02_Explore.py"
+    - "03_Search.py"
+    - "04_SPARQL.py"
+    - "05_Downloads.py"

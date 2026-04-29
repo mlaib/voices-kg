@@ -1,0 +1,18 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Activity-Emotion cross-tabulation
+SELECT ?activity_label ?emotion_label (COUNT(*) AS ?count)
+WHERE {
+  GRAPH <urn:voices:graph:events> {
+    ?event voices:hasActivity ?act .
+    ?act rdfs:label ?activity_label .
+  }
+  GRAPH <urn:voices:graph:annotations> {
+    ?event voices:hasEmotion ?emo .
+    ?emo rdfs:label ?emotion_label .
+  }
+}
+GROUP BY ?activity_label ?emotion_label
+HAVING (COUNT(*) > 10)
+ORDER BY ?activity_label DESC(?count)

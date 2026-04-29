@@ -1,0 +1,17 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Top 25 emotions by frequency
+SELECT ?label (COUNT(?emo) AS ?count)
+       (AVG(?val) AS ?avg_valence) (AVG(?aro) AS ?avg_arousal)
+WHERE {
+  GRAPH <urn:voices:graph:annotations> {
+    ?emo a voices:EmotionAnnotation ;
+         rdfs:label ?label ;
+         voices:hasValence ?val ;
+         voices:hasArousal ?aro .
+  }
+}
+GROUP BY ?label
+ORDER BY DESC(?count)
+LIMIT 25

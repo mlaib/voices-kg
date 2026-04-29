@@ -1,0 +1,13 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+
+# Top similarity pairs with scores
+SELECT ?emb1 ?emb2 ?score
+WHERE {
+  GRAPH <urn:voices:graph:embeddings> {
+    ?emb1 voices:similarTo ?emb2 ;
+          voices:similarityScore ?score .
+    FILTER(?emb1 < ?emb2)
+  }
+}
+ORDER BY DESC(?score)
+LIMIT 100

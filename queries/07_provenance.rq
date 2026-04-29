@@ -1,0 +1,16 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Build provenance: run details and sources used
+SELECT ?run ?label ?time ?source ?sourceName
+WHERE {
+  GRAPH <urn:voices:graph:provenance> {
+    ?run a prov:Activity ;
+         rdfs:label ?label ;
+         prov:startedAtTime ?time .
+    OPTIONAL {
+      ?run prov:used ?source .
+      ?source rdfs:label ?sourceName .
+    }
+  }
+}

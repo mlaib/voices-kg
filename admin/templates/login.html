@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VOICES — Knowledge Graph Explorer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body  { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+    .serif { font-family: 'Crimson Pro', 'Georgia', serif; font-feature-settings: "lnum"; }
+    .stat  { border-left: 2px solid #cbd5e1; padding-left: 0.75rem; }
+    .stat-num { font-family: 'Crimson Pro', serif; font-weight: 600; }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800">
+  <div class="min-h-screen flex flex-col lg:flex-row">
+
+    <!-- ──────────────────────────────────────────────────────────
+         LEFT — knowledge-graph presentation
+         ────────────────────────────────────────────────────────── -->
+    <section class="lg:w-3/5 bg-white border-b lg:border-b-0 lg:border-r border-slate-200
+                    px-6 py-10 lg:px-16 lg:py-14">
+      <div class="max-w-2xl mx-auto">
+
+        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-500 mb-4">
+          ISWC 2026 Resources Track &nbsp;·&nbsp; companion resource
+        </p>
+
+        <h1 class="serif text-4xl lg:text-5xl font-semibold text-slate-900 leading-tight tracking-tight mb-3">
+          VOICES
+        </h1>
+        <p class="serif text-lg lg:text-xl text-slate-700 leading-snug mb-10 max-w-xl">
+          An ontology and knowledge graph for modelling multimodal
+          Holocaust survivor testimonies.
+        </p>
+
+        <!-- KG stats grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 mb-10">
+          <div class="stat">
+            <div class="stat-num text-2xl text-slate-900">982</div>
+            <div class="text-[0.7rem] text-slate-500 uppercase tracking-wide">testimonies</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num text-2xl text-slate-900">15.5&thinsp;M</div>
+            <div class="text-[0.7rem] text-slate-500 uppercase tracking-wide">RDF quads</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num text-2xl text-slate-900">647&thinsp;K</div>
+            <div class="text-[0.7rem] text-slate-500 uppercase tracking-wide">transcript segments</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num text-2xl text-slate-900">334&thinsp;K</div>
+            <div class="text-[0.7rem] text-slate-500 uppercase tracking-wide">narrated events</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num text-2xl text-slate-900">289&thinsp;K</div>
+            <div class="text-[0.7rem] text-slate-500 uppercase tracking-wide">emotion annotations</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num text-2xl text-slate-900">112&thinsp;K</div>
+            <div class="text-[0.7rem] text-slate-500 uppercase tracking-wide">people mentioned</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num text-2xl text-slate-900">2,530</div>
+            <div class="text-[0.7rem] text-slate-500 uppercase tracking-wide">authority alignments</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num text-2xl text-slate-900">7</div>
+            <div class="text-[0.7rem] text-slate-500 uppercase tracking-wide">named graphs</div>
+          </div>
+        </div>
+
+        <!-- What the explorer does -->
+        <h2 class="text-xs font-semibold text-slate-700 uppercase tracking-[0.14em] mb-3">
+          What this resource lets you do
+        </h2>
+        <ul class="text-[0.95rem] text-slate-700 leading-relaxed space-y-2.5 mb-10
+                   marker:text-slate-400 list-disc pl-5">
+          <li>Browse 982 Holocaust survivor testimonies as structured RDF events
+              with participants, locations, time intervals, activities, and
+              emotional annotations.</li>
+          <li>Surface narrative patterns across the corpus &mdash; how emotional
+              register varies by life period, what themes dominate the camp years,
+              which place names cluster around historical events.</li>
+          <li>Run SPARQL across seven named graphs, with outward
+              <code class="text-[0.85em] bg-slate-100 px-1 rounded">skos:exactMatch</code>
+              alignments to GeoNames and Wikidata for federated queries.</li>
+          <li>Search 647,455 transcript segments full-text via Meilisearch and jump
+              from any hit to its full interview context, including the
+              Vonnegut-style emotion arc.</li>
+        </ul>
+
+        <!-- Compact abstract -->
+        <h2 class="text-xs font-semibold text-slate-700 uppercase tracking-[0.14em] mb-3">
+          Abstract
+        </h2>
+        <p class="text-sm text-slate-600 leading-relaxed text-justify mb-10">
+          Holocaust archives preserve hundreds of thousands of audio-video interviews
+          with survivors of Nazi persecutions. These testimonies are multi-modal
+          artefacts &mdash; video recordings, time-aligned transcripts, and emotions
+          expressed verbally and physiologically during the interview process &mdash; yet
+          no existing Semantic Web resource jointly represents their narrative
+          structure, emotional content, and audiovisual dimension. <strong>VOICES</strong>
+          addresses this gap with three contributions: an OWL 2 ontology that reuses
+          CIDOC-CRM, OWL-Time, MFOEM, the W3C Media Ontology, and the Web Annotation
+          Data Model; a knowledge-graph construction methodology that extracts
+          narrative events from transcripts and aligns them outward to Wikidata and
+          GeoNames; and a populated knowledge graph that connects testimony events
+          to the Linked Open Data ecosystem.
+        </p>
+
+        <!-- Authors -->
+        <h2 class="text-xs font-semibold text-slate-700 uppercase tracking-[0.14em] mb-3">
+          Authors
+        </h2>
+        <p class="text-[0.95rem] text-slate-700 mb-10">
+          Cédric&nbsp;Pruski &nbsp;·&nbsp;
+          Mohamed&nbsp;Laib &nbsp;·&nbsp;
+          Marcos&nbsp;Da&nbsp;Silveira &nbsp;·&nbsp;
+          Gabor&nbsp;Mihaly&nbsp;Toth
+        </p>
+
+        <!-- Footer: institutional credit + repo placeholder -->
+        <div class="pt-6 mt-2 border-t border-slate-200">
+          <div class="flex flex-wrap items-baseline justify-between gap-y-2 gap-x-6
+                      text-xs text-slate-500">
+            <div>
+              Developed at the
+              <span class="text-slate-700 font-semibold">
+                Luxembourg Institute of Science and Technology
+                <span class="text-slate-500 font-normal">(LIST)</span>
+              </span>
+            </div>
+            <!-- Replace href / remove "coming soon" once the repo URL is decided. -->
+            <a id="repository-link"
+               href="#"
+               class="inline-flex items-center gap-1.5 text-slate-500 hover:text-slate-900
+                      underline-offset-2 hover:underline">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+              Repository <span class="text-slate-400">(coming soon)</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         RIGHT — sign-in form
+         ────────────────────────────────────────────────────────── -->
+    <section class="lg:w-2/5 flex items-center justify-center px-6 py-10 lg:px-12 lg:py-14">
+      <div class="w-full max-w-sm">
+        <div class="bg-white border border-slate-200 rounded-lg shadow-sm p-8">
+          <h3 class="text-base font-semibold text-slate-900 mb-1">Sign in</h3>
+          <p class="text-sm text-slate-500 mb-6">
+            Access the VOICES knowledge-graph explorer.
+          </p>
+
+          {% if error %}
+            <div class="mb-4 p-3 rounded bg-red-50 border border-red-200 text-sm text-red-700">
+              {{ error }}
+            </div>
+          {% endif %}
+
+          <form method="post" action="/auth/login" class="space-y-4">
+            <input type="hidden" name="next" value="{{ next or '/' }}" />
+            <div>
+              <label for="email" class="block text-xs font-medium text-slate-700 mb-1">
+                Email
+              </label>
+              <input id="email" name="email" type="email" required autofocus
+                     class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm
+                            focus:outline-none focus:ring-2 focus:ring-slate-400 transition" />
+            </div>
+            <div>
+              <label for="password" class="block text-xs font-medium text-slate-700 mb-1">
+                Password
+              </label>
+              <input id="password" name="password" type="password" required
+                     class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm
+                            focus:outline-none focus:ring-2 focus:ring-slate-400 transition" />
+            </div>
+            <button type="submit"
+                    class="w-full bg-slate-900 text-white rounded-md py-2 text-sm font-medium
+                           hover:bg-slate-800 transition">
+              Sign in
+            </button>
+          </form>
+        </div>
+        <p class="mt-6 text-[0.7rem] text-slate-400 text-center uppercase tracking-[0.14em]">
+          Reviewer access for ISWC 2026
+        </p>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# Count entities by type
+SELECT ?type (COUNT(DISTINCT ?s) AS ?count)
+WHERE { GRAPH ?g { ?s rdf:type ?type } }
+GROUP BY ?type
+ORDER BY DESC(?count)

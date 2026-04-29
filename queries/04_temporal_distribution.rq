@@ -1,0 +1,13 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX time: <http://www.w3.org/2006/time#>
+
+# Events by temporal bucket
+SELECT ?bucket (COUNT(?event) AS ?count)
+WHERE {
+  GRAPH <urn:voices:graph:events> {
+    ?event a voices:NarratedEvent ;
+           voices:temporalBucket ?bucket .
+  }
+}
+GROUP BY ?bucket
+ORDER BY ?bucket

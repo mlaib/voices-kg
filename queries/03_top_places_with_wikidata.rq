@@ -1,0 +1,21 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+# Top places with Wikidata/GeoNames links
+SELECT ?place ?label (COUNT(?event) AS ?mentions) ?wikidata
+WHERE {
+  GRAPH <urn:voices:graph:events> {
+    ?event voices:hasLocation ?place .
+    ?place rdfs:label ?label .
+  }
+  OPTIONAL {
+    GRAPH <urn:voices:graph:alignment> {
+      ?place skos:exactMatch ?wikidata .
+      FILTER(CONTAINS(STR(?wikidata), "wikidata.org"))
+    }
+  }
+}
+GROUP BY ?place ?label ?wikidata
+ORDER BY DESC(?mentions)
+LIMIT 50

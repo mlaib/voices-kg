@@ -1,0 +1,159 @@
+name: voices-kg-v2
+
+services:
+
+  # ─── Triplestore ──────────────────────────────────────────────────────────
+  fuseki:
+    image: stain/jena-fuseki:latest
+    container_name: voices-v2-fuseki
+    environment:
+      ADMIN_PASSWORD: ${FUSEKI_ADMIN_PASSWORD:?FUSEKI_ADMIN_PASSWORD must be set}
+      FUSEKI_DATASET_1: voices
+      JVM_ARGS: ${FUSEKI_JVM_ARGS:--Xmx6g -Xms2g}
+    ports:
+      - "${FUSEKI_HOST_PORT:-3032}:3030"
+    volumes:
+      - fuseki-data:/fuseki
+      - ./output:/staging:ro
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:3030/$$/ping || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    restart: unless-stopped
+
+  # ─── Cache + session store ────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: voices-v2-redis
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  # ─── Full-text search over transcript segments ────────────────────────────
+  meilisearch:
+    image: getmeili/meilisearch:v1.11
+    container_name: voices-v2-meilisearch
+    environment:
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY:?MEILI_MASTER_KEY must be set}
+      MEILI_ENV: production
+      MEILI_NO_ANALYTICS: "true"
+    volumes:
+      - meili-data:/meili_data
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:7700/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  # ─── FastAPI: auth + admin + REST API ─────────────────────────────────────
+  admin:
+    build:
+      context: .
+      dockerfile: docker/admin.Dockerfile
+    container_name: voices-v2-admin
+    environment:
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET must be set}
+      DATABASE_URL: sqlite:////data/voices.db
+      REDIS_URL: redis://redis:6379/0
+      FUSEKI_URL: http://fuseki:3030/voices
+      MEILISEARCH_URL: http://meilisearch:7700
+      MEILISEARCH_KEY: ${MEILI_MASTER_KEY:?MEILI_MASTER_KEY must be set}
+      REQUIRE_AUTH: ${REQUIRE_AUTH:-true}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@voices.local}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?ADMIN_PASSWORD must be set}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-https://localhost:8443}
+      UVICORN_WORKERS: ${UVICORN_WORKERS:-2}
+    volumes:
+      - ./admin:/app/admin:ro
+      - admin-db:/data
+      - ./output:/output:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+      meilisearch:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/healthz',timeout=3).status==200 else 1)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+  # ─── Streamlit: exploration UI ────────────────────────────────────────────
+  app:
+    build:
+      context: .
+      dockerfile: docker/streamlit.Dockerfile
+    container_name: voices-v2-app
+    command: ["streamlit", "run", "/app/Overview.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true", "--browser.gatherUsageStats=false"]
+    environment:
+      FUSEKI_URL: http://fuseki:3030/voices
+      REDIS_URL: redis://redis:6379/1
+      MEILISEARCH_URL: http://meilisearch:7700
+      MEILISEARCH_KEY: ${MEILI_MASTER_KEY:?MEILI_MASTER_KEY must be set}
+      ADMIN_URL: http://admin:8000
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-https://localhost:8443}
+      STREAMLIT_SERVER_PORT: "8501"
+      STREAMLIT_SERVER_HEADLESS: "true"
+      STREAMLIT_BROWSER_GATHERUSAGESTATS: "false"
+      STREAMLIT_SERVER_ENABLECORS: "false"
+      STREAMLIT_SERVER_ENABLEXSRFPROTECTION: "false"
+      STREAMLIT_SERVER_BASEURLPATH: ""
+    volumes:
+      - ./app:/app:ro
+      - ./output:/output:ro
+      - ./schema:/schema:ro
+      - ./queries:/queries:ro
+    depends_on:
+      fuseki:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      admin:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8501/_stcore/health',timeout=3).status==200 else 1)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+  # ─── Reverse proxy: HTTPS, routing, auth edge ─────────────────────────────
+  caddy:
+    image: caddy:2-alpine
+    container_name: voices-v2-caddy
+    ports:
+      - "${CADDY_HTTPS_PORT:-8443}:443"
+      - "${CADDY_HTTP_PORT:-8080}:80"
+    environment:
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-https://localhost:8443}
+      REQUIRE_AUTH: ${REQUIRE_AUTH:-true}
+    volumes:
+      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./output:/srv/downloads:ro
+      - ./schema:/srv/ontology:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - admin
+      - app
+    restart: unless-stopped
+
+volumes:
+  fuseki-data:
+  redis-data:
+  meili-data:
+  admin-db:
+  caddy-data:
+  caddy-config:

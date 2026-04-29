@@ -1,0 +1,52 @@
+# ==============================================================================
+# VOICES KG v2 — .gitignore
+# ==============================================================================
+
+# ---- Secrets / credentials ---------------------------------------------------
+.env
+*.key
+*.pem
+**/secrets.toml
+**/.streamlit/secrets.toml
+
+# ---- Large data artefacts (3 GB+, regenerable — do NOT commit) ---------------
+output/*.nq
+output/*.nqs
+output/*.faiss
+output/*.ids.json
+output/caches/*.json
+
+# Keep the stats snapshot (small, useful for CI checks)
+!output/stats.json
+
+# ---- Build / virtual-environment artefacts -----------------------------------
+.venv*/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+
+# ---- OS / editor noise -------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# ---- Local logs / runtime state ----------------------------------------------
+logs/
+*.log
+
+# ---- Docker volume mounts (should never contain committed files) --------------
+docker/data/
+
+# ---- Misc Python / packaging artefacts ---------------------------------------
+*.egg-info/
+dist/
+build/
+.eggs/
+*.whl

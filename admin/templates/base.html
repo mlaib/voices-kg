@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}{{ title or "VOICES KG" }}{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+  <nav class="bg-white border-b border-slate-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="text-lg font-semibold tracking-tight text-slate-900">
+        VOICES <span class="text-slate-400 font-normal">KG</span>
+      </a>
+      <div class="flex items-center gap-4 text-sm">
+        <a class="text-slate-600 hover:text-slate-900" href="/">Explore</a>
+        {% if user and user.is_admin %}
+          <a class="text-slate-600 hover:text-slate-900" href="/admin/">Admin</a>
+        {% endif %}
+        <a class="text-slate-600 hover:text-slate-900" href="/docs">Docs</a>
+        {% if user %}
+          <span class="text-slate-500 hidden sm:inline">{{ user.email }}</span>
+          <form action="/auth/logout" method="post" class="inline">
+            <button type="submit" class="text-slate-600 hover:text-red-600">Logout</button>
+          </form>
+        {% else %}
+          <a class="text-slate-600 hover:text-slate-900" href="/auth/login">Sign in</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
+    {% block content %}
+      {% if content_block == "home" %}
+        <section class="bg-white rounded-lg border border-slate-200 p-8 shadow-sm">
+          <h1 class="text-2xl font-semibold text-slate-900 mb-2">VOICES Knowledge Graph</h1>
+          <p class="text-slate-600 mb-6">
+            A public REST API and administrative interface over the VOICES survivor testimony KG.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <a href="/docs" class="block p-4 border border-slate-200 rounded-md hover:border-slate-400">
+              <h2 class="font-medium text-slate-900">API Docs</h2>
+              <p class="text-sm text-slate-500">OpenAPI & interactive Swagger UI.</p>
+            </a>
+            {% if user and user.is_admin %}
+              <a href="/admin/" class="block p-4 border border-slate-200 rounded-md hover:border-slate-400">
+                <h2 class="font-medium text-slate-900">Admin Dashboard</h2>
+                <p class="text-sm text-slate-500">Users, cache, and build info.</p>
+              </a>
+            {% else %}
+              <a href="/auth/login" class="block p-4 border border-slate-200 rounded-md hover:border-slate-400">
+                <h2 class="font-medium text-slate-900">Sign in</h2>
+                <p class="text-sm text-slate-500">Reviewer & admin access.</p>
+              </a>
+            {% endif %}
+          </div>
+        </section>
+      {% endif %}
+    {% endblock %}
+  </main>
+
+  <footer class="border-t border-slate-200 py-4 text-center text-xs text-slate-500">
+    VOICES KG v2 &middot; <a class="hover:text-slate-700" href="/healthz">health</a>
+  </footer>
+</body>
+</html>

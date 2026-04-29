@@ -1,0 +1,121 @@
+# VOICES KG v2 — Caddy reverse proxy
+# ------------------------------------------------------------------------------
+# Path routing:
+#   /auth/*       → FastAPI (unauthenticated: login, logout)
+#   /admin/*      → FastAPI (ALWAYS gated, admin role required)
+#   /api/*        → FastAPI (public, rate-limited)
+#   /sparql       → Fuseki (public, rate-limited)
+#   /ontology/*   → static schema files with content negotiation
+#   /downloads/*  → static .nq / .nqs / .stats.json
+#   /healthz      → local OK
+#   /             → Streamlit (gated by forward_auth when REQUIRE_AUTH=true)
+# ------------------------------------------------------------------------------
+
+{
+    # Local self-signed CA when no real domain.
+    auto_https disable_redirects
+    servers {
+        trusted_proxies static private_ranges
+    }
+}
+
+# The single site block — HTTPS on 443 (exposed as 8443 on host), plain HTTP on 80.
+# "localhost" and ":443" together let Caddy issue a local-CA cert for the localhost
+# SNI (what browsers send when you hit https://localhost:PORT). Real-domain deploys
+# should replace this whole line with just the domain, e.g. voices.your-domain.org.
+localhost, :80, :443 {
+    # Use Caddy's internal CA for localhost; swap for a real domain on the VM.
+    tls internal
+
+    encode gzip zstd
+
+    # Security headers
+    header {
+        Strict-Transport-Security "max-age=31536000"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "SAMEORIGIN"
+        Referrer-Policy "no-referrer-when-downgrade"
+        -Server
+    }
+
+    handle /healthz {
+        respond "ok" 200
+    }
+
+    # ── Static downloads ──────────────────────────────────────────────────
+    handle_path /downloads/* {
+        root * /srv/downloads
+        file_server browse
+    }
+
+    # ── Ontology: content negotiation (TTL vs HTML) ───────────────────────
+    handle /ontology* {
+        root * /srv/ontology
+        file_server browse
+        # Clients requesting TTL get the .ttl directly; browsers see file list.
+    }
+
+    # ── FastAPI: auth + admin + REST API ──────────────────────────────────
+    handle /auth* {
+        reverse_proxy admin:8000
+    }
+
+    handle /admin* {
+        # Admin is always authenticated via the admin service itself;
+        # it checks role=admin on every route.
+        reverse_proxy admin:8000
+    }
+
+    handle /api* {
+        # Public but rate-limited.
+        reverse_proxy admin:8000
+    }
+
+    # ── Fuseki SPARQL endpoint ────────────────────────────────────────────
+    # Public /sparql → Fuseki's dataset path /voices/sparql.
+    handle /sparql* {
+        rewrite * /voices{path}
+        reverse_proxy fuseki:3030
+    }
+
+    # Fuseki's own /dataset endpoint (SPARQL-graph store protocol etc.)
+    handle_path /fuseki/* {
+        reverse_proxy fuseki:3030
+    }
+
+    # ── Streamlit app (everything else) ───────────────────────────────────
+    handle {
+        # WebSocket support for Streamlit.
+        @streamlit_ws {
+            header Connection *Upgrade*
+            header Upgrade websocket
+        }
+
+        # Forward auth — FastAPI /auth/verify returns 200 if logged in, 302 otherwise.
+        # When REQUIRE_AUTH=false in the environment, we'd typically remove this
+        # directive; here we leave it and FastAPI's /auth/verify will 200 anyone
+        # through when its REQUIRE_AUTH is false.
+        forward_auth admin:8000 {
+            uri /auth/verify
+            copy_headers X-User X-Role
+            # Strip WS upgrade headers on the auth sub-request, or FastAPI's
+            # /auth/verify (a plain HTTP route) is parsed as a WebSocket
+            # upgrade attempt and rejected with 403.
+            header_up -Connection
+            header_up -Upgrade
+        }
+
+        reverse_proxy app:8501 {
+            header_up Host {host}
+            header_up X-Real-IP {remote}
+            header_up X-Forwarded-For {remote}
+            header_up X-Forwarded-Proto {scheme}
+        }
+    }
+
+    log {
+        output stdout
+        format console
+        level INFO
+    }
+}

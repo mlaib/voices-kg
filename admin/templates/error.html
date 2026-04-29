@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Error — VOICES KG{% endblock %}
+{% block content %}
+<section class="bg-white rounded-lg border border-slate-200 p-8 shadow-sm max-w-lg mx-auto">
+  <h1 class="text-2xl font-semibold text-slate-900 mb-2">Something went wrong</h1>
+  <p class="text-sm text-slate-500 mb-4">Status: <span class="font-mono">{{ code or 500 }}</span></p>
+  {% if error %}
+    <pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs text-slate-700 overflow-x-auto">{{ error }}</pre>
+  {% endif %}
+  <a href="/" class="inline-block mt-6 text-sm text-slate-600 hover:text-slate-900">&larr; Back home</a>
+</section>
+{% endblock %}

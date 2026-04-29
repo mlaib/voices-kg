@@ -1,0 +1,244 @@
+@prefix voices: <http://voices.uni.lu/ontology#> .
+@prefix place:  <urn:voices:place:> .
+@prefix crm:    <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix time:   <http://www.w3.org/2006/time#> .
+@prefix ma:     <http://www.w3.org/ns/ma-ont#> .
+@prefix oa:     <http://www.w3.org/ns/oa#> .
+@prefix emo:    <http://purl.obolibrary.org/obo/MFOEM_> .
+@prefix prov:   <http://www.w3.org/ns/prov#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+###################################################################
+# VOICES Ontology v2.0 — Unified (merges v1.2 + KG0226 extensions)
+# Public / thesaurus-free variant. All SFI (voices.uni.lu/vocab/term/)
+# references removed; places are now locally minted urn:voices:place:
+# IRIs. External alignment triples live in voices-alignment-v2.ttl.
+###################################################################
+
+voices: a owl:Ontology ;
+    rdfs:label "VOICES Ontology"@en ;
+    owl:versionInfo "2.0-unified"@en ;
+    rdfs:comment """Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.
+    Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,
+    MFOEM, Web Annotation, PROV-O, Media Ontology."""@en ;
+    owl:imports crm:, time:,
+                <http://www.w3.org/ns/ma-ont>, <http://www.w3.org/ns/oa#>,
+                <http://www.w3.org/ns/prov-o>, <http://purl.obolibrary.org/obo/MFOEM.owl> .
+
+# === Core Classes ===
+
+voices:Interview a owl:Class ;
+    rdfs:subClassOf crm:E31_Document ;
+    rdfs:label "Interview"@en ;
+    rdfs:comment "A recorded oral testimony session grouped into several segments."@en .
+
+voices:Person a owl:Class ;
+    rdfs:subClassOf crm:E21_Person ;
+    rdfs:label "Person"@en ;
+    rdfs:comment "A human participant involved in the testimony or event."@en .
+
+voices:InterviewSegment a owl:Class ;
+    rdfs:subClassOf crm:E33_Linguistic_Object ;
+    rdfs:label "Interview Segment"@en ;
+    rdfs:comment "A time-bounded transcript fragment describing events, entities, and feelings."@en .
+
+voices:NarratedEvent a owl:Class ;
+    rdfs:subClassOf crm:E5_Event ;
+    rdfs:label "Narrated Event"@en ;
+    rdfs:comment "A life or historical episode described by the survivor, linked to participants, place, time, and emotions."@en .
+
+voices:HistoricalEvent a owl:Class ;
+    rdfs:subClassOf crm:E5_Event ;
+    rdfs:label "Historical Event"@en ;
+    rdfs:comment "A canonical historical event (e.g. Kristallnacht, Camp Liberation) for alignment."@en .
+
+voices:Activity a owl:Class ;
+    rdfs:label "Activity"@en ;
+    rdfs:comment "Type of action described (deportation, forced labor, escape, etc.)."@en .
+
+voices:Mode a owl:Class ;
+    rdfs:label "Mode"@en ;
+    rdfs:comment "Manner or mechanism of an event (by train, on foot, etc.)."@en .
+
+voices:Cause a owl:Class ;
+    rdfs:label "Cause"@en ;
+    rdfs:comment "Reason or circumstance that led to the event."@en .
+
+voices:EmotionAnnotation a owl:Class ;
+    rdfs:subClassOf emo:0000001, oa:Annotation ;
+    rdfs:label "Emotion Annotation"@en ;
+    rdfs:comment "Emotion annotation with valence-arousal-dominance scores."@en .
+
+voices:Annotation a owl:Class ;
+    rdfs:subClassOf oa:Annotation ;
+    rdfs:label "Annotation"@en .
+
+voices:Embedding a owl:Class ;
+    rdfs:label "Embedding"@en ;
+    rdfs:comment "Numeric embedding representing semantic vectors for events."@en .
+
+voices:MediaResource a owl:Class ;
+    rdfs:subClassOf ma:MediaResource ;
+    rdfs:label "Media Resource"@en .
+
+voices:MediaFragment a owl:Class ;
+    rdfs:subClassOf ma:MediaFragment ;
+    rdfs:label "Media Fragment"@en .
+
+# === Object Properties ===
+
+voices:hasSegment a owl:ObjectProperty ;
+    rdfs:domain voices:Interview ; rdfs:range voices:InterviewSegment ;
+    rdfs:label "has segment"@en .
+
+voices:segmentRefersToEvent a owl:ObjectProperty ;
+    rdfs:domain voices:InterviewSegment ; rdfs:range voices:NarratedEvent ;
+    rdfs:label "segment refers to event"@en .
+
+voices:hasParticipant a owl:ObjectProperty ;
+    rdfs:domain voices:NarratedEvent ; rdfs:range voices:Person ;
+    rdfs:subPropertyOf crm:P11_had_participant ;
+    rdfs:label "has participant"@en .
+
+voices:hasLocation a owl:ObjectProperty ;
+    rdfs:domain voices:NarratedEvent ;
+    rdfs:range crm:E53_Place ;
+    rdfs:subPropertyOf crm:P7_took_place_at ;
+    rdfs:label "has location"@en .
+
+voices:hasActivity a owl:ObjectProperty ;
+    rdfs:domain voices:NarratedEvent ;
+    rdfs:range voices:Activity ;
+    rdfs:label "has activity"@en .
+
+voices:hasMode a owl:ObjectProperty ;
+    rdfs:domain voices:NarratedEvent ;
+    rdfs:range voices:Mode ;
+    rdfs:label "has mode"@en .
+
+voices:hasCause a owl:ObjectProperty ;
+    rdfs:domain voices:NarratedEvent ;
+    rdfs:range voices:Cause ;
+    rdfs:label "has cause"@en .
+
+voices:hasEmotion a owl:ObjectProperty ;
+    rdfs:domain voices:NarratedEvent ; rdfs:range voices:EmotionAnnotation ;
+    rdfs:label "has emotion"@en .
+
+voices:hasPhysiologicalProcess a owl:ObjectProperty ;
+    rdfs:domain voices:InterviewSegment ; rdfs:range emo:0000019 ;
+    rdfs:label "has physiological process"@en .
+
+voices:hasTimeInterval a owl:ObjectProperty ;
+    rdfs:domain voices:NarratedEvent ; rdfs:range time:Interval ;
+    rdfs:subPropertyOf crm:P4_has_time-span ;
+    rdfs:label "has time interval"@en .
+
+voices:alignsWithHistoricalEvent a owl:ObjectProperty ;
+    rdfs:domain voices:NarratedEvent ; rdfs:range voices:HistoricalEvent ;
+    rdfs:label "aligns with historical event"@en .
+
+voices:hasEmbedding a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( voices:NarratedEvent voices:InterviewSegment ) ] ;
+    rdfs:range voices:Embedding ;
+    rdfs:label "has embedding"@en .
+
+voices:similarTo a owl:ObjectProperty ;
+    rdfs:domain voices:Embedding ; rdfs:range voices:Embedding ;
+    rdfs:label "semantically similar to"@en .
+
+voices:hasMediaResource a owl:ObjectProperty ;
+    rdfs:domain voices:Interview ; rdfs:range voices:MediaResource .
+
+voices:hasMediaFragment a owl:ObjectProperty ;
+    rdfs:domain voices:InterviewSegment ; rdfs:range voices:MediaFragment .
+
+# === Datatype Properties ===
+
+voices:interviewId a owl:DatatypeProperty ; rdfs:range xsd:integer .
+voices:utteranceId a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:segmentOrdinal a owl:DatatypeProperty ; rdfs:range xsd:integer .
+voices:transcriptText a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:speakerCode a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:startTimestampMs a owl:DatatypeProperty ; rdfs:range xsd:integer .
+voices:endTimestampMs a owl:DatatypeProperty ; rdfs:range xsd:integer .
+voices:whatText a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:whenText a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:temporalBucket a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:embeddingModel a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:embeddingDim a owl:DatatypeProperty ; rdfs:range xsd:integer .
+voices:mentionWeight a owl:DatatypeProperty ; rdfs:range xsd:float .
+voices:mentionSource a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:hasValence a owl:DatatypeProperty ; rdfs:range xsd:float .
+voices:hasArousal a owl:DatatypeProperty ; rdfs:range xsd:float .
+voices:hasIntensity a owl:DatatypeProperty ; rdfs:range xsd:float .
+voices:emotionCategory a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:similarityScore a owl:DatatypeProperty ; rdfs:range xsd:float .
+voices:communityId a owl:DatatypeProperty ; rdfs:range xsd:integer .
+voices:linkConfidence a owl:DatatypeProperty ; rdfs:range xsd:float .
+voices:gender a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:collectionOwner a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:recordingYear a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:testimonyTitle a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:interviewSummary a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:media_url a owl:DatatypeProperty ; rdfs:range xsd:string .
+voices:thumbnail_url a owl:DatatypeProperty ; rdfs:range xsd:string .
+
+# === RDF-star Annotation Properties ===
+
+voices:confidence a owl:DatatypeProperty ;
+    rdfs:label "confidence"@en ;
+    rdfs:comment "Confidence score for the annotated statement (0.0-1.0)."@en ;
+    rdfs:range xsd:float .
+
+voices:method a owl:DatatypeProperty ;
+    rdfs:label "extraction method"@en ;
+    rdfs:comment "Method used to produce the annotation (regex, llm_extraction, etc.)."@en ;
+    rdfs:range xsd:string .
+
+voices:matchMethod a owl:DatatypeProperty ;
+    rdfs:label "match method"@en ;
+    rdfs:comment "Method used to match or link an entity (e.g. exact_label, local_mint, external_alignment)."@en ;
+    rdfs:range xsd:string .
+
+voices:matchConfidence a owl:DatatypeProperty ;
+    rdfs:label "match confidence"@en ;
+    rdfs:comment "Confidence score for an entity match or alignment."@en ;
+    rdfs:range xsd:float .
+
+voices:matchedPattern a owl:DatatypeProperty ;
+    rdfs:label "matched regex pattern"@en ;
+    rdfs:comment "The regex pattern that triggered a classification."@en ;
+    rdfs:range xsd:string .
+
+voices:precision a owl:DatatypeProperty ;
+    rdfs:label "temporal precision"@en ;
+    rdfs:comment "Precision level of a temporal annotation (month, year, year_range, relative, unknown)."@en ;
+    rdfs:range xsd:string .
+
+voices:parsedFrom a owl:DatatypeProperty ;
+    rdfs:label "parsed from expression"@en ;
+    rdfs:comment "The raw text expression from which temporal information was parsed."@en ;
+    rdfs:range xsd:string .
+
+voices:parseConfidence a owl:DatatypeProperty ;
+    rdfs:label "parse confidence"@en ;
+    rdfs:comment "Confidence of a temporal parse result."@en ;
+    rdfs:range xsd:float .
+
+voices:computedWith a owl:DatatypeProperty ;
+    rdfs:label "computed with model"@en ;
+    rdfs:comment "Name of the model or algorithm used to compute a result."@en ;
+    rdfs:range xsd:string .
+
+voices:detectionMethod a owl:DatatypeProperty ;
+    rdfs:label "detection method"@en ;
+    rdfs:comment "Algorithm used for community detection (e.g. louvain)."@en ;
+    rdfs:range xsd:string .
+
+voices:extractionStep a owl:DatatypeProperty ;
+    rdfs:label "extraction pipeline step"@en ;
+    rdfs:comment "Step in the extraction pipeline that produced this annotation."@en ;
+    rdfs:range xsd:string .
