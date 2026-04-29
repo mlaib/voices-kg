@@ -184,8 +184,8 @@ The local stack is the same stack. For a real deployment:
 
 ## Licence
 
-- **Code**: CC-BY 4.0 (same as the paper).
-- **Knowledge graph, ontology, alignments**: CC-BY 4.0.
+- **Code**: TBD.
+- **Knowledge graph, ontology, alignments**: TBD.
 - **Transcripts**: belong to their original rights-holders; not redistributed here.
 
 The SFI thesaurus is deliberately absent; refer to the SFI VHA for that vocabulary.
