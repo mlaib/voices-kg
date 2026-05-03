@@ -19,7 +19,7 @@
 
 voices: a owl:Ontology ;
     rdfs:label "VOICES Ontology"@en ;
-    owl:versionInfo "2.0-unified"@en ;
+    owl:versionInfo "2.1-unified"@en ;
     rdfs:comment """Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.
     Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,
     MFOEM, Web Annotation, PROV-O, Media Ontology."""@en ;
@@ -55,14 +55,17 @@ voices:HistoricalEvent a owl:Class ;
     rdfs:comment "A canonical historical event (e.g. Kristallnacht, Camp Liberation) for alignment."@en .
 
 voices:Activity a owl:Class ;
+    rdfs:subClassOf crm:E55_Type ;
     rdfs:label "Activity"@en ;
     rdfs:comment "Type of action described (deportation, forced labor, escape, etc.)."@en .
 
 voices:Mode a owl:Class ;
+    rdfs:subClassOf crm:E55_Type ;
     rdfs:label "Mode"@en ;
     rdfs:comment "Manner or mechanism of an event (by train, on foot, etc.)."@en .
 
 voices:Cause a owl:Class ;
+    rdfs:subClassOf crm:E55_Type ;
     rdfs:label "Cause"@en ;
     rdfs:comment "Reason or circumstance that led to the event."@en .
 
@@ -91,10 +94,12 @@ voices:MediaFragment a owl:Class ;
 
 voices:hasSegment a owl:ObjectProperty ;
     rdfs:domain voices:Interview ; rdfs:range voices:InterviewSegment ;
+    rdfs:subPropertyOf crm:P148_has_component ;
     rdfs:label "has segment"@en .
 
 voices:segmentRefersToEvent a owl:ObjectProperty ;
     rdfs:domain voices:InterviewSegment ; rdfs:range voices:NarratedEvent ;
+    rdfs:subPropertyOf crm:P67_refers_to ;
     rdfs:label "segment refers to event"@en .
 
 voices:hasParticipant a owl:ObjectProperty ;
@@ -111,24 +116,29 @@ voices:hasLocation a owl:ObjectProperty ;
 voices:hasActivity a owl:ObjectProperty ;
     rdfs:domain voices:NarratedEvent ;
     rdfs:range voices:Activity ;
+    rdfs:subPropertyOf crm:P2_has_type ;
     rdfs:label "has activity"@en .
 
 voices:hasMode a owl:ObjectProperty ;
     rdfs:domain voices:NarratedEvent ;
     rdfs:range voices:Mode ;
+    rdfs:subPropertyOf crm:P32_used_general_technique ;
     rdfs:label "has mode"@en .
 
 voices:hasCause a owl:ObjectProperty ;
     rdfs:domain voices:NarratedEvent ;
     rdfs:range voices:Cause ;
+    rdfs:subPropertyOf crm:P17_was_motivated_by ;
     rdfs:label "has cause"@en .
 
 voices:hasEmotion a owl:ObjectProperty ;
     rdfs:domain voices:NarratedEvent ; rdfs:range voices:EmotionAnnotation ;
+    rdfs:subPropertyOf oa:hasBody ;
     rdfs:label "has emotion"@en .
 
 voices:hasPhysiologicalProcess a owl:ObjectProperty ;
     rdfs:domain voices:InterviewSegment ; rdfs:range emo:0000019 ;
+    rdfs:subPropertyOf oa:hasBody ;
     rdfs:label "has physiological process"@en .
 
 voices:hasTimeInterval a owl:ObjectProperty ;
@@ -169,8 +179,6 @@ voices:whenText a owl:DatatypeProperty ; rdfs:range xsd:string .
 voices:temporalBucket a owl:DatatypeProperty ; rdfs:range xsd:string .
 voices:embeddingModel a owl:DatatypeProperty ; rdfs:range xsd:string .
 voices:embeddingDim a owl:DatatypeProperty ; rdfs:range xsd:integer .
-voices:mentionWeight a owl:DatatypeProperty ; rdfs:range xsd:float .
-voices:mentionSource a owl:DatatypeProperty ; rdfs:range xsd:string .
 voices:hasValence a owl:DatatypeProperty ; rdfs:range xsd:float .
 voices:hasArousal a owl:DatatypeProperty ; rdfs:range xsd:float .
 voices:hasIntensity a owl:DatatypeProperty ; rdfs:range xsd:float .
