@@ -1,9 +1,15 @@
-# Alignment-quality evaluation — rubric
+# Alignment-quality evaluation — rubric for human review
 
 **Goal:** for each row in `judgments.csv`, decide whether the link from
 `place_iri` (a place mentioned in a survivor testimony) to `target_iri`
 (its candidate match in GeoNames or Wikidata) is **correct**,
 **incorrect**, or **unsure**.
+
+This rubric is for users who want to drive a deeper manual evaluation
+than the published automated baseline (`auto_judgments.csv`), which
+only checks country-of-location. A human review can additionally
+verify that the alignment lands on the correct *specific* place within
+a country.
 
 Open the place name in `place_label`, then click `target_browse_url`
 to inspect the target authority's page. Fill the `judgment` and
