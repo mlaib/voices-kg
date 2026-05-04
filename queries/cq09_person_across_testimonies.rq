@@ -1,0 +1,22 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ9 - Which persons appear in the largest number of distinct
+# testimonies (cross-testimony participants)?
+SELECT ?person ?personLabel (COUNT(DISTINCT ?interview) AS ?nInterviews)
+                            (COUNT(DISTINCT ?event) AS ?nEvents)
+WHERE {
+  GRAPH <urn:voices:graph:events> {
+    ?event a voices:NarratedEvent ;
+           voices:hasParticipant ?person .
+    ?segment voices:segmentRefersToEvent ?event .
+  }
+  GRAPH <urn:voices:graph:transcripts> {
+    ?interview voices:hasSegment ?segment .
+  }
+  OPTIONAL { GRAPH <urn:voices:graph:metadata> { ?person rdfs:label ?personLabel } }
+}
+GROUP BY ?person ?personLabel
+HAVING (COUNT(DISTINCT ?interview) > 1)
+ORDER BY DESC(?nInterviews)
+LIMIT 30

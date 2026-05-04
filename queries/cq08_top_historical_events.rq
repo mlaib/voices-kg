@@ -1,0 +1,20 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ8 - Which canonical historical events are mentioned across the
+# most testimonies (cross-testimony coverage)?
+SELECT ?historical ?label (COUNT(DISTINCT ?interview) AS ?nInterviews)
+                          (COUNT(DISTINCT ?event) AS ?nEvents)
+WHERE {
+  GRAPH <urn:voices:graph:events> {
+    ?event a voices:NarratedEvent ;
+           voices:alignsWithHistoricalEvent ?historical .
+    OPTIONAL { ?historical rdfs:label ?label }
+    ?segment voices:segmentRefersToEvent ?event .
+  }
+  GRAPH <urn:voices:graph:transcripts> {
+    ?interview voices:hasSegment ?segment .
+  }
+}
+GROUP BY ?historical ?label
+ORDER BY DESC(?nInterviews)

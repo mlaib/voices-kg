@@ -1,0 +1,25 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ2 - What narrated events are aligned with the liberation of
+# Auschwitz across multiple testimonies?
+SELECT ?event ?interview ?survivor ?historicalLabel ?segText
+WHERE {
+  GRAPH <urn:voices:graph:events> {
+    ?event a voices:NarratedEvent ;
+           voices:alignsWithHistoricalEvent ?historical .
+    OPTIONAL { ?historical rdfs:label ?historicalLabel }
+    FILTER(
+      CONTAINS(LCASE(STR(?historical)), "auschwitz")
+      || CONTAINS(LCASE(STR(?historical)), "liberation")
+    )
+    ?segment voices:segmentRefersToEvent ?event .
+  }
+  GRAPH <urn:voices:graph:transcripts> {
+    ?interview voices:hasSegment ?segment .
+    ?segment voices:transcriptText ?segText .
+  }
+  OPTIONAL { GRAPH <urn:voices:graph:metadata> { ?interview rdfs:label ?survivor } }
+}
+ORDER BY ?historicalLabel
+LIMIT 50

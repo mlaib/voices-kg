@@ -1,0 +1,35 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+
+# CQ12 - Which interview pairs co-mention the most canonical
+# historical events (a cross-testimony narrative-overlap proxy)?
+# Note: voices:similarTo edges are intra-interview only by build-time
+# design, so cross-testimony semantic overlap is computed via shared
+# alignsWithHistoricalEvent. Pre-aggregating (interview, historical)
+# pairs before the self-join keeps this query tractable.
+SELECT ?interviewA ?interviewB
+       (COUNT(DISTINCT ?historical) AS ?nSharedHistoricalEvents)
+WHERE {
+  {
+    SELECT DISTINCT (?interview AS ?interviewA) (?h AS ?historical) WHERE {
+      GRAPH <urn:voices:graph:events> {
+        ?ev voices:alignsWithHistoricalEvent ?h .
+        ?seg voices:segmentRefersToEvent ?ev .
+      }
+      GRAPH <urn:voices:graph:transcripts> { ?interview voices:hasSegment ?seg }
+    }
+  }
+  {
+    SELECT DISTINCT (?interview AS ?interviewB) (?h AS ?historical) WHERE {
+      GRAPH <urn:voices:graph:events> {
+        ?ev voices:alignsWithHistoricalEvent ?h .
+        ?seg voices:segmentRefersToEvent ?ev .
+      }
+      GRAPH <urn:voices:graph:transcripts> { ?interview voices:hasSegment ?seg }
+    }
+  }
+  FILTER(STR(?interviewA) < STR(?interviewB))
+}
+GROUP BY ?interviewA ?interviewB
+HAVING (COUNT(DISTINCT ?historical) >= 4)
+ORDER BY DESC(?nSharedHistoricalEvents)
+LIMIT 25

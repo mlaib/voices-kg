@@ -1,0 +1,24 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ15 - For a given place, which interviews mention it and in what
+# activities? (replace the place IRI below to query others)
+SELECT ?interview ?survivor ?activity (COUNT(DISTINCT ?event) AS ?nEvents)
+WHERE {
+  VALUES ?place { <urn:voices:place:auschwitz-poland-concentration-camp>
+                  <urn:voices:place:warsaw-poland>
+                  <urn:voices:place:berlin-germany> }
+  GRAPH <urn:voices:graph:events> {
+    ?event a voices:NarratedEvent ;
+           voices:hasLocation ?place .
+    OPTIONAL { ?event voices:hasActivity ?activity }
+    ?segment voices:segmentRefersToEvent ?event .
+  }
+  GRAPH <urn:voices:graph:transcripts> {
+    ?interview voices:hasSegment ?segment .
+  }
+  OPTIONAL { GRAPH <urn:voices:graph:metadata> { ?interview rdfs:label ?survivor } }
+}
+GROUP BY ?interview ?survivor ?activity
+ORDER BY DESC(?nEvents)
+LIMIT 50

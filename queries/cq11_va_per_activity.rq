@@ -1,0 +1,20 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+
+# CQ11 - What are the mean valence and arousal scores per activity?
+# (quantifies the emotional fingerprint of each activity type)
+SELECT ?activity (COUNT(*) AS ?n)
+                (AVG(?valence) AS ?meanValence)
+                (AVG(?arousal) AS ?meanArousal)
+WHERE {
+  GRAPH <urn:voices:graph:events> {
+    ?event a voices:NarratedEvent ;
+           voices:hasActivity ?activity .
+  }
+  GRAPH <urn:voices:graph:annotations> {
+    ?event voices:hasEmotion ?emotion .
+    ?emotion voices:hasValence ?valence ;
+             voices:hasArousal ?arousal .
+  }
+}
+GROUP BY ?activity
+ORDER BY ?meanValence

@@ -1,0 +1,20 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ7 - Which media fragments correspond to segments where
+# physiological processes (crying) were observed?
+SELECT ?segment ?mediaFragment ?startMs ?endMs ?procName
+WHERE {
+  GRAPH <urn:voices:graph:annotations> {
+    ?segment voices:hasPhysiologicalProcess ?proc .
+    ?proc rdfs:label ?procName .
+    FILTER(CONTAINS(LCASE(STR(?procName)), "cry"))
+  }
+  GRAPH <urn:voices:graph:transcripts> {
+    ?segment voices:startTimestampMs ?startMs ;
+             voices:endTimestampMs ?endMs .
+    OPTIONAL { ?segment voices:hasMediaFragment ?mediaFragment }
+  }
+}
+ORDER BY ?segment
+LIMIT 50

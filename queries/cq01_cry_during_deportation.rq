@@ -1,0 +1,25 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ1 - Which interviews contain segments where the survivor cries
+# while narrating deportation events?
+SELECT DISTINCT ?interview ?survivor ?segment ?text
+WHERE {
+  GRAPH <urn:voices:graph:events> {
+    ?ev a voices:NarratedEvent ;
+        voices:hasActivity ?act .
+    FILTER(CONTAINS(LCASE(STR(?act)), "deportation"))
+    ?segment voices:segmentRefersToEvent ?ev .
+  }
+  GRAPH <urn:voices:graph:annotations> {
+    ?segment voices:hasPhysiologicalProcess ?proc .
+    ?proc rdfs:label ?procName .
+    FILTER(CONTAINS(LCASE(STR(?procName)), "cry"))
+  }
+  GRAPH <urn:voices:graph:transcripts> {
+    ?interview voices:hasSegment ?segment .
+    ?segment voices:transcriptText ?text .
+  }
+  OPTIONAL { GRAPH <urn:voices:graph:metadata> { ?interview rdfs:label ?survivor } }
+}
+LIMIT 50

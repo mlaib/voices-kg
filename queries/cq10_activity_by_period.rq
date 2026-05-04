@@ -1,0 +1,14 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+
+# CQ10 - What is the distribution of activities across life-period
+# buckets? (period x activity matrix for the entire corpus)
+SELECT ?period ?activity (COUNT(*) AS ?n)
+WHERE {
+  GRAPH <urn:voices:graph:events> {
+    ?event a voices:NarratedEvent ;
+           voices:hasActivity ?activity ;
+           voices:temporalBucket ?period .
+  }
+}
+GROUP BY ?period ?activity
+ORDER BY ?period DESC(?n)

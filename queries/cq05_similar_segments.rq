@@ -1,0 +1,25 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ5 - Which interview segments are semantically similar based on
+# their embedding representations? (returns segment pairs reachable
+# via voices:similarTo edges between their event embeddings).
+# Note: hasEmbedding is in the embeddings graph (not events).
+SELECT ?segmentA ?segmentB ?textA ?textB
+WHERE {
+  GRAPH <urn:voices:graph:embeddings> {
+    ?embA voices:similarTo ?embB .
+    FILTER(STR(?embA) < STR(?embB))
+    ?evA voices:hasEmbedding ?embA .
+    ?evB voices:hasEmbedding ?embB .
+  }
+  GRAPH <urn:voices:graph:events> {
+    ?segmentA voices:segmentRefersToEvent ?evA .
+    ?segmentB voices:segmentRefersToEvent ?evB .
+  }
+  GRAPH <urn:voices:graph:transcripts> {
+    ?segmentA voices:transcriptText ?textA .
+    ?segmentB voices:transcriptText ?textB .
+  }
+}
+LIMIT 25

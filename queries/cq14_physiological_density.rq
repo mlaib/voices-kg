@@ -1,0 +1,20 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ14 - Which interviews have the highest density of physiological
+# annotations (crying / silence / laughter per minute of recording)?
+SELECT ?interview ?survivor
+       (COUNT(DISTINCT ?proc) AS ?nProcesses)
+       (COUNT(DISTINCT ?segment) AS ?nSegments)
+WHERE {
+  GRAPH <urn:voices:graph:transcripts> {
+    ?interview voices:hasSegment ?segment .
+  }
+  GRAPH <urn:voices:graph:annotations> {
+    ?segment voices:hasPhysiologicalProcess ?proc .
+  }
+  OPTIONAL { GRAPH <urn:voices:graph:metadata> { ?interview rdfs:label ?survivor } }
+}
+GROUP BY ?interview ?survivor
+ORDER BY DESC(?nProcesses)
+LIMIT 25

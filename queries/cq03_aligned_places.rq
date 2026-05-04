@@ -1,0 +1,17 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ3 - Which place IRIs in the events graph have a skos:exactMatch
+# alignment to GeoNames or Wikidata?
+SELECT ?place ?label ?target
+       (IF(STRSTARTS(STR(?target), "https://sws.geonames.org/"), "geonames",
+          IF(STRSTARTS(STR(?target), "https://www.wikidata.org/"), "wikidata", "other")) AS ?authority)
+WHERE {
+  GRAPH <urn:voices:graph:alignment> {
+    ?place skos:exactMatch ?target .
+  }
+  OPTIONAL { GRAPH <urn:voices:graph:metadata> { ?place rdfs:label ?label } }
+}
+ORDER BY ?place
+LIMIT 100

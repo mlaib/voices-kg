@@ -1,0 +1,20 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ6 - What emotions are annotated for events involving forced labour?
+SELECT ?emotionCategory (COUNT(*) AS ?n)
+WHERE {
+  GRAPH <urn:voices:graph:events> {
+    ?event a voices:NarratedEvent ;
+           voices:hasActivity ?act .
+    FILTER(CONTAINS(LCASE(STR(?act)), "forced_labour")
+           || CONTAINS(LCASE(STR(?act)), "forced_labor")
+           || CONTAINS(LCASE(STR(?act)), "labor"))
+  }
+  GRAPH <urn:voices:graph:annotations> {
+    ?event voices:hasEmotion ?emotion .
+    ?emotion voices:emotionCategory ?emotionCategory .
+  }
+}
+GROUP BY ?emotionCategory
+ORDER BY DESC(?n)

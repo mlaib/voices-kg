@@ -1,0 +1,22 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX time:   <http://www.w3.org/2006/time#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ4 - What is the temporal sequence of narrated events in a given
+# interview? (replace ?interview value below with a real interview IRI
+# such as <urn:voices:interview:8> for testing)
+SELECT ?interview ?event ?period ?intervalLabel
+WHERE {
+  VALUES ?interview { <urn:voices:interview:8> }
+  GRAPH <urn:voices:graph:transcripts> {
+    ?interview voices:hasSegment ?segment .
+  }
+  GRAPH <urn:voices:graph:events> {
+    ?segment voices:segmentRefersToEvent ?event .
+    ?event voices:hasTimeInterval ?interval .
+    OPTIONAL { ?event voices:temporalBucket ?period }
+    OPTIONAL { ?interval rdfs:label ?intervalLabel }
+  }
+}
+ORDER BY ?period ?intervalLabel
+LIMIT 50

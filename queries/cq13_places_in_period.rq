@@ -1,0 +1,18 @@
+PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+# CQ13 - What places are most-mentioned in events occurring during a
+# given life-period bucket? (replace the period below to query others)
+SELECT ?place ?placeLabel (COUNT(DISTINCT ?event) AS ?nEvents)
+WHERE {
+  VALUES ?period { "nazi_rise" "during_war" "late_war_holocaust" }
+  GRAPH <urn:voices:graph:events> {
+    ?event a voices:NarratedEvent ;
+           voices:temporalBucket ?period ;
+           voices:hasLocation ?place .
+  }
+  OPTIONAL { GRAPH <urn:voices:graph:metadata> { ?place rdfs:label ?placeLabel } }
+}
+GROUP BY ?place ?placeLabel
+ORDER BY DESC(?nEvents)
+LIMIT 30
