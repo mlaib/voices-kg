@@ -1,13 +1,13 @@
 name: voices-kg-v2
 
-# Production overlay used on the VM where host nginx terminates TLS and
-# proxies voices.list.lu to the Streamlit + admin containers via the
+# Production overlay used on a VM where host nginx terminates TLS and
+# proxies the public hostname to the Streamlit + admin containers via the
 # loopback. Caddy is disabled (nginx handles routing + TLS), and ports
 # bind to 127.0.0.1 only so nothing in this stack is reachable from
 # the public internet directly.
 #
-# All services get NO_PROXY=localhost,127.0.0.1 so the corporate HTTP
-# proxy (proxy.list.lu) is bypassed for loopback healthchecks.
+# All services get NO_PROXY=localhost,127.0.0.1 so any corporate HTTP
+# proxy is bypassed for loopback healthchecks.
 
 x-no-proxy: &no_proxy
   HTTP_PROXY: ""
@@ -66,7 +66,7 @@ services:
       REQUIRE_AUTH: ${REQUIRE_AUTH:-false}
       ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@voices.local}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-voices-admin-2026}
-      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-https://voices.list.lu}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-https://voices.example.org}
       UVICORN_WORKERS: ${UVICORN_WORKERS:-2}
 
   app:
@@ -90,7 +90,7 @@ services:
       MEILISEARCH_URL: http://meilisearch:7700
       MEILISEARCH_KEY: ${MEILI_MASTER_KEY:-voices-meili-master-key}
       ADMIN_URL: http://admin:8000
-      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-https://voices.list.lu}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-https://voices.example.org}
       STREAMLIT_SERVER_PORT: "8501"
       STREAMLIT_SERVER_HEADLESS: "true"
       STREAMLIT_BROWSER_GATHERUSAGESTATS: "false"

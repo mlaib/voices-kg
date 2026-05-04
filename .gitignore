@@ -50,3 +50,8 @@ dist/
 build/
 .eggs/
 *.whl
+
+# ---- Internal planning notes (never publish) ---------------------------------
+plan.md
+idea.md
+

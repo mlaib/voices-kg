@@ -183,8 +183,18 @@ The local stack is the same stack. For a real deployment:
 
 ## Licence
 
-- **Code**: TBD.
-- **Knowledge graph, ontology, alignments**: TBD.
-- **Transcripts**: belong to their original rights-holders; not redistributed here.
+Licensing is **TBD** while the consortium finalises the per-component
+terms. A discussion document is being circulated; final terms will be
+added here (and as `LICENSE` / `LICENSE-DATA.md` files) before any
+public release.
+
+- **Code** (`src/`, `app/`, `admin/`, `scripts/`, `docker/`): TBD.
+- **Ontology** (`schema/voices_ontology_v2.ttl`) and **alignment graph**
+  (`schema/voices-alignment-v2.ttl`): TBD.
+- **Knowledge graph dump** (`output/kg2026_v2.nq`): TBD. Note that the
+  dump embeds transcript text via `voices:transcriptText` literals
+  derived from copyrighted USC Shoah Foundation Visual History Archive
+  testimonies; redistribution terms for that component are still being
+  negotiated with the rights-holders.
 
 The SFI thesaurus is deliberately absent; refer to the SFI VHA for that vocabulary.
