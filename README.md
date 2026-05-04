@@ -10,8 +10,7 @@ Every dependency on the proprietary USC Shoah Foundation (SFI) thesaurus has bee
 removed; places and alignments are re-minted under this project's own namespace, and
 the whole stack ships in a single `docker compose` for reviewer and public use.
 
-See [`idea.md`](./idea.md) for the design rationale and [`plan.md`](./plan.md) for
-the full implementation plan.
+
 
 ---
 
