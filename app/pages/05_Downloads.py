@@ -88,9 +88,11 @@ st.info(
     "(`voices:transcriptText`) of the USC Shoah Foundation Visual History "
     "Archive testimonies, which remain copyrighted by their rights-holders. "
     "All other named graphs — interviews, segments, narrated events, places, "
-    "emotions, embeddings, alignments — are included and queryable. "
-    "Researchers with their own VHA access can request the full dump from "
-    "the maintainer below."
+    "emotions, embeddings, alignments — are included and queryable under "
+    "**CC BY 4.0**. Code is released under **Apache 2.0**. See "
+    "[`LICENSE-DATA.md`](https://git.list.lu/voices/voices-kg/-/blob/main/LICENSE-DATA.md) "
+    "for the full per-component licence matrix. Researchers with their own "
+    "VHA access can request the full dump from the maintainer below."
 )
 rows = []
 for a in ARTEFACTS:
