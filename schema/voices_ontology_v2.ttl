@@ -11,10 +11,17 @@
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 
 ###################################################################
-# VOICES Ontology v2.0 — Unified (merges v1.2 + KG0226 extensions)
+# VOICES Ontology v2.1 — Unified (merges v1.2 + KG0226 extensions)
 # Public / thesaurus-free variant. All SFI (voices.uni.lu/vocab/term/)
 # references removed; places are now locally minted urn:voices:place:
 # IRIs. External alignment triples live in voices-alignment-v2.ttl.
+#
+# v2.1 changes vs v2.0:
+#  - 3 classes (Activity, Mode, Cause) declared rdfs:subClassOf crm:E55_Type
+#  - 7 object properties given rdfs:subPropertyOf to CIDOC-CRM / W3C OA
+#    parent predicates, lifting formal reuse from 3/15 to 10/15
+#  - 2 dead datatype properties (mentionWeight, mentionSource) removed
+#  - No instance-data impact: all changes are metadata-only
 ###################################################################
 
 voices: a owl:Ontology ;
