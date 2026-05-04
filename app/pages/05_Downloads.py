@@ -31,10 +31,13 @@ DOWNLOAD_BASE = "/downloads"  # served by Caddy
 
 ARTEFACTS: list[dict] = [
     {
-        "name": "kg2026_v2.nq",
-        "path": OUTPUT_DIR / "kg2026_v2.nq",
-        "url": f"{DOWNLOAD_BASE}/kg2026_v2.nq",
-        "description": "Main knowledge graph as N-Quads (all named graphs).",
+        "name": "kg2026_v2_public.nq",
+        "path": OUTPUT_DIR / "kg2026_v2_public.nq",
+        "url": f"{DOWNLOAD_BASE}/kg2026_v2_public.nq",
+        "description": (
+            "Main knowledge graph as N-Quads, with transcript-text literals "
+            "(voices:transcriptText) removed. All other named graphs intact."
+        ),
     },
     {
         "name": "kg2026_v2.nqs",
@@ -79,6 +82,16 @@ def _size_str(path: Path) -> str:
 
 # Core artefact table
 st.subheader("Core artefacts")
+st.info(
+    "**Note on transcript text.** The downloadable knowledge-graph dump "
+    "(`kg2026_v2_public.nq`) excludes the literal transcript text "
+    "(`voices:transcriptText`) of the USC Shoah Foundation Visual History "
+    "Archive testimonies, which remain copyrighted by their rights-holders. "
+    "All other named graphs — interviews, segments, narrated events, places, "
+    "emotions, embeddings, alignments — are included and queryable. "
+    "Researchers with their own VHA access can request the full dump from "
+    "the maintainer below."
+)
 rows = []
 for a in ARTEFACTS:
     rows.append(
