@@ -5,14 +5,19 @@ dimension whether the LLM-derived value matches what the source
 utterance actually says.
 
 Each row carries:
-- `segment_text`: the original utterance the survivor spoke
+- `segment_iri`: identifier of the source utterance. The `segment_text`
+  column is **intentionally left blank** — the original transcript text is
+  copyrighted by the USC Shoah Foundation VHA and is not redistributed
+  here. Reviewers with their own VHA access can rejoin the text via
+  `segment_iri` (see the repository's *Data notice*).
 - `participants`, `activities`, `locations`, `causes`, `modes`,
   `temporal`, `emotions`, `historical`: the dimensions the
   extraction pipeline produced for that utterance
 - `judgment_<dim>`: the cell you fill — `correct`, `incorrect`, or
   `unsure`
 
-Read the `segment_text`, then for each dimension column decide:
+Read the source utterance (looked up via `segment_iri` in the VHA), then
+for each dimension column decide:
 
 ## Decision rules per dimension
 

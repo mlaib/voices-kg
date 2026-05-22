@@ -38,7 +38,10 @@ same `sample.csv` (deterministic from seed `20260504`).
 ## Driving the evaluation
 
 1. Open `judgments.csv` in your spreadsheet editor of choice.
-2. For each row, read the `segment_text` and inspect the extracted
+2. For each row, look up the source utterance via its `segment_iri`
+   (the `segment_text` column is left blank — the transcript text is
+   copyrighted by the USC Shoah Foundation VHA and is not redistributed;
+   see the repository's *Data notice*), and inspect the extracted
    dimensions in the next eight columns.
 3. For each of the five judgment columns
    (`judgment_participants`, `judgment_activity`,

@@ -19,6 +19,27 @@ exploration stack (Fuseki + FastAPI + Streamlit + Caddy).
 
 ---
 
+> ## ⚠️ Data notice — read before running
+>
+> **The testimony transcript text is not ours and is not redistributed
+> here.** It is sourced from the **USC Shoah Foundation Visual History
+> Archive (VHA)** and remains copyrighted by its rights-holders.
+>
+> - The public KG dump shipped in this repository
+>   (`output/kg2026_v2_public.nq`) **excludes** the ~647 K
+>   `voices:transcriptText` literals. All other graphs are intact and
+>   queryable, so the app runs fully without the transcript text.
+> - The full dump with transcript text (`output/kg2026_v2.nq`) **must not
+>   be published or redistributed.** It is for local replication by
+>   researchers who already hold their own VHA access.
+> - To obtain the original transcript text, use the USC Shoah Foundation
+>   VHA at <https://sfi.usc.edu/vha>.
+>
+> See [Transcript text](#transcript-text) and
+> [`LICENSE-DATA.md`](LICENSE-DATA.md) for the full licensing matrix.
+
+---
+
 ## Conceptual model
 
 The ontology centres a `NarratedEvent` hub linking the `Interview` /
@@ -27,8 +48,6 @@ activity, cause, mode, time, emotion, embeddings) and to a `HistoricalEvent`
 side reference for outward alignment.
 
 ![VOICES ontology — conceptual model](docs/figures/VOICES-Ontology.png)
-
-## Construction pipeline
 
 A four-stage pipeline parses 982 XML transcripts into 647,455 utterances,
 extracts 334,434 narrated events via an LLM, enriches them with GeoNames
@@ -51,58 +70,62 @@ graphs in N-Quads.
 | [`scripts/`](scripts/) | Build, deploy, indexing, and CI gate scripts |
 | [`queries/`](queries/) | 15 SPARQL competency-question queries (`cq01..cq15`) |
 | [`evaluation/`](evaluation/) | Reproducible evaluation framework (alignment + events) |
-| [`output/`](output/) | Build artefacts (KG dumps, embeddings, statistics) |
+| [`output/`](output/) | Pre-built KG dumps, embeddings, and statistics |
 | [`docs/`](docs/) | Figures and supporting documentation |
 
 ---
 
-## Quick start
+## Run it
 
-**Prerequisites.** Docker + Docker Compose; Python 3.11 (only for the
-one-off rebuild from v1 source).
+**This release ships the pre-built knowledge graph in `output/`** — you do
+**not** need to rebuild anything to run the stack. The only prerequisite is
+**Docker + Docker Compose**.
 
 ```bash
 cd KG2026.paper_v2
 
-# 1. Set local environment (copy + edit if needed)
+# 1. Create your local config, then edit the secrets
 cp .env.example .env
+#    In .env set: ADMIN_PASSWORD, JWT_SECRET,
+#                 FUSEKI_ADMIN_PASSWORD, MEILI_MASTER_KEY
 
-# 2. Build the knowledge graph (~3 GB, ~10 min, streams once)
-make build
-
-# 3. Start the full stack (Fuseki, Redis, Meilisearch, Admin API, Streamlit, Caddy)
+# 2. Start the stack (Fuseki, Redis, Meilisearch, Admin API, Streamlit, Caddy)
 make up
 
-# 4. Load the KG + embeddings into Fuseki (first time only)
+# 3. Load the KG + embeddings into Fuseki (first run only, ~10 min)
 make load
 
-# 5. Build search indexes and dropdown caches
+# 4. Build search indexes and dropdown caches
 make index
 make precompute
 
-# 6. Create the first admin user (idempotent)
+# 5. Create the first admin user (idempotent)
 make seed
 
-# 7. Run smoke tests
+# 6. Run end-to-end smoke tests
 make smoke
 ```
 
 Open <https://localhost:8443> and accept Caddy's self-signed certificate.
 
+> Rebuilding the dataset from the upstream v1 source is a **maintainer-only**
+> step and is **not** required to run the stack — see
+> [Rebuilding from v1 source](#rebuilding-from-v1-source-maintainers).
+
 ### Demo credentials
 
-The first admin user is created from `.env` on startup:
+The first admin user is created from `.env` by `make seed`:
 
 | Role  | Email                | Password                                |
 |-------|----------------------|-----------------------------------------|
 | admin | `admin@voices.local` | *(set via `ADMIN_PASSWORD` in `.env`)* |
 
 > **Set a strong `ADMIN_PASSWORD` in `.env` before starting the stack.**
-> Run `make seed` after any change.
+> Re-run `make seed` after any change.
 
-The admin console is reachable at <https://localhost:8443/admin/> —
-create reviewer-role users there; they can log in at the same URL and
-browse the exploration UI at `/`.
+The admin console is at <https://localhost:8443/admin/> — create
+reviewer-role users there; they log in at the same URL and browse the
+exploration UI at `/`.
 
 ---
 
@@ -173,41 +196,13 @@ remains copyrighted by its rights-holders.
 - The publicly downloadable file (`kg2026_v2_public.nq`) **excludes the
   ~647 K `voices:transcriptText` literals**. All other named graphs are
   intact and queryable.
-- For the original transcript text, please refer to the **USC Shoah
-  Foundation VHA** at <https://sfi.usc.edu/vha>.
+- For the original transcript text, refer to the **USC Shoah Foundation
+  VHA** at <https://sfi.usc.edu/vha>.
 - Researchers with their own VHA access who need the full dump for
   replication can contact the maintainer.
 
 See [`LICENSE-DATA.md`](LICENSE-DATA.md) for the full per-component
 licensing matrix.
-
----
-
-## Rebuilding the KG from v1 source
-
-`make build` runs two streaming passes over the v1 N-Quads:
-
-1. **`src/rebuild/filter.py`** — line-based rewrite that drops the
-   `concepts` named graph, strips `voices:mentionsConcept` triples, and
-   re-mints every `http://voices.uni.lu/vocab/term/<id>` IRI as
-   `urn:voices:place:<slug>` using the English label carried in the
-   events graph. Deterministic slug collisions disambiguate by appending
-   the numeric id. The published dataset carries no SFI thesaurus
-   content; outward alignments to GeoNames and Wikidata use
-   `skos:exactMatch`, the W3C convention used by both target authorities
-   for cross-vocabulary references.
-2. **`src/rebuild/relabel.py`** — appends any missing
-   `rdf:type voices:Place` / `rdfs:label` triples into the `metadata`
-   graph so every place has a declaration. Idempotent.
-
-Output: `output/kg2026_v2.nq` (full), `output/kg2026_v2_public.nq` (after
-running `scripts/strip_transcript_text.py`), `output/utterance_embeddings_v2.nq`,
-and `output/stats.json`.
-
-The fail-loud post-build gate `make check` re-asserts SFI cleanliness:
-no `vocab/term/`, no `graph:concepts`, no `mentionsConcept`. SKOS itself
-is unblocked — it is a W3C vocabulary used by GeoNames and Wikidata, and
-we use it for outward alignment.
 
 ---
 
@@ -224,9 +219,9 @@ with two strands:
   scored against a per-dimension rubric (subject, action, place, time,
   affect) covering both factual extraction and structural plausibility.
 
-Each subdirectory contains its own `README.md`, `RUBRIC.md`, the sample
-CSV, the judgment CSV, and the precision-computation script — re-running
-`python compute_precision.py` produces the figures cited in the paper.
+Each subdirectory has its own `README.md`, `RUBRIC.md`, the sample CSV,
+the judgment CSV, and the precision-computation script — re-running
+`python compute_precision.py` reproduces the figures cited in the paper.
 
 ---
 
@@ -236,16 +231,50 @@ The local stack is the same stack. For a real deployment:
 
 1. **DNS.** Point `voices.your-domain.org` at the VM's public IP.
 2. **Caddyfile.** Replace `tls internal` with the domain
-   (`voices.your-domain.org`) and Caddy will fetch Let's Encrypt certs
+   (`voices.your-domain.org`) and Caddy fetches Let's Encrypt certs
    automatically.
 3. **`.env`.** Set `PUBLIC_BASE_URL=https://voices.your-domain.org` and
    rotate `JWT_SECRET`, `FUSEKI_ADMIN_PASSWORD`, `MEILI_MASTER_KEY`,
    `ADMIN_PASSWORD`.
 4. **Firewall.** Open ports 80 and 443 in the VM firewall.
-5. **`make all`** on the VM after rsyncing the `output/` directory (or
-   re-running `make build` with the v1 source mounted).
+5. **Bring it up** with `make up && make load && make index && make
+   precompute && make seed && make smoke` after rsyncing the `output/`
+   directory to the VM.
 6. **Public release.** Set `REQUIRE_AUTH=false` to drop the login wall on
    `/`; `/admin/*` stays gated.
+
+---
+
+## Rebuilding from v1 source (maintainers)
+
+> Not needed to run the stack — the built artefacts already ship in
+> `output/`. This section is for maintainers re-materialising the dataset
+> from the upstream v1 N-Quads. It requires Python 3.11 and the v1 output
+> directory mounted read-only (`V1_OUTPUT_DIR` in `.env`).
+
+`make build` runs two streaming passes over the v1 N-Quads:
+
+1. **`src/rebuild/filter.py`** — drops the `concepts` named graph, strips
+   `voices:mentionsConcept` triples, and re-mints every
+   `http://voices.uni.lu/vocab/term/<id>` IRI as `urn:voices:place:<slug>`
+   using the English label carried in the events graph (slug collisions
+   disambiguate by appending the numeric id). The published dataset
+   carries no SFI thesaurus content; outward alignments to GeoNames and
+   Wikidata use `skos:exactMatch`.
+2. **`src/rebuild/relabel.py`** — appends any missing `rdf:type
+   voices:Place` / `rdfs:label` triples into the `metadata` graph so every
+   place has a declaration. Idempotent.
+
+`make build` produces the **full** dump `output/kg2026_v2.nq` (plus
+`output/stats.json`). The **public** dump `output/kg2026_v2_public.nq` is
+then produced by `scripts/strip_transcript_text.py`, which removes the
+`voices:transcriptText` literals.
+
+The fail-loud post-build gate `make check` re-asserts SFI cleanliness: no
+`vocab/term/`, no `graph:concepts`, no `mentionsConcept`. SKOS is unblocked
+— it is a W3C vocabulary used by GeoNames and Wikidata for outward
+alignment. `make all` chains the full maintainer pipeline:
+`build → check → up → load → index → precompute → seed → smoke`.
 
 ---
 
