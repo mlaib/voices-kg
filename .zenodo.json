@@ -1,0 +1,21 @@
+{
+  "title": "VOICES Knowledge Graph",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "description": "VOICES is a Linked Data resource for modelling and analysing multimodal Holocaust survivor testimonies: an OWL 2 ontology (reusing CIDOC-CRM, OWL-Time, MFOEM, the W3C Media Ontology and the Web Annotation Data Model), a knowledge-graph construction pipeline, and a populated knowledge graph derived from 982 testimonies of the USC Shoah Foundation Visual History Archive, with outward alignments to GeoNames and Wikidata. Public artefacts exclude the copyrighted transcript text. Ontology namespace: https://w3id.org/voices/ontology#",
+  "creators": [
+    {"name": "Pruski, Cédric", "orcid": "0000-0002-2103-0431", "affiliation": "Luxembourg Institute of Science and Technology (LIST)"},
+    {"name": "Laib, Mohamed", "orcid": "0000-0003-1276-1790", "affiliation": "Luxembourg Institute of Science and Technology (LIST)"},
+    {"name": "Da Silveira, Marcos", "orcid": "0000-0002-2604-3645", "affiliation": "Luxembourg Institute of Science and Technology (LIST)"},
+    {"name": "Toth, Gabor Mihaly", "orcid": "0000-0002-4301-1581", "affiliation": "University of Luxembourg"}
+  ],
+  "keywords": [
+    "Holocaust testimonies",
+    "ontology",
+    "knowledge graph",
+    "entity alignment",
+    "Linked Data",
+    "cultural heritage"
+  ]
+}

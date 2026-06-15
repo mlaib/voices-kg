@@ -42,11 +42,7 @@ keywords:
   - entity alignment
   - Linked Data
   - cultural heritage
-doi: "10.5281/zenodo.20707053"
 identifiers:
-  - type: doi
-    value: "10.5281/zenodo.20707053"
-    description: "Archived release of the VOICES Knowledge Graph (Zenodo)"
   - type: url
     value: "https://github.com/mlaib/voices-kg"
     description: "Source repository"
