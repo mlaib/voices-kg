@@ -1,0 +1,52 @@
+# Sample build config — runs the construction pipeline end-to-end on the bundled
+# SYNTHETIC sample (sample/), with NO gated inputs:
+#   * no SFI thesaurus  → places are minted locally (no outward GeoNames/Wikidata links)
+#   * no topics/hierarchy/embeddings → those phases are skipped
+#   * no OpenAI calls   → events_v7 is the pre-generated synthetic fixture
+# Use:  python sample/make_sample.py  &&  python src/build.py --config config/config.sample.yaml
+
+paths:
+  workspace_root: "sample"        # relative → resolved against pipeline/
+  events_parquet: "data/processed/events_v7.parquet"
+  utterances_parquet: "data/processed/utterances.parquet"
+  metadata_csv: "data/raw/transcript_testimonies_info.csv"
+  thesaurus_ttl: "inputs/SFI_Thesaurus_SKOS.ttl"   # absent → graceful local-mint
+  alignment_ttl: "inputs/voices-alignment.ttl"     # absent → graceful
+  topics_dir: "data/processed/topics"
+  hierarchy_dir: "data/processed/csv_output_folder_FullHierarchy"
+  embeddings_dir: "data/processed/event_embeddings/openai"
+  output_dir: "output"
+
+build:
+  interview_ids: "all"
+  include_topics: false
+  include_hierarchy: false
+  include_embeddings: false
+  compute_similarity: false
+
+thresholds:
+  topic_weight_min: 0.12
+  hierarchy_weight_min: 0.12
+  hierarchy_top_k: 16
+  similarity_top_k: 5
+  similarity_min: 0.82
+  concept_fuzzy_min: 0.85
+
+embedding:
+  model_name: "text-embedding-3-small"
+  dimensions: 1536
+
+uri_base:
+  kg: "urn:voices:kg:"
+  vocab: "http://voices.uni.lu/vocab/term/"
+  ontology: "http://voices.uni.lu/ontology#"
+
+named_graphs:
+  metadata: "urn:voices:graph:metadata"
+  transcripts: "urn:voices:graph:transcripts"
+  events: "urn:voices:graph:events"
+  annotations: "urn:voices:graph:annotations"
+  concepts: "urn:voices:graph:concepts"
+  embeddings: "urn:voices:graph:embeddings"
+  provenance: "urn:voices:graph:provenance"
+  alignment: "urn:voices:graph:alignment"

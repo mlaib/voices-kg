@@ -19,6 +19,12 @@ output/caches/*.json
 # Keep the stats snapshot (small, useful for CI checks)
 !output/stats.json
 
+# ---- Construction-pipeline generated artefacts (regenerable via `make pipeline-sample`) ----
+pipeline/sample/data/
+pipeline/sample/output/
+pipeline/sample/inputs/
+pipeline/**/.venv*/
+
 # ---- Build / virtual-environment artefacts -----------------------------------
 .venv*/
 __pycache__/

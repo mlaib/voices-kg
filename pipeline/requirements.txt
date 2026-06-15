@@ -1,0 +1,7 @@
+# VOICES KG construction pipeline — dependencies
+pandas>=2.0
+numpy>=1.24
+pyyaml>=6.0
+pyarrow>=14.0
+openai>=1.0
+python-dotenv>=1.0

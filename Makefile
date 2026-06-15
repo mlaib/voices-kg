@@ -5,7 +5,8 @@ SHELL := /bin/bash
 PY    := python3
 DC    := docker compose
 
-.PHONY: help env build filter load index precompute up down logs seed smoke check clean reset ps
+.PHONY: help env build filter load index precompute up down logs seed smoke check clean reset ps \
+        pipeline-deps pipeline-sample build-from-transcripts
 
 help:
 	@echo "VOICES KG v2 — Makefile targets"
@@ -35,6 +36,30 @@ build:
 	@echo "v2 KG built → output/kg2026_v2.nq"
 
 filter: build
+
+# ── Construction pipeline (transcripts → KG); see pipeline/README.md ──────────
+pipeline-deps:
+	$(PY) -m pip install -r pipeline/requirements.txt
+
+# Standalone smoke build on the bundled SYNTHETIC sample — no gated inputs,
+# no OpenAI, no SFI thesaurus. Produces pipeline/sample/output/kg2026_paper.nq.
+pipeline-sample:
+	cd pipeline && $(PY) sample/make_sample.py
+	cd pipeline && $(PY) src/build.py --config config/config.sample.yaml
+	@echo "Toy KG built → pipeline/sample/output/kg2026_paper.nq"
+
+# Full build from YOUR OWN VHA XML transcripts (requires OPENAI_API_KEY; the SFI
+# thesaurus is optional — without it places are minted locally with no outward
+# GeoNames/Wikidata links). Usage: make build-from-transcripts XML=/path/to/xml
+build-from-transcripts:
+	@[ -n "$(XML)" ] || { echo "Set XML=/path/to/xml/transcripts"; exit 2; }
+	@[ -n "$$OPENAI_API_KEY" ] || { echo "Set OPENAI_API_KEY in the environment"; exit 2; }
+	cd pipeline && $(PY) stage1_parse/parse_transcripts.py --transcripts-dir "$(XML)" --output-dir sample/data/processed
+	cd pipeline && $(PY) stage1_parse/create_utterances_v2.py --source sample/data/processed/utterances.parquet --target sample/data/processed/utterances_v2.parquet
+	cd pipeline && $(PY) stage2_extract/event_extractor_v6.py
+	cd pipeline && $(PY) scripts/resolve_events_v7.py
+	cd pipeline && $(PY) src/build.py --config config/config.yaml
+	@echo "KG built from transcripts → pipeline/sample/output/  (load into Fuseki with 'make up load')"
 
 up:
 	$(DC) up -d

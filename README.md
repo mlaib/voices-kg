@@ -62,8 +62,9 @@ graphs in N-Quads.
 
 | Path | What |
 |---|---|
-| [`schema/`](schema/) | Ontology (`voices_ontology_v2.ttl`) and alignment graph (`voices-alignment-v2.ttl`) |
-| [`src/`](src/) | KG construction pipeline (parsing, extraction, enrichment, materialisation) |
+| [`schema/`](schema/) | Ontology (`voices_ontology_v2.ttl`), alignment graph (`voices-alignment-v2.ttl`), and VoID/DCAT description (`voices_void.ttl`) |
+| [`pipeline/`](pipeline/) | **KG construction pipeline** (Stage 1 parse → Stage 2 LLM extraction → Stage 3 enrichment → Stage 4 materialisation; paper §4) |
+| [`src/`](src/) | Public-release post-processing (transcript/thesaurus stripping and place re-minting) applied to the built KG |
 | [`app/`](app/) | Streamlit exploration UI |
 | [`admin/`](admin/) | FastAPI auth + admin + REST API |
 | [`docker/`](docker/) | Caddy + Fuseki container configuration |

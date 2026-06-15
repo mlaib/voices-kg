@@ -1,0 +1,60 @@
+# VOICES KG construction pipeline — build configuration.
+#
+# `workspace_root` is the base for every input/output path below. If it is a
+# RELATIVE path it is resolved against this pipeline/ directory (see build.py),
+# so the default points at the bundled synthetic `sample/` and the pipeline is
+# self-contained. Set it to an absolute path (or run with the real inputs in
+# place) to rebuild the full KG.
+#
+# GATED INPUTS (not shipped — see README "Inputs"):
+#   * data/** : derived from USC Shoah Foundation VHA transcripts (copyrighted).
+#   * thesaurus_ttl / alignment_ttl : the SFI thesaurus + its precomputed
+#     GeoNames/Wikidata alignment. Proprietary; NOT redistributed. When absent,
+#     place resolution degrades gracefully to local IRIs (no outward link), and
+#     concept/topic linking is skipped — the build still runs.
+
+paths:
+  workspace_root: "sample"        # relative → resolved against pipeline/ ; or set an absolute path
+  events_parquet: "data/processed/events_v7.parquet"
+  utterances_parquet: "data/processed/utterances.parquet"
+  metadata_csv: "data/raw/transcript_testimonies_info.csv"
+  thesaurus_ttl: "inputs/SFI_Thesaurus_SKOS.ttl"      # GATED (optional) — see README
+  alignment_ttl: "inputs/voices-alignment.ttl"        # GATED (optional) — see README
+  topics_dir: "data/processed/topics"
+  hierarchy_dir: "data/processed/csv_output_folder_FullHierarchy"
+  embeddings_dir: "data/processed/event_embeddings/openai"
+  output_dir: "output"
+
+build:
+  interview_ids: "all"  # "all" or comma-separated: "8,9,10,16,17"
+  include_topics: true
+  include_hierarchy: true
+  include_embeddings: true
+  compute_similarity: true
+
+thresholds:
+  topic_weight_min: 0.12
+  hierarchy_weight_min: 0.12
+  hierarchy_top_k: 16
+  similarity_top_k: 5
+  similarity_min: 0.82
+  concept_fuzzy_min: 0.85
+
+embedding:
+  model_name: "text-embedding-3-small"
+  dimensions: 1536
+
+uri_base:
+  kg: "urn:voices:kg:"
+  vocab: "http://voices.uni.lu/vocab/term/"
+  ontology: "http://voices.uni.lu/ontology#"
+
+named_graphs:
+  metadata: "urn:voices:graph:metadata"
+  transcripts: "urn:voices:graph:transcripts"
+  events: "urn:voices:graph:events"
+  annotations: "urn:voices:graph:annotations"
+  concepts: "urn:voices:graph:concepts"
+  embeddings: "urn:voices:graph:embeddings"
+  provenance: "urn:voices:graph:provenance"
+  alignment: "urn:voices:graph:alignment"
