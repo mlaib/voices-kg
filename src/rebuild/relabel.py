@@ -21,7 +21,7 @@ PLACE_IRI_RE = re.compile(r"<(urn:voices:place:[^>]+)>")
 
 RDFS_LABEL = "<http://www.w3.org/2000/01/rdf-schema#label>"
 RDF_TYPE = "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>"
-VOICES_PLACE = "<http://voices.uni.lu/ontology#Place>"
+VOICES_PLACE = "<https://w3id.org/voices/ontology#Place>"
 METADATA_GRAPH = "<urn:voices:graph:metadata>"
 
 # Strict N-Quads line that declares a place label in the metadata graph.

@@ -39,7 +39,7 @@ embedding:
 uri_base:
   kg: "urn:voices:kg:"
   vocab: "http://voices.uni.lu/vocab/term/"
-  ontology: "http://voices.uni.lu/ontology#"
+  ontology: "https://w3id.org/voices/ontology#"
 
 named_graphs:
   metadata: "urn:voices:graph:metadata"

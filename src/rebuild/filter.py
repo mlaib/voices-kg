@@ -51,7 +51,7 @@ LABEL_LINE_RE = re.compile(
 )
 
 CONCEPTS_GRAPH_IRI = "<urn:voices:graph:concepts>"
-MENTIONS_CONCEPT_IRI = "<http://voices.uni.lu/ontology#mentionsConcept>"
+MENTIONS_CONCEPT_IRI = "<https://w3id.org/voices/ontology#mentionsConcept>"
 SFI_PREFIX = "http://voices.uni.lu/vocab/term/"
 
 PLACE_PREFIX = "urn:voices:place:"

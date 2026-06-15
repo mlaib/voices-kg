@@ -1,4 +1,4 @@
-PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX voices: <https://w3id.org/voices/ontology#>
 
 # CQ10 - What is the distribution of activities across life-period
 # buckets? (period x activity matrix for the entire corpus)

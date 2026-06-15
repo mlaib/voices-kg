@@ -55,7 +55,7 @@ logging.basicConfig(
 log = logging.getLogger("kg2026_paper")
 
 # ---- Namespace constants ----
-VOICES = "http://voices.uni.lu/ontology#"
+VOICES = "https://w3id.org/voices/ontology#"
 CRM = "http://www.cidoc-crm.org/cidoc-crm/"
 SKOS = "http://www.w3.org/2004/02/skos/core#"
 TIME = "http://www.w3.org/2006/time#"

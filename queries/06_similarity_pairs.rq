@@ -1,4 +1,4 @@
-PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX voices: <https://w3id.org/voices/ontology#>
 
 # Top similarity pairs with scores
 SELECT ?emb1 ?emb2 ?score

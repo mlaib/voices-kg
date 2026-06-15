@@ -16,7 +16,7 @@
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
-@prefix voices:  <http://voices.uni.lu/ontology#> .
+@prefix voices:  <https://w3id.org/voices/ontology#> .
 @prefix :        <http://voices.uni.lu/dataset#> .
 
 # -----------------------------------------------------------------------------
@@ -38,7 +38,7 @@
     dcterms:issued "2026-05-04"^^xsd:date ;
     dcterms:modified "2026-06-02"^^xsd:date ;
     dcterms:source <https://sfi.usc.edu/vha> ;
-    dcterms:conformsTo <http://voices.uni.lu/ontology/2.1> ;
+    dcterms:conformsTo <https://w3id.org/voices/ontology/2.1> ;
     foaf:homepage <https://github.com/mlaib/voices-kg> ;
     dcat:landingPage <https://github.com/mlaib/voices-kg> ;
     dcterms:identifier <https://doi.org/10.5281/zenodo.20707053> ;
@@ -59,7 +59,7 @@
                     <http://www.w3.org/ns/oa#> ,
                     <http://www.w3.org/ns/prov#> ,
                     <http://www.w3.org/2004/02/skos/core#> ,
-                    <http://voices.uni.lu/ontology#> ;
+                    <https://w3id.org/voices/ontology#> ;
     void:classPartition
         [ void:class voices:Interview ;          void:entities 982 ] ,
         [ void:class voices:InterviewSegment ;   void:entities 647455 ] ,

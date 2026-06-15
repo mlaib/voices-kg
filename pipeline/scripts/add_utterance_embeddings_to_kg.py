@@ -25,7 +25,7 @@ WS = Path(os.environ.get("VOICES_WS", "."))
 EMB_DIR = WS / "data/processed/utterance_embeddings/openai"
 OUT_NQ = WS / "KG2026.paper/output/utterance_embeddings.nq"
 
-VOICES = "http://voices.uni.lu/ontology#"
+VOICES = "https://w3id.org/voices/ontology#"
 RDF_TYPE = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
 XSD_INT = "http://www.w3.org/2001/XMLSchema#integer"
 G_EMBED = "urn:voices:graph:embeddings"

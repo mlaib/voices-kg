@@ -17,7 +17,7 @@ graphs:
   provenance:   "urn:voices:graph:provenance"
 
 namespaces:
-  voices:   "http://voices.uni.lu/ontology#"
+  voices:   "https://w3id.org/voices/ontology#"
   place:    "urn:voices:place:"
   interview: "urn:voices:interview:"
   event:    "urn:voices:event:"

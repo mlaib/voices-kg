@@ -8,7 +8,7 @@ from pathlib import Path
 
 log = logging.getLogger(__name__)
 
-VOICES = "http://voices.uni.lu/ontology#"
+VOICES = "https://w3id.org/voices/ontology#"
 RDF_TYPE = "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>"
 
 C_INTERVIEW = f"<{VOICES}Interview>"

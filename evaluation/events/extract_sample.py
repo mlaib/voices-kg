@@ -31,7 +31,7 @@ from pathlib import Path
 
 
 SPARQL_ALL_EVENTS = """
-PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX voices: <https://w3id.org/voices/ontology#>
 PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?ev ?seg ?text WHERE {
   GRAPH <urn:voices:graph:events> {
@@ -45,7 +45,7 @@ SELECT ?ev ?seg ?text WHERE {
 """
 
 SPARQL_EVENT_DIMENSIONS = """
-PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX voices: <https://w3id.org/voices/ontology#>
 PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?ev (GROUP_CONCAT(DISTINCT ?p_label; separator="|") AS ?participants)
            (GROUP_CONCAT(DISTINCT ?act_label; separator="|") AS ?activities)

@@ -100,7 +100,7 @@ def sparql_select(query: str, *, timeout: float = 600.0) -> list[dict]:
 
 def list_periods() -> list[str]:
     rows = sparql_select(
-        "PREFIX voices: <http://voices.uni.lu/ontology#>\n"
+        "PREFIX voices: <https://w3id.org/voices/ontology#>\n"
         "SELECT DISTINCT ?p WHERE {\n"
         "  GRAPH <urn:voices:graph:events> { ?ev voices:temporalBucket ?p }\n"
         "} ORDER BY ?p"
@@ -114,7 +114,7 @@ def stream_segments_for_period(period: str, *, page_size: int = 50000) -> "Itera
     safe = period.replace('"', '\\"')
     while True:
         q = (
-            "PREFIX voices: <http://voices.uni.lu/ontology#>\n"
+            "PREFIX voices: <https://w3id.org/voices/ontology#>\n"
             "SELECT ?text WHERE {\n"
             "  GRAPH <urn:voices:graph:events> {\n"
             f'    ?ev voices:temporalBucket "{safe}" .\n'
@@ -159,7 +159,7 @@ def stream_segments_with_emotions(period: str, *, page_size: int = 25000):
     safe = period.replace('"', '\\"')
     while True:
         q = (
-            "PREFIX voices: <http://voices.uni.lu/ontology#>\n"
+            "PREFIX voices: <https://w3id.org/voices/ontology#>\n"
             "SELECT ?seg ?text (GROUP_CONCAT(DISTINCT ?cat;separator='|') AS ?cats) WHERE {\n"
             "  GRAPH <urn:voices:graph:events> {\n"
             f'    ?ev voices:temporalBucket "{safe}" .\n'

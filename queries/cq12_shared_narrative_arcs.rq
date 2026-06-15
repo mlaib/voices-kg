@@ -1,4 +1,4 @@
-PREFIX voices: <http://voices.uni.lu/ontology#>
+PREFIX voices: <https://w3id.org/voices/ontology#>
 
 # CQ12 - Which interview pairs co-mention the most canonical
 # historical events (a cross-testimony narrative-overlap proxy)?

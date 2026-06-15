@@ -111,7 +111,7 @@ def load_allowed_ids(nq_path: Path | None, fuseki_url: str | None) -> set[str] |
     if fuseki_url:
         log(f"Querying allowed ids from {fuseki_url} ...")
         query = (
-            "PREFIX voices: <http://voices.uni.lu/ontology#>\n"
+            "PREFIX voices: <https://w3id.org/voices/ontology#>\n"
             "SELECT ?seg WHERE {\n"
             "  GRAPH <urn:voices:graph:embeddings> { ?seg voices:hasTextEmbedding ?e }\n"
             "}"

@@ -41,7 +41,7 @@ import re
 import sys
 from pathlib import Path
 
-PREDICATE_IRI = "<http://voices.uni.lu/ontology#transcriptText>"
+PREDICATE_IRI = "<https://w3id.org/voices/ontology#transcriptText>"
 
 # A survivor-name literal on a voices:Interview subject in the metadata graph,
 # carried by either rdfs:label ("..."@en) or voices:testimonyTitle ("...").

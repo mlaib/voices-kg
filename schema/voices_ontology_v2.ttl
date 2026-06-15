@@ -1,4 +1,4 @@
-@prefix voices: <http://voices.uni.lu/ontology#> .
+@prefix voices: <https://w3id.org/voices/ontology#> .
 @prefix place:  <urn:voices:place:> .
 @prefix crm:    <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix time:   <http://www.w3.org/2006/time#> .
@@ -28,7 +28,7 @@
 voices: a owl:Ontology ;
     rdfs:label "VOICES Ontology"@en ;
     owl:versionInfo "2.1-unified"@en ;
-    owl:versionIRI <http://voices.uni.lu/ontology/2.1> ;
+    owl:versionIRI <https://w3id.org/voices/ontology/2.1> ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:creator "Cédric Pruski", "Mohamed Laib", "Marcos Da Silveira", "Gabor Mihaly Toth" ;
     dcterms:publisher "Luxembourg Institute of Science and Technology (LIST)" ;

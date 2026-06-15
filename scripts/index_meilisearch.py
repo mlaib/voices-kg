@@ -63,7 +63,7 @@ DEFAULT_BATCH = int(os.environ.get("BATCH_SIZE", "1000"))
 
 TRANSCRIPT_GRAPH = "urn:voices:graph:transcripts"
 METADATA_GRAPH = "urn:voices:graph:metadata"
-VOICES_NS = "http://voices.uni.lu/ontology#"
+VOICES_NS = "https://w3id.org/voices/ontology#"
 
 SPARQL_SEGMENTS = f"""
 PREFIX voices: <{VOICES_NS}>
