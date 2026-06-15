@@ -50,8 +50,7 @@
     void:exampleResource <urn:voices:event:054f201cf94a223c7a55e0ea10ff64c7> ;
     void:feature <http://www.w3.org/ns/formats/N-Quads> ,
                  <http://www.w3.org/ns/formats/Turtle> ;
-    # TODO(author): set to the actual public-dump quad count if it differs.
-    void:triples 15554403 ;
+    void:triples 16663778 ;   # public transcript-stripped dump (verified)
     void:vocabulary <http://www.cidoc-crm.org/cidoc-crm/> ,
                     <http://www.w3.org/2006/time#> ,
                     <http://purl.obolibrary.org/obo/MFOEM_> ,
