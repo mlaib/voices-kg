@@ -3,6 +3,7 @@
 [![Code: Apache-2.0](https://img.shields.io/badge/Code-Apache--2.0-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/Data-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA.md)
 [![ISWC 2026](https://img.shields.io/badge/ISWC-2026%20Resources%20Track-orange.svg)](https://iswc2026.semanticweb.org/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20707053.svg)](https://doi.org/10.5281/zenodo.20707053)
 
 Companion release to the ISWC 2026 Resources Track paper:
 
@@ -291,7 +292,9 @@ If you use VOICES in academic work, please cite:
   author      = {Pruski, C{\'e}dric and Laib, Mohamed and
                  Da Silveira, Marcos and Toth, Gabor Mihaly},
   year        = {2026},
-  version     = {2.0},
+  version     = {2.1},
+  doi         = {10.5281/zenodo.20707053},
+  url         = {https://doi.org/10.5281/zenodo.20707053},
   institution = {Luxembourg Institute of Science and Technology (LIST)},
   note        = {Living resource — continuously updated}
 }

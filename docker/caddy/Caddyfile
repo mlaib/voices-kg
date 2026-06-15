@@ -48,11 +48,11 @@ localhost, :80, :443 {
         file_server browse
     }
 
-    # ── Ontology: content negotiation (TTL vs HTML) ───────────────────────
-    handle /ontology* {
+    # ── Ontology: static schema files (strip /ontology prefix, like /downloads) ──
+    handle_path /ontology/* {
         root * /srv/ontology
         file_server browse
-        # Clients requesting TTL get the .ttl directly; browsers see file list.
+        # /ontology/voices_ontology_v2.ttl → /srv/ontology/voices_ontology_v2.ttl
     }
 
     # ── FastAPI: auth + admin + REST API ──────────────────────────────────

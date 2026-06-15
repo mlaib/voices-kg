@@ -9,6 +9,7 @@
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 
 ###################################################################
 # VOICES Ontology v2.1 — Unified (merges v1.2 + KG0226 extensions)
@@ -27,6 +28,10 @@
 voices: a owl:Ontology ;
     rdfs:label "VOICES Ontology"@en ;
     owl:versionInfo "2.1-unified"@en ;
+    owl:versionIRI <http://voices.uni.lu/ontology/2.1> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:creator "Cédric Pruski", "Mohamed Laib", "Marcos Da Silveira", "Gabor Mihaly Toth" ;
+    dcterms:publisher "Luxembourg Institute of Science and Technology (LIST)" ;
     rdfs:comment """Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.
     Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,
     MFOEM, Web Annotation, PROV-O, Media Ontology."""@en ;
@@ -76,18 +81,28 @@ voices:Cause a owl:Class ;
     rdfs:label "Cause"@en ;
     rdfs:comment "Reason or circumstance that led to the event."@en .
 
-voices:EmotionAnnotation a owl:Class ;
-    rdfs:subClassOf emo:0000001, oa:Annotation ;
-    rdfs:label "Emotion Annotation"@en ;
-    rdfs:comment "Emotion annotation with valence-arousal-dominance scores."@en .
-
 voices:Annotation a owl:Class ;
     rdfs:subClassOf oa:Annotation ;
-    rdfs:label "Annotation"@en .
+    rdfs:label "Annotation"@en ;
+    rdfs:comment "A Web Annotation attaching an interpretive body to a narrated event or interview segment."@en .
+
+# v2.1: corrected MFOEM IRI 0000001 -> 000001 (MFOEM uses 6-digit local IDs;
+# MFOEM_000001 = "emotion process"). 7-digit form did not resolve (R3).
+voices:EmotionAnnotation a owl:Class ;
+    rdfs:subClassOf voices:Annotation, emo:000001 ;
+    rdfs:label "Emotion Annotation"@en ;
+    rdfs:comment "An annotation associating a narrated event with an MFOEM emotion category and valence/arousal scores."@en .
 
 voices:Embedding a owl:Class ;
     rdfs:label "Embedding"@en ;
     rdfs:comment "Numeric embedding representing semantic vectors for events."@en .
+
+# v2.1: local class for observable physiological expressions during narration
+# (crying, silence, laughter). Replaces an incorrect MFOEM emotion term that was
+# previously used as the range of hasPhysiologicalProcess (R3).
+voices:PhysiologicalProcess a owl:Class ;
+    rdfs:label "Physiological Process"@en ;
+    rdfs:comment "An observable physiological expression during narration, such as crying, silence, or laughter, detected from transcriber annotations."@en .
 
 voices:MediaResource a owl:Class ;
     rdfs:subClassOf ma:MediaResource ;
@@ -144,9 +159,10 @@ voices:hasEmotion a owl:ObjectProperty ;
     rdfs:label "has emotion"@en .
 
 voices:hasPhysiologicalProcess a owl:ObjectProperty ;
-    rdfs:domain voices:InterviewSegment ; rdfs:range emo:0000019 ;
+    rdfs:domain voices:InterviewSegment ; rdfs:range voices:PhysiologicalProcess ;
     rdfs:subPropertyOf oa:hasBody ;
-    rdfs:label "has physiological process"@en .
+    rdfs:label "has physiological process"@en ;
+    rdfs:comment "Links an interview segment to an observed physiological process (e.g. crying)."@en .
 
 voices:hasTimeInterval a owl:ObjectProperty ;
     rdfs:domain voices:NarratedEvent ; rdfs:range time:Interval ;
@@ -167,39 +183,75 @@ voices:similarTo a owl:ObjectProperty ;
     rdfs:label "semantically similar to"@en .
 
 voices:hasMediaResource a owl:ObjectProperty ;
-    rdfs:domain voices:Interview ; rdfs:range voices:MediaResource .
+    rdfs:domain voices:Interview ; rdfs:range voices:MediaResource ;
+    rdfs:label "has media resource"@en ;
+    rdfs:comment "Links an interview to the audiovisual recording representing it."@en .
 
 voices:hasMediaFragment a owl:ObjectProperty ;
-    rdfs:domain voices:InterviewSegment ; rdfs:range voices:MediaFragment .
+    rdfs:domain voices:InterviewSegment ; rdfs:range voices:MediaFragment ;
+    rdfs:label "has media fragment"@en ;
+    rdfs:comment "Links an interview segment to a temporal clip of the audiovisual recording."@en .
 
 # === Datatype Properties ===
 
-voices:interviewId a owl:DatatypeProperty ; rdfs:range xsd:integer .
-voices:utteranceId a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:segmentOrdinal a owl:DatatypeProperty ; rdfs:range xsd:integer .
-voices:transcriptText a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:speakerCode a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:startTimestampMs a owl:DatatypeProperty ; rdfs:range xsd:integer .
-voices:endTimestampMs a owl:DatatypeProperty ; rdfs:range xsd:integer .
-voices:whatText a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:whenText a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:temporalBucket a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:embeddingModel a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:embeddingDim a owl:DatatypeProperty ; rdfs:range xsd:integer .
-voices:hasValence a owl:DatatypeProperty ; rdfs:range xsd:float .
-voices:hasArousal a owl:DatatypeProperty ; rdfs:range xsd:float .
-voices:hasIntensity a owl:DatatypeProperty ; rdfs:range xsd:float .
-voices:emotionCategory a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:similarityScore a owl:DatatypeProperty ; rdfs:range xsd:float .
-voices:communityId a owl:DatatypeProperty ; rdfs:range xsd:integer .
-voices:linkConfidence a owl:DatatypeProperty ; rdfs:range xsd:float .
-voices:gender a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:collectionOwner a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:recordingYear a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:testimonyTitle a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:interviewSummary a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:media_url a owl:DatatypeProperty ; rdfs:range xsd:string .
-voices:thumbnail_url a owl:DatatypeProperty ; rdfs:range xsd:string .
+# v2.1: rdfs:label + rdfs:comment added to every datatype property (R3).
+
+voices:interviewId a owl:DatatypeProperty ; rdfs:range xsd:integer ;
+    rdfs:label "interview id"@en ; rdfs:comment "Numeric identifier of the interview."@en .
+voices:utteranceId a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "utterance id"@en ; rdfs:comment "Identifier of the source utterance of a segment."@en .
+voices:segmentOrdinal a owl:DatatypeProperty ; rdfs:range xsd:integer ;
+    rdfs:label "segment ordinal"@en ; rdfs:comment "Ordinal position of a segment within its interview."@en .
+voices:transcriptText a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "transcript text"@en ; rdfs:comment "Verbatim transcript text of a segment (not redistributed publicly)."@en .
+voices:speakerCode a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "speaker code"@en ; rdfs:comment "Speaker label of a segment (e.g. interviewer vs interviewee)."@en .
+voices:startTimestampMs a owl:DatatypeProperty ; rdfs:range xsd:integer ;
+    rdfs:label "start timestamp (ms)"@en ; rdfs:comment "Start time of a segment in milliseconds from recording start."@en .
+voices:endTimestampMs a owl:DatatypeProperty ; rdfs:range xsd:integer ;
+    rdfs:label "end timestamp (ms)"@en ; rdfs:comment "End time of a segment in milliseconds from recording start."@en .
+voices:whatText a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "what text"@en ; rdfs:comment "Raw free-text activity description extracted for a narrated event."@en .
+voices:whenText a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "when text"@en ; rdfs:comment "Raw free-text temporal reference extracted for a narrated event."@en .
+voices:temporalBucket a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "temporal bucket"@en ; rdfs:comment "Historical-period bucket assigned to a narrated event's time interval."@en .
+voices:embeddingModel a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "embedding model"@en ; rdfs:comment "Name of the model used to compute an embedding vector."@en .
+voices:embeddingDim a owl:DatatypeProperty ; rdfs:range xsd:integer ;
+    rdfs:label "embedding dimension"@en ; rdfs:comment "Dimensionality of an embedding vector."@en .
+voices:hasValence a owl:DatatypeProperty ; rdfs:range xsd:float ;
+    rdfs:label "has valence"@en ; rdfs:comment "Calibrated valence score of an emotion annotation."@en .
+voices:hasArousal a owl:DatatypeProperty ; rdfs:range xsd:float ;
+    rdfs:label "has arousal"@en ; rdfs:comment "Calibrated arousal score of an emotion annotation."@en .
+voices:hasIntensity a owl:DatatypeProperty ; rdfs:range xsd:float ;
+    rdfs:label "has intensity"@en ; rdfs:comment "Intensity score of an emotion or physiological annotation."@en .
+voices:emotionCategory a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "emotion category"@en ; rdfs:comment "Controlled emotion category label of an emotion annotation."@en .
+voices:similarityScore a owl:DatatypeProperty ; rdfs:range xsd:float ;
+    rdfs:label "similarity score"@en ; rdfs:comment "Cosine-similarity score of a similarTo relation."@en .
+voices:communityId a owl:DatatypeProperty ; rdfs:range xsd:integer ;
+    rdfs:label "community id"@en ; rdfs:comment "Identifier of the community assigned by community detection."@en .
+voices:linkConfidence a owl:DatatypeProperty ; rdfs:range xsd:float ;
+    rdfs:label "link confidence"@en ; rdfs:comment "Confidence score of an outward authority link."@en .
+voices:gender a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "gender"@en ; rdfs:comment "Recorded gender of a person, where available."@en .
+voices:collectionOwner a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "collection owner"@en ; rdfs:comment "Owning collection or archive of an interview."@en .
+voices:recordingYear a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "recording year"@en ; rdfs:comment "Year the interview was recorded."@en .
+voices:testimonyTitle a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "testimony title"@en ; rdfs:comment "Title of the testimony."@en .
+voices:interviewSummary a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "interview summary"@en ; rdfs:comment "Short textual summary of the interview."@en .
+voices:media_url a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "media URL"@en ; rdfs:comment "URL of the audiovisual media resource."@en .
+voices:thumbnail_url a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "thumbnail URL"@en ; rdfs:comment "URL of a thumbnail image for the media resource."@en .
+voices:processName a owl:DatatypeProperty ; rdfs:domain voices:PhysiologicalProcess ; rdfs:range xsd:string ;
+    rdfs:label "process name"@en ; rdfs:comment "Name of the physiological process (e.g. crying, silence, laughter)."@en .
+voices:processIntensity a owl:DatatypeProperty ; rdfs:domain voices:PhysiologicalProcess ; rdfs:range xsd:float ;
+    rdfs:label "process intensity"@en ; rdfs:comment "Graded intensity of the observed physiological process."@en .
 
 # === RDF-star Annotation Properties ===
 

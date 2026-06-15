@@ -1,0 +1,178 @@
+# =============================================================================
+# VOICES Knowledge Graph — VoID + DCAT dataset description
+# Added in response to ISWC 2026 reviews (R1: VoID/DCAT description requested;
+# R2/R3: findability / persistent identifier / canonical citation).
+#
+# Describes the PUBLIC, transcript-stripped VOICES KG dump and its artefacts.
+# Entity counts are the published figures (paper Table 1). The full dump with
+# literal transcript text is NOT redistributed (USC Shoah Foundation VHA).
+# =============================================================================
+
+@prefix void:    <http://rdfs.org/ns/void#> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix voices:  <http://voices.uni.lu/ontology#> .
+@prefix :        <http://voices.uni.lu/dataset#> .
+
+# -----------------------------------------------------------------------------
+# Top-level dataset
+# -----------------------------------------------------------------------------
+:voices a void:Dataset, dcat:Dataset ;
+    dcterms:title "VOICES Knowledge Graph"@en ;
+    dcterms:description """A Linked Data resource modelling multimodal Holocaust
+        survivor testimonies: narrated events, participants, places, temporal
+        intervals, emotional/physiological annotations, semantic embeddings, and
+        outward alignments to GeoNames and Wikidata, derived from 647,455
+        transcript utterances across 982 testimonies of the USC Shoah Foundation
+        Visual History Archive. This description covers the public,
+        transcript-stripped dump."""@en ;
+    dcterms:creator :pruski, :laib, :dasilveira, :toth ;
+    dcterms:publisher :list ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "Derived structured data under CC BY 4.0; literal transcript text excluded (USC Shoah Foundation VHA)."@en ;
+    dcterms:issued "2026-05-04"^^xsd:date ;
+    dcterms:modified "2026-06-02"^^xsd:date ;
+    dcterms:source <https://sfi.usc.edu/vha> ;
+    dcterms:conformsTo <http://voices.uni.lu/ontology/2.1> ;
+    foaf:homepage <https://github.com/mlaib/voices-kg> ;
+    dcat:landingPage <https://github.com/mlaib/voices-kg> ;
+    dcterms:identifier <https://doi.org/10.5281/zenodo.20707053> ;
+    dcterms:bibliographicCitation "Pruski, C., Laib, M., Da Silveira, M., Toth, G.M. (2026). VOICES Knowledge Graph. Zenodo. https://doi.org/10.5281/zenodo.20707053" ;
+    dcat:keyword "Holocaust testimonies", "ontology", "knowledge graph",
+                 "entity alignment", "Linked Data", "cultural heritage" ;
+    void:sparqlEndpoint <https://voices.list.lu/sparql> ;
+    void:uriSpace "http://voices.uni.lu/" ;
+    void:exampleResource <urn:voices:event:054f201cf94a223c7a55e0ea10ff64c7> ;
+    void:feature <http://www.w3.org/ns/formats/N-Quads> ,
+                 <http://www.w3.org/ns/formats/Turtle> ;
+    # TODO(author): set to the actual public-dump quad count if it differs.
+    void:triples 15554403 ;
+    void:vocabulary <http://www.cidoc-crm.org/cidoc-crm/> ,
+                    <http://www.w3.org/2006/time#> ,
+                    <http://purl.obolibrary.org/obo/MFOEM_> ,
+                    <http://www.w3.org/ns/ma-ont#> ,
+                    <http://www.w3.org/ns/oa#> ,
+                    <http://www.w3.org/ns/prov#> ,
+                    <http://www.w3.org/2004/02/skos/core#> ,
+                    <http://voices.uni.lu/ontology#> ;
+    void:classPartition
+        [ void:class voices:Interview ;          void:entities 982 ] ,
+        [ void:class voices:InterviewSegment ;   void:entities 647455 ] ,
+        [ void:class voices:NarratedEvent ;      void:entities 334434 ] ,
+        [ void:class voices:Person ;             void:entities 112128 ] ,
+        [ void:class voices:EmotionAnnotation ;  void:entities 289277 ] ,
+        [ void:class <http://www.cidoc-crm.org/cidoc-crm/E53_Place> ; void:entities 63720 ] ;
+    void:propertyPartition
+        [ void:property skos:exactMatch ;             void:triples 2530 ] ,
+        [ void:property voices:similarTo ;            void:triples 719184 ] ,
+        [ void:property voices:hasPhysiologicalProcess ; void:triples 2436 ] ;
+    void:subset :metadata_graph, :transcripts_graph, :events_graph,
+                :annotations_graph, :alignment_graph, :embeddings_graph,
+                :provenance_graph ;
+    dcat:distribution :dist_kg_public, :dist_ontology, :dist_alignment .
+
+# -----------------------------------------------------------------------------
+# Named-graph subsets (seven graphs; selective loading)
+# -----------------------------------------------------------------------------
+:metadata_graph a void:Dataset ;
+    rdfs:label "metadata graph"@en ;
+    dcterms:description "Interview-level attributes and place declarations."@en ;
+    void:uriSpace "urn:voices:graph:metadata" .
+
+:transcripts_graph a void:Dataset ;
+    rdfs:label "transcripts graph"@en ;
+    dcterms:description "Utterance segments (transcript text excluded from the public dump)."@en ;
+    void:uriSpace "urn:voices:graph:transcripts" .
+
+:events_graph a void:Dataset ;
+    rdfs:label "events graph"@en ;
+    dcterms:description "Narrated events and their properties."@en ;
+    void:uriSpace "urn:voices:graph:events" .
+
+:annotations_graph a void:Dataset ;
+    rdfs:label "annotations graph"@en ;
+    dcterms:description "Emotion and physiological markers."@en ;
+    void:uriSpace "urn:voices:graph:annotations" .
+
+:alignment_graph a void:Dataset ;
+    rdfs:label "alignment graph"@en ;
+    dcterms:description "skos:exactMatch links to GeoNames and Wikidata."@en ;
+    void:uriSpace "urn:voices:graph:alignment" ;
+    void:triples 2530 .
+
+:embeddings_graph a void:Dataset ;
+    rdfs:label "embeddings graph"@en ;
+    dcterms:description "Vector representations and similarity (similarTo) links."@en ;
+    void:uriSpace "urn:voices:graph:embeddings" .
+
+:provenance_graph a void:Dataset ;
+    rdfs:label "provenance graph"@en ;
+    dcterms:description "PROV-O build-run lineage."@en ;
+    void:uriSpace "urn:voices:graph:provenance" .
+
+# -----------------------------------------------------------------------------
+# Linksets to external authorities
+# -----------------------------------------------------------------------------
+:link_geonames a void:Linkset ;
+    rdfs:label "VOICES → GeoNames place alignment"@en ;
+    void:linkPredicate skos:exactMatch ;
+    void:subjectsTarget :voices ;
+    void:objectsTarget :geonames ;
+    void:subset :alignment_graph .
+
+:link_wikidata a void:Linkset ;
+    rdfs:label "VOICES → Wikidata place alignment"@en ;
+    void:linkPredicate skos:exactMatch ;
+    void:subjectsTarget :voices ;
+    void:objectsTarget :wikidata ;
+    void:subset :alignment_graph .
+
+:geonames a void:Dataset ;
+    rdfs:label "GeoNames"@en ;
+    foaf:homepage <https://www.geonames.org/> .
+
+:wikidata a void:Dataset ;
+    rdfs:label "Wikidata"@en ;
+    foaf:homepage <https://www.wikidata.org/> .
+
+# -----------------------------------------------------------------------------
+# DCAT distributions
+# -----------------------------------------------------------------------------
+:dist_kg_public a dcat:Distribution ;
+    dcterms:title "Public KG dump (transcript-stripped, N-Quads)"@en ;
+    dcat:mediaType "application/n-quads" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcat:accessURL <https://github.com/mlaib/voices-kg/tree/main/output> ;
+    dcat:downloadURL <https://voices.list.lu/downloads/kg2026_v2_public.nq> .
+
+:dist_ontology a dcat:Distribution ;
+    dcterms:title "VOICES ontology (Turtle)"@en ;
+    dcat:mediaType "text/turtle" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcat:downloadURL <https://github.com/mlaib/voices-kg/blob/main/schema/voices_ontology_v2.ttl> .
+
+:dist_alignment a dcat:Distribution ;
+    dcterms:title "Place alignment graph (Turtle)"@en ;
+    dcat:mediaType "text/turtle" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcat:downloadURL <https://github.com/mlaib/voices-kg/blob/main/schema/voices-alignment-v2.ttl> .
+
+# -----------------------------------------------------------------------------
+# Agents
+# -----------------------------------------------------------------------------
+:pruski a foaf:Person ; foaf:name "Cédric Pruski" ;
+    owl:sameAs <https://orcid.org/0000-0002-2103-0431> .
+:laib a foaf:Person ; foaf:name "Mohamed Laib" ;
+    owl:sameAs <https://orcid.org/0000-0003-1276-1790> .
+:dasilveira a foaf:Person ; foaf:name "Marcos Da Silveira" ;
+    owl:sameAs <https://orcid.org/0000-0002-2604-3645> .
+:toth a foaf:Person ; foaf:name "Gabor Mihaly Toth" ;
+    owl:sameAs <https://orcid.org/0000-0002-4301-1581> .
+:list a foaf:Organization ;
+    foaf:name "Luxembourg Institute of Science and Technology (LIST)" ;
+    foaf:homepage <https://www.list.lu/> .

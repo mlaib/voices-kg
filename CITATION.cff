@@ -1,0 +1,70 @@
+cff-version: 1.2.0
+message: "If you use VOICES, please cite the resource (this file) and the accompanying paper (see preferred-citation)."
+title: "VOICES Knowledge Graph"
+abstract: >-
+  VOICES is a Linked Data resource for modelling and analysing multimodal
+  Holocaust survivor testimonies. It comprises an OWL 2 ontology reusing
+  CIDOC-CRM, OWL-Time, MFOEM, the W3C Media Ontology and the Web Annotation
+  Data Model; a knowledge-graph construction pipeline; and a populated
+  knowledge graph derived from 647,455 transcript utterances across 982
+  testimonies of the USC Shoah Foundation Visual History Archive, with
+  outward alignments to GeoNames and Wikidata. The public dump excludes the
+  copyrighted transcript text.
+type: dataset
+version: "2.1"
+date-released: "2026-05-04"
+authors:
+  - family-names: Pruski
+    given-names: Cédric
+    orcid: "https://orcid.org/0000-0002-2103-0431"
+    affiliation: "Luxembourg Institute of Science and Technology (LIST)"
+  - family-names: Laib
+    given-names: Mohamed
+    orcid: "https://orcid.org/0000-0003-1276-1790"
+    affiliation: "Luxembourg Institute of Science and Technology (LIST)"
+  - family-names: "Da Silveira"
+    given-names: Marcos
+    orcid: "https://orcid.org/0000-0002-2604-3645"
+    affiliation: "Luxembourg Institute of Science and Technology (LIST)"
+  - family-names: Toth
+    given-names: "Gabor Mihaly"
+    orcid: "https://orcid.org/0000-0002-4301-1581"
+    affiliation: "University of Luxembourg"
+repository-code: "https://github.com/mlaib/voices-kg"
+url: "https://github.com/mlaib/voices-kg"
+license:
+  - Apache-2.0
+  - CC-BY-4.0
+keywords:
+  - Holocaust testimonies
+  - ontology
+  - knowledge graph
+  - entity alignment
+  - Linked Data
+  - cultural heritage
+doi: "10.5281/zenodo.20707053"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20707053"
+    description: "Archived release of the VOICES Knowledge Graph (Zenodo)"
+  - type: url
+    value: "https://github.com/mlaib/voices-kg"
+    description: "Source repository"
+preferred-citation:
+  type: conference-paper
+  title: "VOICES: An Ontology and Knowledge Graph for Modelling Multimodal Holocaust Survivor Testimonies"
+  year: 2026
+  collection-title: "The Semantic Web -- ISWC 2026 (Resources Track)"
+  authors:
+    - family-names: Pruski
+      given-names: Cédric
+      orcid: "https://orcid.org/0000-0002-2103-0431"
+    - family-names: Laib
+      given-names: Mohamed
+      orcid: "https://orcid.org/0000-0003-1276-1790"
+    - family-names: "Da Silveira"
+      given-names: Marcos
+      orcid: "https://orcid.org/0000-0002-2604-3645"
+    - family-names: Toth
+      given-names: "Gabor Mihaly"
+      orcid: "https://orcid.org/0000-0002-4301-1581"
