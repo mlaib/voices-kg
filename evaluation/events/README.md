@@ -63,3 +63,23 @@ Requires the local Fuseki to be loaded with the v2 KG.
         --out-template judgments.csv \\
         --total 100 \\
         --seed 20260504
+
+## Inter-annotator agreement (Cohen's kappa)
+
+To address single-annotator bias, have a **second** annotator independently fill
+a copy (`judgments_B.csv`) of (at least part of) the sample, then:
+
+    python compute_iaa.py judgments.csv judgments_B.csv
+
+Prints Cohen's kappa per dimension over events both annotators labelled.
+
+## Recall (pilot)
+
+Precision alone misses recall. Take a small utterance set and have an annotator
+mark, per utterance, which of the five dimensions are **actually present** in the
+source text (1/0) in a `recall_gold.csv`; pair it with the pipeline's per-utterance
+values (`recall_pipeline.csv`), then:
+
+    python compute_recall.py recall_gold.csv recall_pipeline.csv
+
+Prints dimension-presence recall per dimension (a deliberately simple pilot metric).

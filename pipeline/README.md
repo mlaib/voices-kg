@@ -117,3 +117,12 @@ links — the rest of the graph builds normally.
 - The 0.82 similarity cut-off, the 30-entry valence/arousal table, and the
   14/5/6/10 controlled-vocabulary lexicons are in `config/config.yaml` and
   `src/transform/`.
+
+## Planned improvements
+
+- **Place span-grounding guard** (`src/transform/entities.py`): emit a place IRI
+  for a mention only when its label actually occurs in the source utterance text.
+  The event-extraction evaluation found location to be the weakest dimension
+  (precision ≈ 48%), dominated by places that the utterance does not mention; this
+  guard would remove most of those false positives. Historical/multilingual
+  gazetteer linking (e.g. Lemberg/Lviv/Lwów) is a further, larger improvement.
