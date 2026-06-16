@@ -63,7 +63,7 @@ graphs in N-Quads.
 
 | Path | What |
 |---|---|
-| [`schema/`](schema/) | Ontology (`voices_ontology_v2.ttl`), alignment graph (`voices-alignment-v2.ttl`), and VoID/DCAT description (`voices_void.ttl`) |
+| [`schema/`](schema/) | Ontology (`voices_ontology_v2.ttl`), alignment graph (`voices-alignment-v2.ttl`), VoID/DCAT description (`voices_void.ttl`), and the VOICES↔EHRI cross-walk (`voices-ehri-bridge.ttl`) |
 | [`pipeline/`](pipeline/) | **KG construction pipeline** (Stage 1 parse → Stage 2 LLM extraction → Stage 3 enrichment → Stage 4 materialisation; paper §4) |
 | [`src/`](src/) | Public-release post-processing (transcript/thesaurus stripping and place re-minting) applied to the built KG |
 | [`app/`](app/) | Streamlit exploration UI |
@@ -77,6 +77,39 @@ graphs in N-Quads.
 
 ---
 
+## Quick start
+
+Pick the entry point that matches your goal — you do **not** need the full
+authenticated stack just to query the data.
+
+**A · Query the data, zero install.** The public, transcript-stripped dump
+(`kg2026_v2_public.nq`, CC BY 4.0) is downloadable **without any login** from the
+Zenodo archive (DOI `10.5281/zenodo.20707053`) or the deployed `/downloads/` path.
+Load it into any SPARQL store and run the ready-made example queries in
+[`queries/`](queries/) (`cq01..cq15`), e.g. with Apache Jena:
+
+```bash
+arq --data=kg2026_v2_public.nq --query=queries/cq03_aligned_places.rq
+```
+
+The deployed resource also exposes a **public** SPARQL 1.1 endpoint at `/sparql`
+and a read-only REST API under `/api/` (no authentication — transcript text is the
+only gated layer).
+
+**B · Browse locally without login.** Bring the stack up with authentication
+disabled to explore the graph in the web UI:
+
+```bash
+cp .env.example .env          # then set REQUIRE_AUTH=false
+make up && make load && make index
+# open the explorer at https://localhost:8443/ (accept the self-signed cert)
+```
+
+**C · Full production-like stack** (auth, admin console, REST, edge proxy):
+follow [Run it](#run-it) below.
+
+---
+
 ## Run it
 
 **This release ships the pre-built knowledge graph in `output/`** — you do
@@ -84,7 +117,7 @@ graphs in N-Quads.
 **Docker + Docker Compose**.
 
 ```bash
-cd KG2026.paper_v2
+cd voices-kg
 
 # 1. Create your local config, then edit the secrets
 cp .env.example .env
@@ -186,6 +219,7 @@ The published artefacts are streamed by Caddy from `output/` and `schema/`.
 | `output/stats.json` | ~1 KB | Machine-readable build summary |
 | `schema/voices_ontology_v2.ttl` | ~30 KB | OWL 2 DL ontology (Turtle), version 2.1 |
 | `schema/voices-alignment-v2.ttl` | ~250 KB | 2,530 outward `skos:exactMatch` triples |
+| `schema/voices-ehri-bridge.ttl` | ~3 KB | 21 verified `skos:closeMatch` links to EHRI camp/ghetto concepts (Wikidata pivot); regenerate with `evaluation/alignment/ehri_bridge.py` |
 | `queries/cq01..cq15.rq` | small | Competency-question SPARQL queries |
 
 ### Transcript text
@@ -279,6 +313,43 @@ alignment. `make all` chains the full maintainer pipeline:
 `build → check → up → load → index → precompute → seed → smoke`.
 
 ---
+
+## What's new in this release (v2.1)
+
+This release substantially extends the resource **in response to peer-review
+feedback**. The main improvements:
+
+- **Reproducibility & pipeline** — the full four-stage construction pipeline is now
+  published (parse → LLM extraction → enrich/align → materialise), including the
+  **exact extraction prompt and JSON output schema** and a small synthetic sample so
+  the build runs end-to-end with one command. See [`pipeline/`](pipeline/).
+- **Evaluation** — added a reproducible **event-extraction evaluation** (per-dimension
+  precision/recall and inter-annotator agreement) alongside the existing alignment and
+  coverage metrics. See [`evaluation/`](evaluation/).
+- **Findability & citation** — a persistent **DOI**
+  (`10.5281/zenodo.20707053`), a **dereferenceable `w3id` ontology namespace**
+  (`https://w3id.org/voices/ontology#`) with a resolvable `owl:versionIRI`, a
+  **VoID/DCAT** dataset description, and a `CITATION.cff` canonical citation; the
+  ontology header now carries LOV-submission metadata.
+- **Interoperability** — a **VOICES ↔ EHRI cross-walk** built on the shared Wikidata
+  pivot (`skos:closeMatch` to EHRI camp/ghetto authorities); no third-party content is
+  redistributed. See [`schema/voices-ehri-bridge.ttl`](schema/voices-ehri-bridge.ttl).
+- **Ontology quality** — labels, comments, and domains completed on all properties;
+  `EmotionAnnotation ⊑ Annotation`; corrected MFOEM identifiers and the
+  physiological-process range; full ontology version metadata.
+- **Alignment transparency** — place linking is documented as an **exact-label
+  vocabulary bridge** that republishes only open `skos:exactMatch` links, and the
+  embedding-similarity threshold is characterised explicitly.
+- **Usability & availability** — a repository navigation map and a **tiered quick-start**
+  (see above); a public, transcript-stripped KG dump and public SPARQL/REST endpoints,
+  with only copyrighted transcript text access-gated.
+
+## Acknowledgements
+
+We warmly thank the **reviewers** for their careful, detailed, and constructive
+feedback. Their questions and suggestions materially improved the ontology, the
+construction pipeline, the evaluation, and the resource's findability and
+interoperability. Any remaining shortcomings are our own.
 
 ## Citation
 
