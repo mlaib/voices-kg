@@ -149,40 +149,13 @@ Open <https://localhost:8443> and accept Caddy's self-signed certificate.
 
 ### Demo credentials
 
-The first admin user is created from `.env` by `make seed`:
-
-| Role  | Email                | Password                                |
-|-------|----------------------|-----------------------------------------|
-| admin | `admin@voices.local` | *(set via `ADMIN_PASSWORD` in `.env`)* |
-
-> **Set a strong `ADMIN_PASSWORD` in `.env` before starting the stack.**
-> Re-run `make seed` after any change.
-
-The admin console is at <https://localhost:8443/admin/> — create
-reviewer-role users there; they log in at the same URL and browse the
-exploration UI at `/`.
+`make seed` creates the first admin (`admin@voices.local`; password from
+`ADMIN_PASSWORD` in `.env` — set a strong one). Manage users and create
+reviewer accounts at <https://localhost:8443/admin/>.
 
 ---
 
 ## Architecture
-
-```
-             ┌──────────────────── Caddy (HTTPS, :8443) ────────────────────┐
-             │                                                              │
-Browser ───► │  /auth/*, /admin/*, /api/*  →  FastAPI  (auth, admin, REST)  │
-             │  /sparql, /$/*              →  Fuseki   (TDB2 + Lucene)      │
-             │  /downloads/*, /ontology/*  →  static (Caddy file_server)    │
-             │  /                          →  Streamlit (forward_auth)      │
-             │                                                              │
-             └────────────────┬───────────────┬────────────────┬────────────┘
-                              │               │                │
-                          ┌───┴───┐     ┌─────┴─────┐    ┌─────┴──────┐
-                          │ Redis │ ◄──│  FastAPI   │──► │ Meilisearch│
-                          │(cache)│     │  + SQLite  │    │ (full-text)│
-                          └───────┘     └────────────┘    └────────────┘
-                                              │
-                                              └─► SPARQL — Fuseki
-```
 
 | Component | Role |
 |---|---|
@@ -224,21 +197,12 @@ The published artefacts are streamed by Caddy from `output/` and `schema/`.
 
 ### Transcript text
 
-The full dump (`output/kg2026_v2.nq`) embeds the literal transcript text of
-the testimonies via the `voices:transcriptText` property. That text is
-sourced from the **USC Shoah Foundation Visual History Archive (VHA)** and
-remains copyrighted by its rights-holders.
-
-- The publicly downloadable file (`kg2026_v2_public.nq`) **excludes the
-  ~647 K `voices:transcriptText` literals**. All other named graphs are
-  intact and queryable.
-- For the original transcript text, refer to the **USC Shoah Foundation
-  VHA** at <https://sfi.usc.edu/vha>.
-- Researchers with their own VHA access who need the full dump for
-  replication can contact the maintainer.
-
-See [`LICENSE-DATA.md`](LICENSE-DATA.md) for the full per-component
-licensing matrix.
+As stated in the data notice above, the public dump (`kg2026_v2_public.nq`)
+excludes the ~647 K copyrighted `voices:transcriptText` literals; all other
+graphs are intact and queryable. For the original text use the USC Shoah
+Foundation VHA (<https://sfi.usc.edu/vha>); researchers with their own VHA
+access who need the full dump for replication can contact the maintainer.
+See [`LICENSE-DATA.md`](LICENSE-DATA.md) for the full licensing matrix.
 
 ---
 
@@ -252,12 +216,12 @@ with two strands:
   (GeoNames id) property; the script reports precision over the sample
   alongside the rubric used for human re-verification.
 - **Event extraction quality.** A 100-event deterministic sample is
-  scored against a per-dimension rubric (subject, action, place, time,
-  affect) covering both factual extraction and structural plausibility.
+  scored per-dimension (subject, action, place, time, affect) for
+  **precision and recall**, with **inter-annotator agreement (Cohen's κ)**.
 
-Each subdirectory has its own `README.md`, `RUBRIC.md`, the sample CSV,
-the judgment CSV, and the precision-computation script — re-running
-`python compute_precision.py` reproduces the figures cited in the paper.
+Each subdirectory ships its rubric, the sample and judgment CSVs, and the
+scoring scripts — re-running `compute_precision.py`, `compute_recall.py`,
+and `compute_iaa.py` reproduces the figures cited in the paper.
 
 ---
 
@@ -283,36 +247,9 @@ The local stack is the same stack. For a real deployment:
 
 ## Rebuilding from v1 source (maintainers)
 
-> Not needed to run the stack — the built artefacts already ship in
-> `output/`. This section is for maintainers re-materialising the dataset
-> from the upstream v1 N-Quads. It requires Python 3.11 and the v1 output
-> directory mounted read-only (`V1_OUTPUT_DIR` in `.env`).
-
-`make build` runs two streaming passes over the v1 N-Quads:
-
-1. **`src/rebuild/filter.py`** — drops the `concepts` named graph, strips
-   `voices:mentionsConcept` triples, and re-mints every
-   `http://voices.uni.lu/vocab/term/<id>` IRI as `urn:voices:place:<slug>`
-   using the English label carried in the events graph (slug collisions
-   disambiguate by appending the numeric id). The published dataset
-   carries no SFI thesaurus content; outward alignments to GeoNames and
-   Wikidata use `skos:exactMatch`.
-2. **`src/rebuild/relabel.py`** — appends any missing `rdf:type
-   voices:Place` / `rdfs:label` triples into the `metadata` graph so every
-   place has a declaration. Idempotent.
-
-`make build` produces the **full** dump `output/kg2026_v2.nq` (plus
-`output/stats.json`). The **public** dump `output/kg2026_v2_public.nq` is
-then produced by `scripts/strip_transcript_text.py`, which removes the
-`voices:transcriptText` literals.
-
-The fail-loud post-build gate `make check` re-asserts SFI cleanliness: no
-`vocab/term/`, no `graph:concepts`, no `mentionsConcept`. SKOS is unblocked
-— it is a W3C vocabulary used by GeoNames and Wikidata for outward
-alignment. `make all` chains the full maintainer pipeline:
-`build → check → up → load → index → precompute → seed → smoke`.
-
----
+Not needed to run the stack — the built artefacts already ship in `output/`.
+Maintainers re-materialising the dataset from the upstream v1 N-Quads should see
+[`docs/REBUILD.md`](docs/REBUILD.md).
 
 ## What's new in this release (v2.1)
 
