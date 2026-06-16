@@ -10,6 +10,7 @@
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann:   <http://purl.org/vocab/vann/> .
 
 ###################################################################
 # VOICES Ontology v2.1 — Unified (merges v1.2 + KG0226 extensions)
@@ -27,11 +28,19 @@
 
 voices: a owl:Ontology ;
     rdfs:label "VOICES Ontology"@en ;
+    dcterms:title "VOICES Ontology"@en ;
+    vann:preferredNamespacePrefix "voices" ;
+    vann:preferredNamespaceUri "https://w3id.org/voices/ontology#" ;
     owl:versionInfo "2.1-unified"@en ;
     owl:versionIRI <https://w3id.org/voices/ontology/2.1> ;
+    dcterms:issued "2026-05-04"^^xsd:date ;
+    dcterms:modified "2026-05-04"^^xsd:date ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:creator "Cédric Pruski", "Mohamed Laib", "Marcos Da Silveira", "Gabor Mihaly Toth" ;
     dcterms:publisher "Luxembourg Institute of Science and Technology (LIST)" ;
+    dcterms:description """Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.
+    Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,
+    MFOEM, Web Annotation, PROV-O, Media Ontology."""@en ;
     rdfs:comment """Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.
     Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,
     MFOEM, Web Annotation, PROV-O, Media Ontology."""@en ;
