@@ -1,0 +1,586 @@
+<https://w3id.org/voices/ontology#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/voices/ontology#> <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/voices/ontology/2.1> .
+<https://w3id.org/voices/ontology#> <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/voices/ontology/imports/cidoc-crm> .
+<https://w3id.org/voices/ontology#> <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/voices/ontology/imports/ma-ont> .
+<https://w3id.org/voices/ontology#> <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/voices/ontology/imports/mfoem> .
+<https://w3id.org/voices/ontology#> <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/voices/ontology/imports/oa> .
+<https://w3id.org/voices/ontology#> <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/voices/ontology/imports/time> .
+<https://w3id.org/voices/ontology#> <http://purl.org/dc/terms/creator> "Cédric Pruski" .
+<https://w3id.org/voices/ontology#> <http://purl.org/dc/terms/creator> "Gabor Mihaly Toth" .
+<https://w3id.org/voices/ontology#> <http://purl.org/dc/terms/creator> "Marcos Da Silveira" .
+<https://w3id.org/voices/ontology#> <http://purl.org/dc/terms/creator> "Mohamed Laib" .
+<https://w3id.org/voices/ontology#> <http://purl.org/dc/terms/description> "Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.\n    Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,\n    MFOEM, Web Annotation, PROV-O, Media Ontology."@en .
+<https://w3id.org/voices/ontology#> <http://purl.org/dc/terms/issued> "2026-05-04"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/voices/ontology#> <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/> .
+<https://w3id.org/voices/ontology#> <http://purl.org/dc/terms/modified> "2026-05-04"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/voices/ontology#> <http://purl.org/dc/terms/publisher> "Luxembourg Institute of Science and Technology (LIST)" .
+<https://w3id.org/voices/ontology#> <http://purl.org/dc/terms/title> "VOICES Ontology"@en .
+<https://w3id.org/voices/ontology#> <http://purl.org/vocab/vann/preferredNamespacePrefix> "voices" .
+<https://w3id.org/voices/ontology#> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/voices/ontology#" .
+<https://w3id.org/voices/ontology#> <http://www.w3.org/2000/01/rdf-schema#comment> "Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.\n    Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,\n    MFOEM, Web Annotation, PROV-O, Media Ontology."@en .
+<https://w3id.org/voices/ontology#> <http://www.w3.org/2000/01/rdf-schema#label> "VOICES Ontology"@en .
+<https://w3id.org/voices/ontology#> <http://www.w3.org/2002/07/owl#versionInfo> "2.1-unified"@en .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/publisher
+<http://purl.org/dc/terms/publisher> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Datatypes
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2001/XMLSchema#date
+<http://www.w3.org/2001/XMLSchema#date> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Datatype> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.cidoc-crm.org/cidoc-crm/P11_had_participant
+<http://www.cidoc-crm.org/cidoc-crm/P11_had_participant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.cidoc-crm.org/cidoc-crm/P148_has_component
+<http://www.cidoc-crm.org/cidoc-crm/P148_has_component> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by
+<http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.cidoc-crm.org/cidoc-crm/P2_has_type
+<http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique
+<http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span
+<http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.cidoc-crm.org/cidoc-crm/P67_refers_to
+<http://www.cidoc-crm.org/cidoc-crm/P67_refers_to> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at
+<http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://www.w3.org/ns/oa#hasBody
+<http://www.w3.org/ns/oa#hasBody> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# https://w3id.org/voices/ontology#alignsWithHistoricalEvent
+<https://w3id.org/voices/ontology#alignsWithHistoricalEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#alignsWithHistoricalEvent> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#NarratedEvent> .
+<https://w3id.org/voices/ontology#alignsWithHistoricalEvent> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#HistoricalEvent> .
+<https://w3id.org/voices/ontology#alignsWithHistoricalEvent> <http://www.w3.org/2000/01/rdf-schema#label> "aligns with historical event"@en .
+# 
+# https://w3id.org/voices/ontology#hasActivity
+<https://w3id.org/voices/ontology#hasActivity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#hasActivity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> .
+<https://w3id.org/voices/ontology#hasActivity> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#NarratedEvent> .
+<https://w3id.org/voices/ontology#hasActivity> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#Activity> .
+<https://w3id.org/voices/ontology#hasActivity> <http://www.w3.org/2000/01/rdf-schema#label> "has activity"@en .
+# 
+# https://w3id.org/voices/ontology#hasCause
+<https://w3id.org/voices/ontology#hasCause> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#hasCause> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by> .
+<https://w3id.org/voices/ontology#hasCause> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#NarratedEvent> .
+<https://w3id.org/voices/ontology#hasCause> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#Cause> .
+<https://w3id.org/voices/ontology#hasCause> <http://www.w3.org/2000/01/rdf-schema#label> "has cause"@en .
+# 
+# https://w3id.org/voices/ontology#hasEmbedding
+<https://w3id.org/voices/ontology#hasEmbedding> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#hasEmbedding> <http://www.w3.org/2000/01/rdf-schema#domain> _:genid1 .
+_:genid1 <http://www.w3.org/2002/07/owl#unionOf> _:genid3 .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid2 .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3id.org/voices/ontology#NarratedEvent> .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3id.org/voices/ontology#InterviewSegment> .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#hasEmbedding> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#Embedding> .
+<https://w3id.org/voices/ontology#hasEmbedding> <http://www.w3.org/2000/01/rdf-schema#label> "has embedding"@en .
+# 
+# https://w3id.org/voices/ontology#hasEmotion
+<https://w3id.org/voices/ontology#hasEmotion> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#hasEmotion> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/oa#hasBody> .
+<https://w3id.org/voices/ontology#hasEmotion> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#NarratedEvent> .
+<https://w3id.org/voices/ontology#hasEmotion> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#EmotionAnnotation> .
+<https://w3id.org/voices/ontology#hasEmotion> <http://www.w3.org/2000/01/rdf-schema#label> "has emotion"@en .
+# 
+# https://w3id.org/voices/ontology#hasLocation
+<https://w3id.org/voices/ontology#hasLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#hasLocation> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at> .
+<https://w3id.org/voices/ontology#hasLocation> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#NarratedEvent> .
+<https://w3id.org/voices/ontology#hasLocation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.cidoc-crm.org/cidoc-crm/E53_Place> .
+<http://www.cidoc-crm.org/cidoc-crm/E53_Place> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#hasLocation> <http://www.w3.org/2000/01/rdf-schema#label> "has location"@en .
+# 
+# https://w3id.org/voices/ontology#hasMediaFragment
+<https://w3id.org/voices/ontology#hasMediaFragment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#hasMediaFragment> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#InterviewSegment> .
+<https://w3id.org/voices/ontology#hasMediaFragment> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#MediaFragment> .
+<https://w3id.org/voices/ontology#hasMediaFragment> <http://www.w3.org/2000/01/rdf-schema#comment> "Links an interview segment to a temporal clip of the audiovisual recording."@en .
+<https://w3id.org/voices/ontology#hasMediaFragment> <http://www.w3.org/2000/01/rdf-schema#label> "has media fragment"@en .
+# 
+# https://w3id.org/voices/ontology#hasMediaResource
+<https://w3id.org/voices/ontology#hasMediaResource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#hasMediaResource> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#Interview> .
+<https://w3id.org/voices/ontology#hasMediaResource> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#MediaResource> .
+<https://w3id.org/voices/ontology#hasMediaResource> <http://www.w3.org/2000/01/rdf-schema#comment> "Links an interview to the audiovisual recording representing it."@en .
+<https://w3id.org/voices/ontology#hasMediaResource> <http://www.w3.org/2000/01/rdf-schema#label> "has media resource"@en .
+# 
+# https://w3id.org/voices/ontology#hasMode
+<https://w3id.org/voices/ontology#hasMode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#hasMode> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique> .
+<https://w3id.org/voices/ontology#hasMode> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#NarratedEvent> .
+<https://w3id.org/voices/ontology#hasMode> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#Mode> .
+<https://w3id.org/voices/ontology#hasMode> <http://www.w3.org/2000/01/rdf-schema#label> "has mode"@en .
+# 
+# https://w3id.org/voices/ontology#hasParticipant
+<https://w3id.org/voices/ontology#hasParticipant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#hasParticipant> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.cidoc-crm.org/cidoc-crm/P11_had_participant> .
+<https://w3id.org/voices/ontology#hasParticipant> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#NarratedEvent> .
+<https://w3id.org/voices/ontology#hasParticipant> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#Person> .
+<https://w3id.org/voices/ontology#hasParticipant> <http://www.w3.org/2000/01/rdf-schema#label> "has participant"@en .
+# 
+# https://w3id.org/voices/ontology#hasPhysiologicalProcess
+<https://w3id.org/voices/ontology#hasPhysiologicalProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#hasPhysiologicalProcess> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/oa#hasBody> .
+<https://w3id.org/voices/ontology#hasPhysiologicalProcess> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#InterviewSegment> .
+<https://w3id.org/voices/ontology#hasPhysiologicalProcess> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#PhysiologicalProcess> .
+<https://w3id.org/voices/ontology#hasPhysiologicalProcess> <http://www.w3.org/2000/01/rdf-schema#comment> "Links an interview segment to an observed physiological process (e.g. crying)."@en .
+<https://w3id.org/voices/ontology#hasPhysiologicalProcess> <http://www.w3.org/2000/01/rdf-schema#label> "has physiological process"@en .
+# 
+# https://w3id.org/voices/ontology#hasSegment
+<https://w3id.org/voices/ontology#hasSegment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#hasSegment> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.cidoc-crm.org/cidoc-crm/P148_has_component> .
+<https://w3id.org/voices/ontology#hasSegment> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#Interview> .
+<https://w3id.org/voices/ontology#hasSegment> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#InterviewSegment> .
+<https://w3id.org/voices/ontology#hasSegment> <http://www.w3.org/2000/01/rdf-schema#label> "has segment"@en .
+# 
+# https://w3id.org/voices/ontology#hasTimeInterval
+<https://w3id.org/voices/ontology#hasTimeInterval> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#hasTimeInterval> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> .
+<https://w3id.org/voices/ontology#hasTimeInterval> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#NarratedEvent> .
+<https://w3id.org/voices/ontology#hasTimeInterval> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2006/time#Interval> .
+<http://www.w3.org/2006/time#Interval> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#hasTimeInterval> <http://www.w3.org/2000/01/rdf-schema#label> "has time interval"@en .
+# 
+# https://w3id.org/voices/ontology#segmentRefersToEvent
+<https://w3id.org/voices/ontology#segmentRefersToEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#segmentRefersToEvent> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.cidoc-crm.org/cidoc-crm/P67_refers_to> .
+<https://w3id.org/voices/ontology#segmentRefersToEvent> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#InterviewSegment> .
+<https://w3id.org/voices/ontology#segmentRefersToEvent> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#NarratedEvent> .
+<https://w3id.org/voices/ontology#segmentRefersToEvent> <http://www.w3.org/2000/01/rdf-schema#label> "segment refers to event"@en .
+# 
+# https://w3id.org/voices/ontology#similarTo
+<https://w3id.org/voices/ontology#similarTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/voices/ontology#similarTo> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#Embedding> .
+<https://w3id.org/voices/ontology#similarTo> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/voices/ontology#Embedding> .
+<https://w3id.org/voices/ontology#similarTo> <http://www.w3.org/2000/01/rdf-schema#label> "semantically similar to"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/voices/ontology#collectionOwner
+<https://w3id.org/voices/ontology#collectionOwner> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#collectionOwner> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#collectionOwner> <http://www.w3.org/2000/01/rdf-schema#comment> "Owning collection or archive of an interview."@en .
+<https://w3id.org/voices/ontology#collectionOwner> <http://www.w3.org/2000/01/rdf-schema#label> "collection owner"@en .
+# 
+# https://w3id.org/voices/ontology#communityId
+<https://w3id.org/voices/ontology#communityId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#communityId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<https://w3id.org/voices/ontology#communityId> <http://www.w3.org/2000/01/rdf-schema#comment> "Identifier of the community assigned by community detection."@en .
+<https://w3id.org/voices/ontology#communityId> <http://www.w3.org/2000/01/rdf-schema#label> "community id"@en .
+# 
+# https://w3id.org/voices/ontology#computedWith
+<https://w3id.org/voices/ontology#computedWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#computedWith> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#computedWith> <http://www.w3.org/2000/01/rdf-schema#comment> "Name of the model or algorithm used to compute a result."@en .
+<https://w3id.org/voices/ontology#computedWith> <http://www.w3.org/2000/01/rdf-schema#label> "computed with model"@en .
+# 
+# https://w3id.org/voices/ontology#confidence
+<https://w3id.org/voices/ontology#confidence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#confidence> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/voices/ontology#confidence> <http://www.w3.org/2000/01/rdf-schema#comment> "Confidence score for the annotated statement (0.0-1.0)."@en .
+<https://w3id.org/voices/ontology#confidence> <http://www.w3.org/2000/01/rdf-schema#label> "confidence"@en .
+# 
+# https://w3id.org/voices/ontology#detectionMethod
+<https://w3id.org/voices/ontology#detectionMethod> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#detectionMethod> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#detectionMethod> <http://www.w3.org/2000/01/rdf-schema#comment> "Algorithm used for community detection (e.g. louvain)."@en .
+<https://w3id.org/voices/ontology#detectionMethod> <http://www.w3.org/2000/01/rdf-schema#label> "detection method"@en .
+# 
+# https://w3id.org/voices/ontology#embeddingDim
+<https://w3id.org/voices/ontology#embeddingDim> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#embeddingDim> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<https://w3id.org/voices/ontology#embeddingDim> <http://www.w3.org/2000/01/rdf-schema#comment> "Dimensionality of an embedding vector."@en .
+<https://w3id.org/voices/ontology#embeddingDim> <http://www.w3.org/2000/01/rdf-schema#label> "embedding dimension"@en .
+# 
+# https://w3id.org/voices/ontology#embeddingModel
+<https://w3id.org/voices/ontology#embeddingModel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#embeddingModel> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#embeddingModel> <http://www.w3.org/2000/01/rdf-schema#comment> "Name of the model used to compute an embedding vector."@en .
+<https://w3id.org/voices/ontology#embeddingModel> <http://www.w3.org/2000/01/rdf-schema#label> "embedding model"@en .
+# 
+# https://w3id.org/voices/ontology#emotionCategory
+<https://w3id.org/voices/ontology#emotionCategory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#emotionCategory> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#emotionCategory> <http://www.w3.org/2000/01/rdf-schema#comment> "Controlled emotion category label of an emotion annotation."@en .
+<https://w3id.org/voices/ontology#emotionCategory> <http://www.w3.org/2000/01/rdf-schema#label> "emotion category"@en .
+# 
+# https://w3id.org/voices/ontology#endTimestampMs
+<https://w3id.org/voices/ontology#endTimestampMs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#endTimestampMs> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<https://w3id.org/voices/ontology#endTimestampMs> <http://www.w3.org/2000/01/rdf-schema#comment> "End time of a segment in milliseconds from recording start."@en .
+<https://w3id.org/voices/ontology#endTimestampMs> <http://www.w3.org/2000/01/rdf-schema#label> "end timestamp (ms)"@en .
+# 
+# https://w3id.org/voices/ontology#extractionStep
+<https://w3id.org/voices/ontology#extractionStep> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#extractionStep> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#extractionStep> <http://www.w3.org/2000/01/rdf-schema#comment> "Step in the extraction pipeline that produced this annotation."@en .
+<https://w3id.org/voices/ontology#extractionStep> <http://www.w3.org/2000/01/rdf-schema#label> "extraction pipeline step"@en .
+# 
+# https://w3id.org/voices/ontology#gender
+<https://w3id.org/voices/ontology#gender> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#gender> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#gender> <http://www.w3.org/2000/01/rdf-schema#comment> "Recorded gender of a person, where available."@en .
+<https://w3id.org/voices/ontology#gender> <http://www.w3.org/2000/01/rdf-schema#label> "gender"@en .
+# 
+# https://w3id.org/voices/ontology#hasArousal
+<https://w3id.org/voices/ontology#hasArousal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#hasArousal> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/voices/ontology#hasArousal> <http://www.w3.org/2000/01/rdf-schema#comment> "Calibrated arousal score of an emotion annotation."@en .
+<https://w3id.org/voices/ontology#hasArousal> <http://www.w3.org/2000/01/rdf-schema#label> "has arousal"@en .
+# 
+# https://w3id.org/voices/ontology#hasIntensity
+<https://w3id.org/voices/ontology#hasIntensity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#hasIntensity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/voices/ontology#hasIntensity> <http://www.w3.org/2000/01/rdf-schema#comment> "Intensity score of an emotion or physiological annotation."@en .
+<https://w3id.org/voices/ontology#hasIntensity> <http://www.w3.org/2000/01/rdf-schema#label> "has intensity"@en .
+# 
+# https://w3id.org/voices/ontology#hasValence
+<https://w3id.org/voices/ontology#hasValence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#hasValence> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/voices/ontology#hasValence> <http://www.w3.org/2000/01/rdf-schema#comment> "Calibrated valence score of an emotion annotation."@en .
+<https://w3id.org/voices/ontology#hasValence> <http://www.w3.org/2000/01/rdf-schema#label> "has valence"@en .
+# 
+# https://w3id.org/voices/ontology#interviewId
+<https://w3id.org/voices/ontology#interviewId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#interviewId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<https://w3id.org/voices/ontology#interviewId> <http://www.w3.org/2000/01/rdf-schema#comment> "Numeric identifier of the interview."@en .
+<https://w3id.org/voices/ontology#interviewId> <http://www.w3.org/2000/01/rdf-schema#label> "interview id"@en .
+# 
+# https://w3id.org/voices/ontology#interviewSummary
+<https://w3id.org/voices/ontology#interviewSummary> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#interviewSummary> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#interviewSummary> <http://www.w3.org/2000/01/rdf-schema#comment> "Short textual summary of the interview."@en .
+<https://w3id.org/voices/ontology#interviewSummary> <http://www.w3.org/2000/01/rdf-schema#label> "interview summary"@en .
+# 
+# https://w3id.org/voices/ontology#linkConfidence
+<https://w3id.org/voices/ontology#linkConfidence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#linkConfidence> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/voices/ontology#linkConfidence> <http://www.w3.org/2000/01/rdf-schema#comment> "Confidence score of an outward authority link."@en .
+<https://w3id.org/voices/ontology#linkConfidence> <http://www.w3.org/2000/01/rdf-schema#label> "link confidence"@en .
+# 
+# https://w3id.org/voices/ontology#matchConfidence
+<https://w3id.org/voices/ontology#matchConfidence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#matchConfidence> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/voices/ontology#matchConfidence> <http://www.w3.org/2000/01/rdf-schema#comment> "Confidence score for an entity match or alignment."@en .
+<https://w3id.org/voices/ontology#matchConfidence> <http://www.w3.org/2000/01/rdf-schema#label> "match confidence"@en .
+# 
+# https://w3id.org/voices/ontology#matchMethod
+<https://w3id.org/voices/ontology#matchMethod> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#matchMethod> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#matchMethod> <http://www.w3.org/2000/01/rdf-schema#comment> "Method used to match or link an entity (e.g. exact_label, local_mint, external_alignment)."@en .
+<https://w3id.org/voices/ontology#matchMethod> <http://www.w3.org/2000/01/rdf-schema#label> "match method"@en .
+# 
+# https://w3id.org/voices/ontology#matchedPattern
+<https://w3id.org/voices/ontology#matchedPattern> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#matchedPattern> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#matchedPattern> <http://www.w3.org/2000/01/rdf-schema#comment> "The regex pattern that triggered a classification."@en .
+<https://w3id.org/voices/ontology#matchedPattern> <http://www.w3.org/2000/01/rdf-schema#label> "matched regex pattern"@en .
+# 
+# https://w3id.org/voices/ontology#media_url
+<https://w3id.org/voices/ontology#media_url> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#media_url> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#media_url> <http://www.w3.org/2000/01/rdf-schema#comment> "URL of the audiovisual media resource."@en .
+<https://w3id.org/voices/ontology#media_url> <http://www.w3.org/2000/01/rdf-schema#label> "media URL"@en .
+# 
+# https://w3id.org/voices/ontology#method
+<https://w3id.org/voices/ontology#method> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#method> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#method> <http://www.w3.org/2000/01/rdf-schema#comment> "Method used to produce the annotation (regex, llm_extraction, etc.)."@en .
+<https://w3id.org/voices/ontology#method> <http://www.w3.org/2000/01/rdf-schema#label> "extraction method"@en .
+# 
+# https://w3id.org/voices/ontology#parseConfidence
+<https://w3id.org/voices/ontology#parseConfidence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#parseConfidence> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/voices/ontology#parseConfidence> <http://www.w3.org/2000/01/rdf-schema#comment> "Confidence of a temporal parse result."@en .
+<https://w3id.org/voices/ontology#parseConfidence> <http://www.w3.org/2000/01/rdf-schema#label> "parse confidence"@en .
+# 
+# https://w3id.org/voices/ontology#parsedFrom
+<https://w3id.org/voices/ontology#parsedFrom> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#parsedFrom> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#parsedFrom> <http://www.w3.org/2000/01/rdf-schema#comment> "The raw text expression from which temporal information was parsed."@en .
+<https://w3id.org/voices/ontology#parsedFrom> <http://www.w3.org/2000/01/rdf-schema#label> "parsed from expression"@en .
+# 
+# https://w3id.org/voices/ontology#precision
+<https://w3id.org/voices/ontology#precision> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#precision> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#precision> <http://www.w3.org/2000/01/rdf-schema#comment> "Precision level of a temporal annotation (month, year, year_range, relative, unknown)."@en .
+<https://w3id.org/voices/ontology#precision> <http://www.w3.org/2000/01/rdf-schema#label> "temporal precision"@en .
+# 
+# https://w3id.org/voices/ontology#processIntensity
+<https://w3id.org/voices/ontology#processIntensity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#processIntensity> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#PhysiologicalProcess> .
+<https://w3id.org/voices/ontology#processIntensity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/voices/ontology#processIntensity> <http://www.w3.org/2000/01/rdf-schema#comment> "Graded intensity of the observed physiological process."@en .
+<https://w3id.org/voices/ontology#processIntensity> <http://www.w3.org/2000/01/rdf-schema#label> "process intensity"@en .
+# 
+# https://w3id.org/voices/ontology#processName
+<https://w3id.org/voices/ontology#processName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#processName> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/voices/ontology#PhysiologicalProcess> .
+<https://w3id.org/voices/ontology#processName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#processName> <http://www.w3.org/2000/01/rdf-schema#comment> "Name of the physiological process (e.g. crying, silence, laughter)."@en .
+<https://w3id.org/voices/ontology#processName> <http://www.w3.org/2000/01/rdf-schema#label> "process name"@en .
+# 
+# https://w3id.org/voices/ontology#recordingYear
+<https://w3id.org/voices/ontology#recordingYear> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#recordingYear> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#recordingYear> <http://www.w3.org/2000/01/rdf-schema#comment> "Year the interview was recorded."@en .
+<https://w3id.org/voices/ontology#recordingYear> <http://www.w3.org/2000/01/rdf-schema#label> "recording year"@en .
+# 
+# https://w3id.org/voices/ontology#segmentOrdinal
+<https://w3id.org/voices/ontology#segmentOrdinal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#segmentOrdinal> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<https://w3id.org/voices/ontology#segmentOrdinal> <http://www.w3.org/2000/01/rdf-schema#comment> "Ordinal position of a segment within its interview."@en .
+<https://w3id.org/voices/ontology#segmentOrdinal> <http://www.w3.org/2000/01/rdf-schema#label> "segment ordinal"@en .
+# 
+# https://w3id.org/voices/ontology#similarityScore
+<https://w3id.org/voices/ontology#similarityScore> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#similarityScore> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/voices/ontology#similarityScore> <http://www.w3.org/2000/01/rdf-schema#comment> "Cosine-similarity score of a similarTo relation."@en .
+<https://w3id.org/voices/ontology#similarityScore> <http://www.w3.org/2000/01/rdf-schema#label> "similarity score"@en .
+# 
+# https://w3id.org/voices/ontology#speakerCode
+<https://w3id.org/voices/ontology#speakerCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#speakerCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#speakerCode> <http://www.w3.org/2000/01/rdf-schema#comment> "Speaker label of a segment (e.g. interviewer vs interviewee)."@en .
+<https://w3id.org/voices/ontology#speakerCode> <http://www.w3.org/2000/01/rdf-schema#label> "speaker code"@en .
+# 
+# https://w3id.org/voices/ontology#startTimestampMs
+<https://w3id.org/voices/ontology#startTimestampMs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#startTimestampMs> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<https://w3id.org/voices/ontology#startTimestampMs> <http://www.w3.org/2000/01/rdf-schema#comment> "Start time of a segment in milliseconds from recording start."@en .
+<https://w3id.org/voices/ontology#startTimestampMs> <http://www.w3.org/2000/01/rdf-schema#label> "start timestamp (ms)"@en .
+# 
+# https://w3id.org/voices/ontology#temporalBucket
+<https://w3id.org/voices/ontology#temporalBucket> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#temporalBucket> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#temporalBucket> <http://www.w3.org/2000/01/rdf-schema#comment> "Historical-period bucket assigned to a narrated event's time interval."@en .
+<https://w3id.org/voices/ontology#temporalBucket> <http://www.w3.org/2000/01/rdf-schema#label> "temporal bucket"@en .
+# 
+# https://w3id.org/voices/ontology#testimonyTitle
+<https://w3id.org/voices/ontology#testimonyTitle> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#testimonyTitle> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#testimonyTitle> <http://www.w3.org/2000/01/rdf-schema#comment> "Title of the testimony."@en .
+<https://w3id.org/voices/ontology#testimonyTitle> <http://www.w3.org/2000/01/rdf-schema#label> "testimony title"@en .
+# 
+# https://w3id.org/voices/ontology#thumbnail_url
+<https://w3id.org/voices/ontology#thumbnail_url> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#thumbnail_url> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#thumbnail_url> <http://www.w3.org/2000/01/rdf-schema#comment> "URL of a thumbnail image for the media resource."@en .
+<https://w3id.org/voices/ontology#thumbnail_url> <http://www.w3.org/2000/01/rdf-schema#label> "thumbnail URL"@en .
+# 
+# https://w3id.org/voices/ontology#transcriptText
+<https://w3id.org/voices/ontology#transcriptText> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#transcriptText> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#transcriptText> <http://www.w3.org/2000/01/rdf-schema#comment> "Verbatim transcript text of a segment (not redistributed publicly)."@en .
+<https://w3id.org/voices/ontology#transcriptText> <http://www.w3.org/2000/01/rdf-schema#label> "transcript text"@en .
+# 
+# https://w3id.org/voices/ontology#utteranceId
+<https://w3id.org/voices/ontology#utteranceId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#utteranceId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#utteranceId> <http://www.w3.org/2000/01/rdf-schema#comment> "Identifier of the source utterance of a segment."@en .
+<https://w3id.org/voices/ontology#utteranceId> <http://www.w3.org/2000/01/rdf-schema#label> "utterance id"@en .
+# 
+# https://w3id.org/voices/ontology#whatText
+<https://w3id.org/voices/ontology#whatText> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#whatText> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#whatText> <http://www.w3.org/2000/01/rdf-schema#comment> "Raw free-text activity description extracted for a narrated event."@en .
+<https://w3id.org/voices/ontology#whatText> <http://www.w3.org/2000/01/rdf-schema#label> "what text"@en .
+# 
+# https://w3id.org/voices/ontology#whenText
+<https://w3id.org/voices/ontology#whenText> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/voices/ontology#whenText> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/voices/ontology#whenText> <http://www.w3.org/2000/01/rdf-schema#comment> "Raw free-text temporal reference extracted for a narrated event."@en .
+<https://w3id.org/voices/ontology#whenText> <http://www.w3.org/2000/01/rdf-schema#label> "when text"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://purl.obolibrary.org/obo/MFOEM_000001
+<http://purl.obolibrary.org/obo/MFOEM_000001> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://www.cidoc-crm.org/cidoc-crm/E21_Person
+<http://www.cidoc-crm.org/cidoc-crm/E21_Person> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://www.cidoc-crm.org/cidoc-crm/E31_Document
+<http://www.cidoc-crm.org/cidoc-crm/E31_Document> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object
+<http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://www.cidoc-crm.org/cidoc-crm/E53_Place
+# 
+# http://www.cidoc-crm.org/cidoc-crm/E55_Type
+<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://www.cidoc-crm.org/cidoc-crm/E5_Event
+<http://www.cidoc-crm.org/cidoc-crm/E5_Event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://www.w3.org/2006/time#Interval
+# 
+# http://www.w3.org/ns/ma-ont#MediaFragment
+<http://www.w3.org/ns/ma-ont#MediaFragment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://www.w3.org/ns/ma-ont#MediaResource
+<http://www.w3.org/ns/ma-ont#MediaResource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://www.w3.org/ns/oa#Annotation
+<http://www.w3.org/ns/oa#Annotation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://w3id.org/voices/ontology#Activity
+<https://w3id.org/voices/ontology#Activity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#Activity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.cidoc-crm.org/cidoc-crm/E55_Type> .
+<https://w3id.org/voices/ontology#Activity> <http://www.w3.org/2000/01/rdf-schema#comment> "Type of action described (deportation, forced labor, escape, etc.)."@en .
+<https://w3id.org/voices/ontology#Activity> <http://www.w3.org/2000/01/rdf-schema#label> "Activity"@en .
+# 
+# https://w3id.org/voices/ontology#Annotation
+<https://w3id.org/voices/ontology#Annotation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#Annotation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/oa#Annotation> .
+<https://w3id.org/voices/ontology#Annotation> <http://www.w3.org/2000/01/rdf-schema#comment> "A Web Annotation attaching an interpretive body to a narrated event or interview segment."@en .
+<https://w3id.org/voices/ontology#Annotation> <http://www.w3.org/2000/01/rdf-schema#label> "Annotation"@en .
+# 
+# https://w3id.org/voices/ontology#Cause
+<https://w3id.org/voices/ontology#Cause> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#Cause> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.cidoc-crm.org/cidoc-crm/E55_Type> .
+<https://w3id.org/voices/ontology#Cause> <http://www.w3.org/2000/01/rdf-schema#comment> "Reason or circumstance that led to the event."@en .
+<https://w3id.org/voices/ontology#Cause> <http://www.w3.org/2000/01/rdf-schema#label> "Cause"@en .
+# 
+# https://w3id.org/voices/ontology#Embedding
+<https://w3id.org/voices/ontology#Embedding> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#Embedding> <http://www.w3.org/2000/01/rdf-schema#comment> "Numeric embedding representing semantic vectors for events."@en .
+<https://w3id.org/voices/ontology#Embedding> <http://www.w3.org/2000/01/rdf-schema#label> "Embedding"@en .
+# 
+# https://w3id.org/voices/ontology#EmotionAnnotation
+<https://w3id.org/voices/ontology#EmotionAnnotation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#EmotionAnnotation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.obolibrary.org/obo/MFOEM_000001> .
+<https://w3id.org/voices/ontology#EmotionAnnotation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/voices/ontology#Annotation> .
+<https://w3id.org/voices/ontology#EmotionAnnotation> <http://www.w3.org/2000/01/rdf-schema#comment> "An annotation associating a narrated event with an MFOEM emotion category and valence/arousal scores."@en .
+<https://w3id.org/voices/ontology#EmotionAnnotation> <http://www.w3.org/2000/01/rdf-schema#label> "Emotion Annotation"@en .
+# 
+# https://w3id.org/voices/ontology#HistoricalEvent
+<https://w3id.org/voices/ontology#HistoricalEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#HistoricalEvent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.cidoc-crm.org/cidoc-crm/E5_Event> .
+<https://w3id.org/voices/ontology#HistoricalEvent> <http://www.w3.org/2000/01/rdf-schema#comment> "A canonical historical event (e.g. Kristallnacht, Camp Liberation) for alignment."@en .
+<https://w3id.org/voices/ontology#HistoricalEvent> <http://www.w3.org/2000/01/rdf-schema#label> "Historical Event"@en .
+# 
+# https://w3id.org/voices/ontology#Interview
+<https://w3id.org/voices/ontology#Interview> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#Interview> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.cidoc-crm.org/cidoc-crm/E31_Document> .
+<https://w3id.org/voices/ontology#Interview> <http://www.w3.org/2000/01/rdf-schema#comment> "A recorded oral testimony session grouped into several segments."@en .
+<https://w3id.org/voices/ontology#Interview> <http://www.w3.org/2000/01/rdf-schema#label> "Interview"@en .
+# 
+# https://w3id.org/voices/ontology#InterviewSegment
+<https://w3id.org/voices/ontology#InterviewSegment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#InterviewSegment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object> .
+<https://w3id.org/voices/ontology#InterviewSegment> <http://www.w3.org/2000/01/rdf-schema#comment> "A time-bounded transcript fragment describing events, entities, and feelings."@en .
+<https://w3id.org/voices/ontology#InterviewSegment> <http://www.w3.org/2000/01/rdf-schema#label> "Interview Segment"@en .
+# 
+# https://w3id.org/voices/ontology#MediaFragment
+<https://w3id.org/voices/ontology#MediaFragment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#MediaFragment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/ma-ont#MediaFragment> .
+<https://w3id.org/voices/ontology#MediaFragment> <http://www.w3.org/2000/01/rdf-schema#label> "Media Fragment"@en .
+# 
+# https://w3id.org/voices/ontology#MediaResource
+<https://w3id.org/voices/ontology#MediaResource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#MediaResource> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/ma-ont#MediaResource> .
+<https://w3id.org/voices/ontology#MediaResource> <http://www.w3.org/2000/01/rdf-schema#label> "Media Resource"@en .
+# 
+# https://w3id.org/voices/ontology#Mode
+<https://w3id.org/voices/ontology#Mode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#Mode> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.cidoc-crm.org/cidoc-crm/E55_Type> .
+<https://w3id.org/voices/ontology#Mode> <http://www.w3.org/2000/01/rdf-schema#comment> "Manner or mechanism of an event (by train, on foot, etc.)."@en .
+<https://w3id.org/voices/ontology#Mode> <http://www.w3.org/2000/01/rdf-schema#label> "Mode"@en .
+# 
+# https://w3id.org/voices/ontology#NarratedEvent
+<https://w3id.org/voices/ontology#NarratedEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#NarratedEvent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.cidoc-crm.org/cidoc-crm/E5_Event> .
+<https://w3id.org/voices/ontology#NarratedEvent> <http://www.w3.org/2000/01/rdf-schema#comment> "A life or historical episode described by the survivor, linked to participants, place, time, and emotions."@en .
+<https://w3id.org/voices/ontology#NarratedEvent> <http://www.w3.org/2000/01/rdf-schema#label> "Narrated Event"@en .
+# 
+# https://w3id.org/voices/ontology#Person
+<https://w3id.org/voices/ontology#Person> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#Person> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.cidoc-crm.org/cidoc-crm/E21_Person> .
+<https://w3id.org/voices/ontology#Person> <http://www.w3.org/2000/01/rdf-schema#comment> "A human participant involved in the testimony or event."@en .
+<https://w3id.org/voices/ontology#Person> <http://www.w3.org/2000/01/rdf-schema#label> "Person"@en .
+# 
+# https://w3id.org/voices/ontology#PhysiologicalProcess
+<https://w3id.org/voices/ontology#PhysiologicalProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/voices/ontology#PhysiologicalProcess> <http://www.w3.org/2000/01/rdf-schema#comment> "An observable physiological expression during narration, such as crying, silence, or laughter, detected from transcriber annotations."@en .
+<https://w3id.org/voices/ontology#PhysiologicalProcess> <http://www.w3.org/2000/01/rdf-schema#label> "Physiological Process"@en .
+# 
+# Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

@@ -1,0 +1,14 @@
+http://www.cidoc-crm.org/cidoc-crm/E5_Event
+http://www.cidoc-crm.org/cidoc-crm/E21_Person
+http://www.cidoc-crm.org/cidoc-crm/E31_Document
+http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object
+http://www.cidoc-crm.org/cidoc-crm/E53_Place
+http://www.cidoc-crm.org/cidoc-crm/E55_Type
+http://www.cidoc-crm.org/cidoc-crm/P11_had_participant
+http://www.cidoc-crm.org/cidoc-crm/P148_has_component
+http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by
+http://www.cidoc-crm.org/cidoc-crm/P2_has_type
+http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique
+http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span
+http://www.cidoc-crm.org/cidoc-crm/P67_refers_to
+http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at

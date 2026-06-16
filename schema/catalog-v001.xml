@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <!-- Resolve the VOICES import-module IRIs to the local extracted module files.
+         Paths are relative to this catalog's location (schema/). -->
+    <uri name="https://w3id.org/voices/ontology/imports/cidoc-crm" uri="../imports/cidoc-crm-module.ttl"/>
+    <uri name="https://w3id.org/voices/ontology/imports/time"      uri="../imports/time-module.ttl"/>
+    <uri name="https://w3id.org/voices/ontology/imports/ma-ont"    uri="../imports/ma-ont-module.ttl"/>
+    <uri name="https://w3id.org/voices/ontology/imports/oa"        uri="../imports/oa-module.ttl"/>
+    <uri name="https://w3id.org/voices/ontology/imports/mfoem"     uri="../imports/mfoem-module.ttl"/>
+</catalog>

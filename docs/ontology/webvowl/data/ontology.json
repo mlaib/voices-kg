@@ -1,0 +1,1986 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
+  "header" : {
+    "languages" : [ "en", "undefined" ],
+    "baseIris" : [ "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://purl.obolibrary.org/obo", "http://www.w3.org/ns/ma-ont", "http://www.w3.org/2000/01/rdf-schema", "http://www.w3.org/ns/oa", "http://www.w3.org/2001/XMLSchema", "http://www.cidoc-crm.org/cidoc-crm", "https://w3id.org/voices/ontology", "http://www.w3.org/2006/time" ],
+    "title" : {
+      "en" : "VOICES Ontology"
+    },
+    "iri" : "https://w3id.org/voices/ontology#",
+    "version" : "2.1-unified",
+    "author" : [ "Mohamed Laib", "Cédric Pruski", "Marcos Da Silveira", "Gabor Mihaly Toth" ],
+    "description" : {
+      "en" : "Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.\n    Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,\n    MFOEM, Web Annotation, PROV-O, Media Ontology."
+    },
+    "labels" : {
+      "en" : "VOICES Ontology"
+    },
+    "comments" : {
+      "en" : "Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.\n    Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,\n    MFOEM, Web Annotation, PROV-O, Media Ontology."
+    },
+    "other" : {
+      "license" : [ {
+        "identifier" : "license",
+        "language" : "undefined",
+        "value" : "https://creativecommons.org/licenses/by/4.0/",
+        "type" : "iri"
+      } ],
+      "creator" : [ {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "Cédric Pruski",
+        "type" : "label"
+      }, {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "Mohamed Laib",
+        "type" : "label"
+      }, {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "Marcos Da Silveira",
+        "type" : "label"
+      }, {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "Gabor Mihaly Toth",
+        "type" : "label"
+      } ],
+      "preferredNamespacePrefix" : [ {
+        "identifier" : "preferredNamespacePrefix",
+        "language" : "undefined",
+        "value" : "voices",
+        "type" : "label"
+      } ],
+      "modified" : [ {
+        "identifier" : "modified",
+        "language" : "undefined",
+        "value" : "2026-05-04",
+        "type" : "label"
+      } ],
+      "publisher" : [ {
+        "identifier" : "publisher",
+        "language" : "undefined",
+        "value" : "Luxembourg Institute of Science and Technology (LIST)",
+        "type" : "label"
+      } ],
+      "versionInfo" : [ {
+        "identifier" : "versionInfo",
+        "language" : "en",
+        "value" : "2.1-unified",
+        "type" : "label"
+      } ],
+      "preferredNamespaceUri" : [ {
+        "identifier" : "preferredNamespaceUri",
+        "language" : "undefined",
+        "value" : "https://w3id.org/voices/ontology#",
+        "type" : "label"
+      } ],
+      "issued" : [ {
+        "identifier" : "issued",
+        "language" : "undefined",
+        "value" : "2026-05-04",
+        "type" : "label"
+      } ],
+      "title" : [ {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "VOICES Ontology",
+        "type" : "label"
+      } ]
+    }
+  },
+  "namespace" : [ ],
+  "class" : [ {
+    "id" : "0",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "1",
+    "type" : "owl:Class"
+  }, {
+    "id" : "2",
+    "type" : "owl:Class"
+  }, {
+    "id" : "4",
+    "type" : "owl:Class"
+  }, {
+    "id" : "11",
+    "type" : "owl:Class"
+  }, {
+    "id" : "13",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "14",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "19",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "21",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "22",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "24",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "25",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "26",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "27",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "28",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "31",
+    "type" : "owl:Class"
+  }, {
+    "id" : "53",
+    "type" : "owl:Class"
+  }, {
+    "id" : "38",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "16",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "60",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "10",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "63",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "50",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "42",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "62",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "40",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "67",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "5",
+    "type" : "owl:Class"
+  }, {
+    "id" : "80",
+    "type" : "owl:Class"
+  }, {
+    "id" : "7",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "91",
+    "type" : "owl:Class"
+  }, {
+    "id" : "72",
+    "type" : "owl:Class"
+  }, {
+    "id" : "12",
+    "type" : "owl:Class"
+  }, {
+    "id" : "82",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "103",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "56",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "95",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "36",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "30",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "108",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "34",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "109",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "69",
+    "type" : "owl:Class"
+  }, {
+    "id" : "89",
+    "type" : "owl:Class"
+  }, {
+    "id" : "73",
+    "type" : "owl:Class"
+  }, {
+    "id" : "75",
+    "type" : "owl:Class"
+  }, {
+    "id" : "87",
+    "type" : "owl:Class"
+  }, {
+    "id" : "3",
+    "type" : "owl:Class"
+  }, {
+    "id" : "18",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "116",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "125",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "66",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "129",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "52",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "130",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "132",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "77",
+    "type" : "owl:Class"
+  }, {
+    "id" : "107",
+    "type" : "owl:unionOf"
+  }, {
+    "id" : "79",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "44",
+    "type" : "owl:Class"
+  }, {
+    "id" : "45",
+    "type" : "owl:Class"
+  }, {
+    "id" : "86",
+    "type" : "owl:Class"
+  }, {
+    "id" : "32",
+    "type" : "owl:Class"
+  }, {
+    "id" : "114",
+    "type" : "owl:Class"
+  }, {
+    "id" : "58",
+    "type" : "owl:Class"
+  }, {
+    "id" : "71",
+    "type" : "owl:Class"
+  } ],
+  "classAttribute" : [ {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "0",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2006/time#Interval",
+    "baseIri" : "http://www.w3.org/2006/time",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Interval"
+    },
+    "attributes" : [ "external" ],
+    "id" : "1"
+  }, {
+    "iri" : "http://www.w3.org/ns/oa#Annotation",
+    "baseIri" : "http://www.w3.org/ns/oa",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Annotation"
+    },
+    "subClasses" : [ "3" ],
+    "attributes" : [ "external" ],
+    "id" : "2"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#Mode",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Mode",
+      "en" : "Mode"
+    },
+    "comment" : {
+      "en" : "Manner or mechanism of an event (by train, on foot, etc.)."
+    },
+    "id" : "4",
+    "superClasses" : [ "5" ]
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#MediaResource",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "MediaResource",
+      "en" : "Media Resource"
+    },
+    "id" : "11",
+    "superClasses" : [ "12" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "13",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "14",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "19",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "21",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "22",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "24",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "25",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "26",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "27",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "28",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#NarratedEvent",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "NarratedEvent",
+      "en" : "Narrated Event"
+    },
+    "comment" : {
+      "en" : "A life or historical episode described by the survivor, linked to participants, place, time, and emotions."
+    },
+    "id" : "31",
+    "superClasses" : [ "32" ]
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "E33_Linguistic_Object"
+    },
+    "subClasses" : [ "45" ],
+    "attributes" : [ "external" ],
+    "id" : "53"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "38",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "16",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "60",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "10",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "63",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "50",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "42",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "62",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "40",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "67",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "E55_Type"
+    },
+    "subClasses" : [ "4", "72", "73" ],
+    "attributes" : [ "external" ],
+    "id" : "5"
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/E31_Document",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "E31_Document"
+    },
+    "subClasses" : [ "44" ],
+    "attributes" : [ "external" ],
+    "id" : "80"
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "7",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/E53_Place",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "E53_Place"
+    },
+    "attributes" : [ "external" ],
+    "id" : "91"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#Cause",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Cause",
+      "en" : "Cause"
+    },
+    "comment" : {
+      "en" : "Reason or circumstance that led to the event."
+    },
+    "id" : "72",
+    "superClasses" : [ "5" ]
+  }, {
+    "iri" : "http://www.w3.org/ns/ma-ont#MediaResource",
+    "baseIri" : "http://www.w3.org/ns/ma-ont",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "MediaResource"
+    },
+    "subClasses" : [ "11" ],
+    "attributes" : [ "external" ],
+    "id" : "12"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "82",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "103",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "56",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "95",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "36",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "30",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "108",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "34",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "109",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#EmotionAnnotation",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "EmotionAnnotation",
+      "en" : "Emotion Annotation"
+    },
+    "comment" : {
+      "en" : "An annotation associating a narrated event with an MFOEM emotion category and valence/arousal scores."
+    },
+    "id" : "69",
+    "superClasses" : [ "77", "3" ]
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/E21_Person",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "E21_Person"
+    },
+    "subClasses" : [ "58" ],
+    "attributes" : [ "external" ],
+    "id" : "89"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#Activity",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Activity",
+      "en" : "Activity"
+    },
+    "comment" : {
+      "en" : "Type of action described (deportation, forced labor, escape, etc.)."
+    },
+    "id" : "73",
+    "superClasses" : [ "5" ]
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#HistoricalEvent",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "HistoricalEvent",
+      "en" : "Historical Event"
+    },
+    "comment" : {
+      "en" : "A canonical historical event (e.g. Kristallnacht, Camp Liberation) for alignment."
+    },
+    "id" : "75",
+    "superClasses" : [ "32" ]
+  }, {
+    "iri" : "http://www.w3.org/ns/ma-ont#MediaFragment",
+    "baseIri" : "http://www.w3.org/ns/ma-ont",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "MediaFragment"
+    },
+    "subClasses" : [ "86" ],
+    "attributes" : [ "external" ],
+    "id" : "87"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#Annotation",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Annotation",
+      "en" : "Annotation"
+    },
+    "subClasses" : [ "69" ],
+    "comment" : {
+      "en" : "A Web Annotation attaching an interpretive body to a narrated event or interview segment."
+    },
+    "id" : "3",
+    "superClasses" : [ "2" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "18",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "116",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "125",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "66",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "129",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "52",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "130",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "132",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/MFOEM_000001",
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "MFOEM_000001"
+    },
+    "subClasses" : [ "69" ],
+    "attributes" : [ "external" ],
+    "id" : "77"
+  }, {
+    "instances" : 0,
+    "union" : [ "31", "45" ],
+    "attributes" : [ "union", "anonymous" ],
+    "id" : "107"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "79",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#Interview",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Interview",
+      "en" : "Interview"
+    },
+    "comment" : {
+      "en" : "A recorded oral testimony session grouped into several segments."
+    },
+    "id" : "44",
+    "superClasses" : [ "80" ]
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#InterviewSegment",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "InterviewSegment",
+      "en" : "Interview Segment"
+    },
+    "comment" : {
+      "en" : "A time-bounded transcript fragment describing events, entities, and feelings."
+    },
+    "id" : "45",
+    "superClasses" : [ "53" ]
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#MediaFragment",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "MediaFragment",
+      "en" : "Media Fragment"
+    },
+    "id" : "86",
+    "superClasses" : [ "87" ]
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/E5_Event",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "E5_Event"
+    },
+    "subClasses" : [ "75", "31" ],
+    "attributes" : [ "external" ],
+    "id" : "32"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#PhysiologicalProcess",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PhysiologicalProcess",
+      "en" : "Physiological Process"
+    },
+    "comment" : {
+      "en" : "An observable physiological expression during narration, such as crying, silence, or laughter, detected from transcriber annotations."
+    },
+    "id" : "114"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#Person",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Person",
+      "en" : "Person"
+    },
+    "comment" : {
+      "en" : "A human participant involved in the testimony or event."
+    },
+    "id" : "58",
+    "superClasses" : [ "89" ]
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#Embedding",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Embedding",
+      "en" : "Embedding"
+    },
+    "comment" : {
+      "en" : "Numeric embedding representing semantic vectors for events."
+    },
+    "id" : "71"
+  } ],
+  "property" : [ {
+    "id" : "6",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "9",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "15",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "17",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "20",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "23",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "29",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "33",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "35",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "37",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "39",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "41",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "43",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "47",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "49",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "51",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "54",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "55",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "57",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "61",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "64",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "65",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "68",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "70",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "74",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "76",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "78",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "81",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "83",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "84",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "85",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "88",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "90",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "8",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "92",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "93",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "94",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "96",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "97",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "99",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "100",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "101",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "102",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "104",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "105",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "106",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "110",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "98",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "112",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "113",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "115",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "117",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "59",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "118",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "46",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "120",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "122",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "121",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "123",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "124",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "126",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "127",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "128",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "131",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "133",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "134",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "119",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "135",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "136",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "137",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "138",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "48",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "139",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "111",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "140",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "141",
+    "type" : "owl:datatypeProperty"
+  } ],
+  "propertyAttribute" : [ {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "P7_took_place_at"
+    },
+    "domain" : "7",
+    "subproperty" : [ "8" ],
+    "attributes" : [ "external", "object" ],
+    "id" : "6"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasValence",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "10",
+    "label" : {
+      "IRI-based" : "hasValence",
+      "en" : "has valence"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Calibrated valence score of an emotion annotation."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "9"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#linkConfidence",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "16",
+    "label" : {
+      "IRI-based" : "linkConfidence",
+      "en" : "link confidence"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Confidence score of an outward authority link."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "15"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#communityId",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "18",
+    "label" : {
+      "IRI-based" : "communityId",
+      "en" : "community id"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Identifier of the community assigned by community detection."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "17"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#similarityScore",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "0",
+    "label" : {
+      "IRI-based" : "similarityScore",
+      "en" : "similarity score"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Cosine-similarity score of a similarTo relation."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "20"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#parsedFrom",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "parsedFrom",
+      "en" : "parsed from expression"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "The raw text expression from which temporal information was parsed."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "23"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#startTimestampMs",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "30",
+    "label" : {
+      "IRI-based" : "startTimestampMs",
+      "en" : "start timestamp (ms)"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Start time of a segment in milliseconds from recording start."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "29"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#testimonyTitle",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "testimonyTitle",
+      "en" : "testimony title"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Title of the testimony."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "33"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#utteranceId",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "36",
+    "label" : {
+      "IRI-based" : "utteranceId",
+      "en" : "utterance id"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Identifier of the source utterance of a segment."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "35"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#matchConfidence",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "38",
+    "label" : {
+      "IRI-based" : "matchConfidence",
+      "en" : "match confidence"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Confidence score for an entity match or alignment."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "37"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasArousal",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "40",
+    "label" : {
+      "IRI-based" : "hasArousal",
+      "en" : "has arousal"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Calibrated arousal score of an emotion annotation."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "39"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#interviewId",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "42",
+    "label" : {
+      "IRI-based" : "interviewId",
+      "en" : "interview id"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Numeric identifier of the interview."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "41"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasSegment",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "45",
+    "label" : {
+      "IRI-based" : "hasSegment",
+      "en" : "has segment"
+    },
+    "superproperty" : [ "46" ],
+    "domain" : "44",
+    "attributes" : [ "object" ],
+    "id" : "43"
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "P4_has_time-span"
+    },
+    "domain" : "7",
+    "subproperty" : [ "48" ],
+    "attributes" : [ "external", "object" ],
+    "id" : "47"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#interviewSummary",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "50",
+    "label" : {
+      "IRI-based" : "interviewSummary",
+      "en" : "interview summary"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Short textual summary of the interview."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "49"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#embeddingModel",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "52",
+    "label" : {
+      "IRI-based" : "embeddingModel",
+      "en" : "embedding model"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Name of the model used to compute an embedding vector."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "51"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#recordingYear",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "14",
+    "label" : {
+      "IRI-based" : "recordingYear",
+      "en" : "recording year"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Year the interview was recorded."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "54"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#thumbnail_url",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "56",
+    "label" : {
+      "IRI-based" : "thumbnail_url",
+      "en" : "thumbnail URL"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "URL of a thumbnail image for the media resource."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "55"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasParticipant",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "58",
+    "label" : {
+      "IRI-based" : "hasParticipant",
+      "en" : "has participant"
+    },
+    "superproperty" : [ "59" ],
+    "domain" : "31",
+    "attributes" : [ "object" ],
+    "id" : "57"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#extractionStep",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "62",
+    "label" : {
+      "IRI-based" : "extractionStep",
+      "en" : "extraction pipeline step"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Step in the extraction pipeline that produced this annotation."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "61"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#precision",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "19",
+    "label" : {
+      "IRI-based" : "precision",
+      "en" : "temporal precision"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Precision level of a temporal annotation (month, year, year_range, relative, unknown)."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "64"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#detectionMethod",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "66",
+    "label" : {
+      "IRI-based" : "detectionMethod",
+      "en" : "detection method"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Algorithm used for community detection (e.g. louvain)."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "65"
+  }, {
+    "range" : "3",
+    "domain" : "69",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "68"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#similarTo",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "71",
+    "label" : {
+      "IRI-based" : "similarTo",
+      "en" : "semantically similar to"
+    },
+    "domain" : "71",
+    "attributes" : [ "object" ],
+    "id" : "70"
+  }, {
+    "range" : "32",
+    "domain" : "75",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "74"
+  }, {
+    "range" : "77",
+    "domain" : "69",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "76"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#collectionOwner",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "79",
+    "label" : {
+      "IRI-based" : "collectionOwner",
+      "en" : "collection owner"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Owning collection or archive of an interview."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "78"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#whenText",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "82",
+    "label" : {
+      "IRI-based" : "whenText",
+      "en" : "when text"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Raw free-text temporal reference extracted for a narrated event."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "81"
+  }, {
+    "range" : "12",
+    "domain" : "11",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "83"
+  }, {
+    "range" : "80",
+    "domain" : "44",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "84"
+  }, {
+    "range" : "87",
+    "domain" : "86",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "85"
+  }, {
+    "range" : "89",
+    "domain" : "58",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "88"
+  }, {
+    "range" : "5",
+    "domain" : "4",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "90"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasLocation",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "91",
+    "label" : {
+      "IRI-based" : "hasLocation",
+      "en" : "has location"
+    },
+    "superproperty" : [ "6" ],
+    "domain" : "31",
+    "attributes" : [ "object" ],
+    "id" : "8"
+  }, {
+    "range" : "53",
+    "domain" : "45",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "92"
+  }, {
+    "range" : "5",
+    "domain" : "73",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "93"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#whatText",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "95",
+    "label" : {
+      "IRI-based" : "whatText",
+      "en" : "what text"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Raw free-text activity description extracted for a narrated event."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "94"
+  }, {
+    "range" : "5",
+    "domain" : "72",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "96"
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "P17_was_motivated_by"
+    },
+    "domain" : "7",
+    "subproperty" : [ "98" ],
+    "attributes" : [ "external", "object" ],
+    "id" : "97"
+  }, {
+    "range" : "2",
+    "domain" : "3",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "99"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasMediaFragment",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "86",
+    "label" : {
+      "IRI-based" : "hasMediaFragment",
+      "en" : "has media fragment"
+    },
+    "domain" : "45",
+    "comment" : {
+      "en" : "Links an interview segment to a temporal clip of the audiovisual recording."
+    },
+    "attributes" : [ "object" ],
+    "id" : "100"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#media_url",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "25",
+    "label" : {
+      "IRI-based" : "media_url",
+      "en" : "media URL"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "URL of the audiovisual media resource."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "101"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#transcriptText",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "103",
+    "label" : {
+      "IRI-based" : "transcriptText",
+      "en" : "transcript text"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Verbatim transcript text of a segment (not redistributed publicly)."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "102"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#gender",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "67",
+    "label" : {
+      "IRI-based" : "gender",
+      "en" : "gender"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Recorded gender of a person, where available."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "104"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#parseConfidence",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "27",
+    "label" : {
+      "IRI-based" : "parseConfidence",
+      "en" : "parse confidence"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Confidence of a temporal parse result."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "105"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasEmbedding",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "71",
+    "label" : {
+      "IRI-based" : "hasEmbedding",
+      "en" : "has embedding"
+    },
+    "domain" : "107",
+    "attributes" : [ "object" ],
+    "id" : "106"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasEmotion",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "69",
+    "label" : {
+      "IRI-based" : "hasEmotion",
+      "en" : "has emotion"
+    },
+    "superproperty" : [ "111" ],
+    "domain" : "31",
+    "attributes" : [ "object" ],
+    "id" : "110"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasCause",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "72",
+    "label" : {
+      "IRI-based" : "hasCause",
+      "en" : "has cause"
+    },
+    "superproperty" : [ "97" ],
+    "domain" : "31",
+    "attributes" : [ "object" ],
+    "id" : "98"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#method",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "28",
+    "label" : {
+      "IRI-based" : "method",
+      "en" : "extraction method"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Method used to produce the annotation (regex, llm_extraction, etc.)."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "112"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#processIntensity",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "24",
+    "label" : {
+      "IRI-based" : "processIntensity",
+      "en" : "process intensity"
+    },
+    "domain" : "114",
+    "comment" : {
+      "en" : "Graded intensity of the observed physiological process."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "113"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#computedWith",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "116",
+    "label" : {
+      "IRI-based" : "computedWith",
+      "en" : "computed with model"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Name of the model or algorithm used to compute a result."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "115"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasMediaResource",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "11",
+    "label" : {
+      "IRI-based" : "hasMediaResource",
+      "en" : "has media resource"
+    },
+    "domain" : "44",
+    "comment" : {
+      "en" : "Links an interview to the audiovisual recording representing it."
+    },
+    "attributes" : [ "object" ],
+    "id" : "117"
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/P11_had_participant",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "P11_had_participant"
+    },
+    "domain" : "7",
+    "subproperty" : [ "57" ],
+    "attributes" : [ "external", "object" ],
+    "id" : "59"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#segmentRefersToEvent",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "31",
+    "label" : {
+      "IRI-based" : "segmentRefersToEvent",
+      "en" : "segment refers to event"
+    },
+    "superproperty" : [ "119" ],
+    "domain" : "45",
+    "attributes" : [ "object" ],
+    "id" : "118"
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/P148_has_component",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "P148_has_component"
+    },
+    "domain" : "7",
+    "subproperty" : [ "43" ],
+    "attributes" : [ "external", "object" ],
+    "id" : "46"
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "P2_has_type"
+    },
+    "domain" : "7",
+    "subproperty" : [ "121" ],
+    "attributes" : [ "external", "object" ],
+    "id" : "120"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#matchMethod",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "60",
+    "label" : {
+      "IRI-based" : "matchMethod",
+      "en" : "match method"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Method used to match or link an entity (e.g. exact_label, local_mint, external_alignment)."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "122"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasActivity",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "73",
+    "label" : {
+      "IRI-based" : "hasActivity",
+      "en" : "has activity"
+    },
+    "superproperty" : [ "120" ],
+    "domain" : "31",
+    "attributes" : [ "object" ],
+    "id" : "121"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#alignsWithHistoricalEvent",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "75",
+    "label" : {
+      "IRI-based" : "alignsWithHistoricalEvent",
+      "en" : "aligns with historical event"
+    },
+    "domain" : "31",
+    "attributes" : [ "object" ],
+    "id" : "123"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#confidence",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "125",
+    "label" : {
+      "IRI-based" : "confidence",
+      "en" : "confidence"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Confidence score for the annotated statement (0.0-1.0)."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "124"
+  }, {
+    "range" : "32",
+    "domain" : "31",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "126"
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "P32_used_general_technique"
+    },
+    "domain" : "7",
+    "subproperty" : [ "128" ],
+    "attributes" : [ "external", "object" ],
+    "id" : "127"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasMode",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "4",
+    "label" : {
+      "IRI-based" : "hasMode",
+      "en" : "has mode"
+    },
+    "superproperty" : [ "127" ],
+    "domain" : "31",
+    "attributes" : [ "object" ],
+    "id" : "128"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasPhysiologicalProcess",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "114",
+    "label" : {
+      "IRI-based" : "hasPhysiologicalProcess",
+      "en" : "has physiological process"
+    },
+    "superproperty" : [ "111" ],
+    "domain" : "45",
+    "comment" : {
+      "en" : "Links an interview segment to an observed physiological process (e.g. crying)."
+    },
+    "attributes" : [ "object" ],
+    "id" : "131"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#temporalBucket",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "109",
+    "label" : {
+      "IRI-based" : "temporalBucket",
+      "en" : "temporal bucket"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Historical-period bucket assigned to a narrated event's time interval."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "133"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#segmentOrdinal",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "13",
+    "label" : {
+      "IRI-based" : "segmentOrdinal",
+      "en" : "segment ordinal"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Ordinal position of a segment within its interview."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "134"
+  }, {
+    "iri" : "http://www.cidoc-crm.org/cidoc-crm/P67_refers_to",
+    "baseIri" : "http://www.cidoc-crm.org/cidoc-crm",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "P67_refers_to"
+    },
+    "domain" : "7",
+    "subproperty" : [ "118" ],
+    "attributes" : [ "external", "object" ],
+    "id" : "119"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#embeddingDim",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "129",
+    "label" : {
+      "IRI-based" : "embeddingDim",
+      "en" : "embedding dimension"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Dimensionality of an embedding vector."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "135"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasIntensity",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "63",
+    "label" : {
+      "IRI-based" : "hasIntensity",
+      "en" : "has intensity"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Intensity score of an emotion or physiological annotation."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "136"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#processName",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "processName",
+      "en" : "process name"
+    },
+    "domain" : "114",
+    "comment" : {
+      "en" : "Name of the physiological process (e.g. crying, silence, laughter)."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "137"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#endTimestampMs",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "132",
+    "label" : {
+      "IRI-based" : "endTimestampMs",
+      "en" : "end timestamp (ms)"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "End time of a segment in milliseconds from recording start."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "138"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#hasTimeInterval",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "1",
+    "label" : {
+      "IRI-based" : "hasTimeInterval",
+      "en" : "has time interval"
+    },
+    "superproperty" : [ "47" ],
+    "domain" : "31",
+    "attributes" : [ "object" ],
+    "id" : "48"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#matchedPattern",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "26",
+    "label" : {
+      "IRI-based" : "matchedPattern",
+      "en" : "matched regex pattern"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "The regex pattern that triggered a classification."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "139"
+  }, {
+    "iri" : "http://www.w3.org/ns/oa#hasBody",
+    "baseIri" : "http://www.w3.org/ns/oa",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "hasBody"
+    },
+    "domain" : "7",
+    "subproperty" : [ "110", "131" ],
+    "attributes" : [ "external", "object" ],
+    "id" : "111"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#emotionCategory",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "130",
+    "label" : {
+      "IRI-based" : "emotionCategory",
+      "en" : "emotion category"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Controlled emotion category label of an emotion annotation."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "140"
+  }, {
+    "iri" : "https://w3id.org/voices/ontology#speakerCode",
+    "baseIri" : "https://w3id.org/voices/ontology",
+    "range" : "108",
+    "label" : {
+      "IRI-based" : "speakerCode",
+      "en" : "speaker code"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Speaker label of a segment (e.g. interviewer vs interviewee)."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "141"
+  } ]
+}
