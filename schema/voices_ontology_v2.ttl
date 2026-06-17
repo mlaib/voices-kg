@@ -5,7 +5,6 @@
 @prefix ma:     <http://www.w3.org/ns/ma-ont#> .
 @prefix oa:     <http://www.w3.org/ns/oa#> .
 @prefix emo:    <http://purl.obolibrary.org/obo/MFOEM_> .
-@prefix prov:   <http://www.w3.org/ns/prov#> .
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
@@ -44,9 +43,15 @@ voices: a owl:Ontology ;
     rdfs:comment """Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.
     Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,
     MFOEM, Web Annotation, PROV-O, Media Ontology."""@en ;
-    owl:imports crm:, time:,
-                <http://www.w3.org/ns/ma-ont>, <http://www.w3.org/ns/oa#>,
-                <http://www.w3.org/ns/prov-o>, <http://purl.obolibrary.org/obo/MFOEM.owl> .
+    # Modularized imports: instead of importing each external ontology in full,
+    # VOICES imports minimal extracted modules containing only the reused terms
+    # (and the axioms relevant to them). See imports/ and imports/README.md.
+    # PROV-O was dropped — it was imported but no prov: term is actually used.
+    owl:imports <https://w3id.org/voices/ontology/imports/cidoc-crm> ,
+                <https://w3id.org/voices/ontology/imports/time> ,
+                <https://w3id.org/voices/ontology/imports/ma-ont> ,
+                <https://w3id.org/voices/ontology/imports/oa> ,
+                <https://w3id.org/voices/ontology/imports/mfoem> .
 
 # === Core Classes ===
 

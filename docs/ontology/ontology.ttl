@@ -1,0 +1,668 @@
+@prefix : <https://w3id.org/voices/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/voices/ontology#> .
+
+<https://w3id.org/voices/ontology#> rdf:type owl:Ontology ;
+                                     owl:versionIRI <https://w3id.org/voices/ontology/2.1> ;
+                                     owl:imports <https://w3id.org/voices/ontology/imports/cidoc-crm> ,
+                                                 <https://w3id.org/voices/ontology/imports/ma-ont> ,
+                                                 <https://w3id.org/voices/ontology/imports/mfoem> ,
+                                                 <https://w3id.org/voices/ontology/imports/oa> ,
+                                                 <https://w3id.org/voices/ontology/imports/time> ;
+                                     <http://purl.org/dc/terms/creator> "Cédric Pruski" ,
+                                                                        "Gabor Mihaly Toth" ,
+                                                                        "Marcos Da Silveira" ,
+                                                                        "Mohamed Laib" ;
+                                     <http://purl.org/dc/terms/description> """Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.
+    Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,
+    MFOEM, Web Annotation, PROV-O, Media Ontology."""@en ;
+                                     <http://purl.org/dc/terms/issued> "2026-05-04"^^xsd:date ;
+                                     <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/> ;
+                                     <http://purl.org/dc/terms/modified> "2026-05-04"^^xsd:date ;
+                                     <http://purl.org/dc/terms/publisher> "Luxembourg Institute of Science and Technology (LIST)" ;
+                                     <http://purl.org/dc/terms/title> "VOICES Ontology"@en ;
+                                     <http://purl.org/vocab/vann/preferredNamespacePrefix> "voices" ;
+                                     <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/voices/ontology#" ;
+                                     rdfs:comment """Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.
+    Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,
+    MFOEM, Web Annotation, PROV-O, Media Ontology."""@en ;
+                                     rdfs:label "VOICES Ontology"@en ;
+                                     owl:versionInfo "2.1-unified"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+<http://purl.org/dc/terms/publisher> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.cidoc-crm.org/cidoc-crm/P11_had_participant
+<http://www.cidoc-crm.org/cidoc-crm/P11_had_participant> rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P148_has_component
+<http://www.cidoc-crm.org/cidoc-crm/P148_has_component> rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by
+<http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by> rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P2_has_type
+<http://www.cidoc-crm.org/cidoc-crm/P2_has_type> rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique
+<http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique> rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span
+<http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P67_refers_to
+<http://www.cidoc-crm.org/cidoc-crm/P67_refers_to> rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at
+<http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at> rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/oa#hasBody
+<http://www.w3.org/ns/oa#hasBody> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/voices/ontology#alignsWithHistoricalEvent
+:alignsWithHistoricalEvent rdf:type owl:ObjectProperty ;
+                           rdfs:domain :NarratedEvent ;
+                           rdfs:range :HistoricalEvent ;
+                           rdfs:label "aligns with historical event"@en .
+
+
+###  https://w3id.org/voices/ontology#hasActivity
+:hasActivity rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+             rdfs:domain :NarratedEvent ;
+             rdfs:range :Activity ;
+             rdfs:label "has activity"@en .
+
+
+###  https://w3id.org/voices/ontology#hasCause
+:hasCause rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf <http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by> ;
+          rdfs:domain :NarratedEvent ;
+          rdfs:range :Cause ;
+          rdfs:label "has cause"@en .
+
+
+###  https://w3id.org/voices/ontology#hasEmbedding
+:hasEmbedding rdf:type owl:ObjectProperty ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( :InterviewSegment
+                                          :NarratedEvent
+                                        )
+                          ] ;
+              rdfs:range :Embedding ;
+              rdfs:label "has embedding"@en .
+
+
+###  https://w3id.org/voices/ontology#hasEmotion
+:hasEmotion rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf <http://www.w3.org/ns/oa#hasBody> ;
+            rdfs:domain :NarratedEvent ;
+            rdfs:range :EmotionAnnotation ;
+            rdfs:label "has emotion"@en .
+
+
+###  https://w3id.org/voices/ontology#hasLocation
+:hasLocation rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf <http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at> ;
+             rdfs:domain :NarratedEvent ;
+             rdfs:range <http://www.cidoc-crm.org/cidoc-crm/E53_Place> ;
+             rdfs:label "has location"@en .
+
+
+###  https://w3id.org/voices/ontology#hasMediaFragment
+:hasMediaFragment rdf:type owl:ObjectProperty ;
+                  rdfs:domain :InterviewSegment ;
+                  rdfs:range :MediaFragment ;
+                  rdfs:comment "Links an interview segment to a temporal clip of the audiovisual recording."@en ;
+                  rdfs:label "has media fragment"@en .
+
+
+###  https://w3id.org/voices/ontology#hasMediaResource
+:hasMediaResource rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Interview ;
+                  rdfs:range :MediaResource ;
+                  rdfs:comment "Links an interview to the audiovisual recording representing it."@en ;
+                  rdfs:label "has media resource"@en .
+
+
+###  https://w3id.org/voices/ontology#hasMode
+:hasMode rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique> ;
+         rdfs:domain :NarratedEvent ;
+         rdfs:range :Mode ;
+         rdfs:label "has mode"@en .
+
+
+###  https://w3id.org/voices/ontology#hasParticipant
+:hasParticipant rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf <http://www.cidoc-crm.org/cidoc-crm/P11_had_participant> ;
+                rdfs:domain :NarratedEvent ;
+                rdfs:range :Person ;
+                rdfs:label "has participant"@en .
+
+
+###  https://w3id.org/voices/ontology#hasPhysiologicalProcess
+:hasPhysiologicalProcess rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf <http://www.w3.org/ns/oa#hasBody> ;
+                         rdfs:domain :InterviewSegment ;
+                         rdfs:range :PhysiologicalProcess ;
+                         rdfs:comment "Links an interview segment to an observed physiological process (e.g. crying)."@en ;
+                         rdfs:label "has physiological process"@en .
+
+
+###  https://w3id.org/voices/ontology#hasSegment
+:hasSegment rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf <http://www.cidoc-crm.org/cidoc-crm/P148_has_component> ;
+            rdfs:domain :Interview ;
+            rdfs:range :InterviewSegment ;
+            rdfs:label "has segment"@en .
+
+
+###  https://w3id.org/voices/ontology#hasTimeInterval
+:hasTimeInterval rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> ;
+                 rdfs:domain :NarratedEvent ;
+                 rdfs:range <http://www.w3.org/2006/time#Interval> ;
+                 rdfs:label "has time interval"@en .
+
+
+###  https://w3id.org/voices/ontology#segmentRefersToEvent
+:segmentRefersToEvent rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf <http://www.cidoc-crm.org/cidoc-crm/P67_refers_to> ;
+                      rdfs:domain :InterviewSegment ;
+                      rdfs:range :NarratedEvent ;
+                      rdfs:label "segment refers to event"@en .
+
+
+###  https://w3id.org/voices/ontology#similarTo
+:similarTo rdf:type owl:ObjectProperty ;
+           rdfs:domain :Embedding ;
+           rdfs:range :Embedding ;
+           rdfs:label "semantically similar to"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/voices/ontology#collectionOwner
+:collectionOwner rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Owning collection or archive of an interview."@en ;
+                 rdfs:label "collection owner"@en .
+
+
+###  https://w3id.org/voices/ontology#communityId
+:communityId rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "Identifier of the community assigned by community detection."@en ;
+             rdfs:label "community id"@en .
+
+
+###  https://w3id.org/voices/ontology#computedWith
+:computedWith rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Name of the model or algorithm used to compute a result."@en ;
+              rdfs:label "computed with model"@en .
+
+
+###  https://w3id.org/voices/ontology#confidence
+:confidence rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:float ;
+            rdfs:comment "Confidence score for the annotated statement (0.0-1.0)."@en ;
+            rdfs:label "confidence"@en .
+
+
+###  https://w3id.org/voices/ontology#detectionMethod
+:detectionMethod rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Algorithm used for community detection (e.g. louvain)."@en ;
+                 rdfs:label "detection method"@en .
+
+
+###  https://w3id.org/voices/ontology#embeddingDim
+:embeddingDim rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:integer ;
+              rdfs:comment "Dimensionality of an embedding vector."@en ;
+              rdfs:label "embedding dimension"@en .
+
+
+###  https://w3id.org/voices/ontology#embeddingModel
+:embeddingModel rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Name of the model used to compute an embedding vector."@en ;
+                rdfs:label "embedding model"@en .
+
+
+###  https://w3id.org/voices/ontology#emotionCategory
+:emotionCategory rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Controlled emotion category label of an emotion annotation."@en ;
+                 rdfs:label "emotion category"@en .
+
+
+###  https://w3id.org/voices/ontology#endTimestampMs
+:endTimestampMs rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:integer ;
+                rdfs:comment "End time of a segment in milliseconds from recording start."@en ;
+                rdfs:label "end timestamp (ms)"@en .
+
+
+###  https://w3id.org/voices/ontology#extractionStep
+:extractionStep rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Step in the extraction pipeline that produced this annotation."@en ;
+                rdfs:label "extraction pipeline step"@en .
+
+
+###  https://w3id.org/voices/ontology#gender
+:gender rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Recorded gender of a person, where available."@en ;
+        rdfs:label "gender"@en .
+
+
+###  https://w3id.org/voices/ontology#hasArousal
+:hasArousal rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:float ;
+            rdfs:comment "Calibrated arousal score of an emotion annotation."@en ;
+            rdfs:label "has arousal"@en .
+
+
+###  https://w3id.org/voices/ontology#hasIntensity
+:hasIntensity rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:float ;
+              rdfs:comment "Intensity score of an emotion or physiological annotation."@en ;
+              rdfs:label "has intensity"@en .
+
+
+###  https://w3id.org/voices/ontology#hasValence
+:hasValence rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:float ;
+            rdfs:comment "Calibrated valence score of an emotion annotation."@en ;
+            rdfs:label "has valence"@en .
+
+
+###  https://w3id.org/voices/ontology#interviewId
+:interviewId rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "Numeric identifier of the interview."@en ;
+             rdfs:label "interview id"@en .
+
+
+###  https://w3id.org/voices/ontology#interviewSummary
+:interviewSummary rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "Short textual summary of the interview."@en ;
+                  rdfs:label "interview summary"@en .
+
+
+###  https://w3id.org/voices/ontology#linkConfidence
+:linkConfidence rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:float ;
+                rdfs:comment "Confidence score of an outward authority link."@en ;
+                rdfs:label "link confidence"@en .
+
+
+###  https://w3id.org/voices/ontology#matchConfidence
+:matchConfidence rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:float ;
+                 rdfs:comment "Confidence score for an entity match or alignment."@en ;
+                 rdfs:label "match confidence"@en .
+
+
+###  https://w3id.org/voices/ontology#matchMethod
+:matchMethod rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Method used to match or link an entity (e.g. exact_label, local_mint, external_alignment)."@en ;
+             rdfs:label "match method"@en .
+
+
+###  https://w3id.org/voices/ontology#matchedPattern
+:matchedPattern rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ;
+                rdfs:comment "The regex pattern that triggered a classification."@en ;
+                rdfs:label "matched regex pattern"@en .
+
+
+###  https://w3id.org/voices/ontology#media_url
+:media_url rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:string ;
+           rdfs:comment "URL of the audiovisual media resource."@en ;
+           rdfs:label "media URL"@en .
+
+
+###  https://w3id.org/voices/ontology#method
+:method rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Method used to produce the annotation (regex, llm_extraction, etc.)."@en ;
+        rdfs:label "extraction method"@en .
+
+
+###  https://w3id.org/voices/ontology#parseConfidence
+:parseConfidence rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:float ;
+                 rdfs:comment "Confidence of a temporal parse result."@en ;
+                 rdfs:label "parse confidence"@en .
+
+
+###  https://w3id.org/voices/ontology#parsedFrom
+:parsedFrom rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:string ;
+            rdfs:comment "The raw text expression from which temporal information was parsed."@en ;
+            rdfs:label "parsed from expression"@en .
+
+
+###  https://w3id.org/voices/ontology#precision
+:precision rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Precision level of a temporal annotation (month, year, year_range, relative, unknown)."@en ;
+           rdfs:label "temporal precision"@en .
+
+
+###  https://w3id.org/voices/ontology#processIntensity
+:processIntensity rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :PhysiologicalProcess ;
+                  rdfs:range xsd:float ;
+                  rdfs:comment "Graded intensity of the observed physiological process."@en ;
+                  rdfs:label "process intensity"@en .
+
+
+###  https://w3id.org/voices/ontology#processName
+:processName rdf:type owl:DatatypeProperty ;
+             rdfs:domain :PhysiologicalProcess ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Name of the physiological process (e.g. crying, silence, laughter)."@en ;
+             rdfs:label "process name"@en .
+
+
+###  https://w3id.org/voices/ontology#recordingYear
+:recordingYear rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string ;
+               rdfs:comment "Year the interview was recorded."@en ;
+               rdfs:label "recording year"@en .
+
+
+###  https://w3id.org/voices/ontology#segmentOrdinal
+:segmentOrdinal rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:integer ;
+                rdfs:comment "Ordinal position of a segment within its interview."@en ;
+                rdfs:label "segment ordinal"@en .
+
+
+###  https://w3id.org/voices/ontology#similarityScore
+:similarityScore rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:float ;
+                 rdfs:comment "Cosine-similarity score of a similarTo relation."@en ;
+                 rdfs:label "similarity score"@en .
+
+
+###  https://w3id.org/voices/ontology#speakerCode
+:speakerCode rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Speaker label of a segment (e.g. interviewer vs interviewee)."@en ;
+             rdfs:label "speaker code"@en .
+
+
+###  https://w3id.org/voices/ontology#startTimestampMs
+:startTimestampMs rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:integer ;
+                  rdfs:comment "Start time of a segment in milliseconds from recording start."@en ;
+                  rdfs:label "start timestamp (ms)"@en .
+
+
+###  https://w3id.org/voices/ontology#temporalBucket
+:temporalBucket rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Historical-period bucket assigned to a narrated event's time interval."@en ;
+                rdfs:label "temporal bucket"@en .
+
+
+###  https://w3id.org/voices/ontology#testimonyTitle
+:testimonyTitle rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Title of the testimony."@en ;
+                rdfs:label "testimony title"@en .
+
+
+###  https://w3id.org/voices/ontology#thumbnail_url
+:thumbnail_url rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string ;
+               rdfs:comment "URL of a thumbnail image for the media resource."@en ;
+               rdfs:label "thumbnail URL"@en .
+
+
+###  https://w3id.org/voices/ontology#transcriptText
+:transcriptText rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Verbatim transcript text of a segment (not redistributed publicly)."@en ;
+                rdfs:label "transcript text"@en .
+
+
+###  https://w3id.org/voices/ontology#utteranceId
+:utteranceId rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Identifier of the source utterance of a segment."@en ;
+             rdfs:label "utterance id"@en .
+
+
+###  https://w3id.org/voices/ontology#whatText
+:whatText rdf:type owl:DatatypeProperty ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Raw free-text activity description extracted for a narrated event."@en ;
+          rdfs:label "what text"@en .
+
+
+###  https://w3id.org/voices/ontology#whenText
+:whenText rdf:type owl:DatatypeProperty ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Raw free-text temporal reference extracted for a narrated event."@en ;
+          rdfs:label "when text"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.obolibrary.org/obo/MFOEM_000001
+<http://purl.obolibrary.org/obo/MFOEM_000001> rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E21_Person
+<http://www.cidoc-crm.org/cidoc-crm/E21_Person> rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E31_Document
+<http://www.cidoc-crm.org/cidoc-crm/E31_Document> rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object
+<http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object> rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E53_Place
+<http://www.cidoc-crm.org/cidoc-crm/E53_Place> rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E55_Type
+<http://www.cidoc-crm.org/cidoc-crm/E55_Type> rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E5_Event
+<http://www.cidoc-crm.org/cidoc-crm/E5_Event> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#Interval
+<http://www.w3.org/2006/time#Interval> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/ma-ont#MediaFragment
+<http://www.w3.org/ns/ma-ont#MediaFragment> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/ma-ont#MediaResource
+<http://www.w3.org/ns/ma-ont#MediaResource> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/oa#Annotation
+<http://www.w3.org/ns/oa#Annotation> rdf:type owl:Class .
+
+
+###  https://w3id.org/voices/ontology#Activity
+:Activity rdf:type owl:Class ;
+          rdfs:subClassOf <http://www.cidoc-crm.org/cidoc-crm/E55_Type> ;
+          rdfs:comment "Type of action described (deportation, forced labor, escape, etc.)."@en ;
+          rdfs:label "Activity"@en .
+
+
+###  https://w3id.org/voices/ontology#Annotation
+:Annotation rdf:type owl:Class ;
+            rdfs:subClassOf <http://www.w3.org/ns/oa#Annotation> ;
+            rdfs:comment "A Web Annotation attaching an interpretive body to a narrated event or interview segment."@en ;
+            rdfs:label "Annotation"@en .
+
+
+###  https://w3id.org/voices/ontology#Cause
+:Cause rdf:type owl:Class ;
+       rdfs:subClassOf <http://www.cidoc-crm.org/cidoc-crm/E55_Type> ;
+       rdfs:comment "Reason or circumstance that led to the event."@en ;
+       rdfs:label "Cause"@en .
+
+
+###  https://w3id.org/voices/ontology#Embedding
+:Embedding rdf:type owl:Class ;
+           rdfs:comment "Numeric embedding representing semantic vectors for events."@en ;
+           rdfs:label "Embedding"@en .
+
+
+###  https://w3id.org/voices/ontology#EmotionAnnotation
+:EmotionAnnotation rdf:type owl:Class ;
+                   rdfs:subClassOf <http://purl.obolibrary.org/obo/MFOEM_000001> ,
+                                   :Annotation ;
+                   rdfs:comment "An annotation associating a narrated event with an MFOEM emotion category and valence/arousal scores."@en ;
+                   rdfs:label "Emotion Annotation"@en .
+
+
+###  https://w3id.org/voices/ontology#HistoricalEvent
+:HistoricalEvent rdf:type owl:Class ;
+                 rdfs:subClassOf <http://www.cidoc-crm.org/cidoc-crm/E5_Event> ;
+                 rdfs:comment "A canonical historical event (e.g. Kristallnacht, Camp Liberation) for alignment."@en ;
+                 rdfs:label "Historical Event"@en .
+
+
+###  https://w3id.org/voices/ontology#Interview
+:Interview rdf:type owl:Class ;
+           rdfs:subClassOf <http://www.cidoc-crm.org/cidoc-crm/E31_Document> ;
+           rdfs:comment "A recorded oral testimony session grouped into several segments."@en ;
+           rdfs:label "Interview"@en .
+
+
+###  https://w3id.org/voices/ontology#InterviewSegment
+:InterviewSegment rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object> ;
+                  rdfs:comment "A time-bounded transcript fragment describing events, entities, and feelings."@en ;
+                  rdfs:label "Interview Segment"@en .
+
+
+###  https://w3id.org/voices/ontology#MediaFragment
+:MediaFragment rdf:type owl:Class ;
+               rdfs:subClassOf <http://www.w3.org/ns/ma-ont#MediaFragment> ;
+               rdfs:label "Media Fragment"@en .
+
+
+###  https://w3id.org/voices/ontology#MediaResource
+:MediaResource rdf:type owl:Class ;
+               rdfs:subClassOf <http://www.w3.org/ns/ma-ont#MediaResource> ;
+               rdfs:label "Media Resource"@en .
+
+
+###  https://w3id.org/voices/ontology#Mode
+:Mode rdf:type owl:Class ;
+      rdfs:subClassOf <http://www.cidoc-crm.org/cidoc-crm/E55_Type> ;
+      rdfs:comment "Manner or mechanism of an event (by train, on foot, etc.)."@en ;
+      rdfs:label "Mode"@en .
+
+
+###  https://w3id.org/voices/ontology#NarratedEvent
+:NarratedEvent rdf:type owl:Class ;
+               rdfs:subClassOf <http://www.cidoc-crm.org/cidoc-crm/E5_Event> ;
+               rdfs:comment "A life or historical episode described by the survivor, linked to participants, place, time, and emotions."@en ;
+               rdfs:label "Narrated Event"@en .
+
+
+###  https://w3id.org/voices/ontology#Person
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf <http://www.cidoc-crm.org/cidoc-crm/E21_Person> ;
+        rdfs:comment "A human participant involved in the testimony or event."@en ;
+        rdfs:label "Person"@en .
+
+
+###  https://w3id.org/voices/ontology#PhysiologicalProcess
+:PhysiologicalProcess rdf:type owl:Class ;
+                      rdfs:comment "An observable physiological expression during narration, such as crying, silence, or laughter, detected from transcriber annotations."@en ;
+                      rdfs:label "Physiological Process"@en .
+
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

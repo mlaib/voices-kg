@@ -61,3 +61,7 @@ build/
 plan.md
 idea.md
 
+
+# WIDOCO / OOPS documentation build artifacts
+public/
+widoco.jar

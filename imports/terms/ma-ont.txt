@@ -1,0 +1,2 @@
+http://www.w3.org/ns/ma-ont#MediaResource
+http://www.w3.org/ns/ma-ont#MediaFragment

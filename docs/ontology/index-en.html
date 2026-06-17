@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="resources/primer.css" media="screen"/>
+<link rel="stylesheet" href="resources/rec.css" media="screen"/>
+<link rel="stylesheet" href="resources/extra.css" media="screen"/>
+<link rel="stylesheet" href="resources/owl.css" media="screen"/>
+<link rel="stylesheet" href="resources/dark.css" media="(prefers-color-scheme: dark)"/>
+<link rel="stylesheet" href="resources/light.css" media="(prefers-color-scheme: light)"/>
+<link rel="stylesheet" href="resources/slider.css" media="screen"/>
+<meta name="color-scheme" content="dark light">
+<script type="module" src="resources/dark-mode-toggle.mjs"></script><div class="darkmode">
+	<dark-mode-toggle class="slider"></dark-mode-toggle>
+</div>
+ <title>VOICES Ontology</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/voices/ontology#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/voices/ontology#","name":"VOICES Ontology", "headline":"Document describing the ontology https://w3id.org/voices/ontology#", "dateReleased":"Tue Jun 16 21:30:39 CEST 2026", "dateModified":"2026-05-04", "version":"2.1-unified", "license":"https://creativecommons.org/licenses/by/4.0/", "author":[{"@type":"Person","name":"Cédric Pruski"},{"@type":"Person","name":"Gabor Mihaly Toth"},{"@type":"Person","name":"Marcos Da Silveira"},{"@type":"Person","name":"Mohamed Laib"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked.parse(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>VOICES Ontology</h1>
+
+
+<dl>
+<dt>Modified on: 2026-05-04</dt>
+<dt>This version:</dt>
+<dd><a href="https://w3id.org/voices/ontology/2.1">https://w3id.org/voices/ontology/2.1</a></dd>
+<dt>Revision:</dt>
+<dd>2.1-unified</dd>
+<dt>Issued on:</dt>
+<dd>2026-05-04</dd>
+<dt>Authors:</dt>
+<dd>Cédric Pruski</dd><dd>Gabor Mihaly Toth</dd><dd>Marcos Da Silveira</dd><dd>Mohamed Laib</dd>
+
+<dt>Publisher:</dt>
+<dd>Luxembourg Institute of Science and Technology (LIST)</dd>
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"><img src="https://img.shields.io/badge/License-https://creativecommons.org/licenses/by/4.0/-blue.svg" alt="https://creativecommons.org/licenses/by/4.0/" /></a>
+</dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Cite as:</dt>
+<dd>Cédric Pruski, Gabor Mihaly Toth, Marcos Da Silveira, Mohamed Laib. VOICES Ontology. Revision: 2.1-unified. Retrieved from: https://w3id.org/voices/ontology/2.1</dd>
+</dl>
+
+<a href="provenance/provenance-en.html" target="_blank">Provenance of this page</a><hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div><div id="toc"></div>  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">VOICES Ontology: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Classes</h4>
+<ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#Activity" title="https://w3id.org/voices/ontology#Activity">Activity</a>
+   </li>
+   <li>
+      <a href="#Annotation" title="https://w3id.org/voices/ontology#Annotation">Annotation</a>
+   </li>
+   <li>
+      <a href="#Cause" title="https://w3id.org/voices/ontology#Cause">Cause</a>
+   </li>
+   <li>
+      <a href="#Embedding" title="https://w3id.org/voices/ontology#Embedding">Embedding</a>
+   </li>
+   <li>
+      <a href="#EmotionAnnotation"
+         title="https://w3id.org/voices/ontology#EmotionAnnotation">Emotion Annotation</a>
+   </li>
+   <li>
+      <a href="#HistoricalEvent"
+         title="https://w3id.org/voices/ontology#HistoricalEvent">Historical Event</a>
+   </li>
+   <li>
+      <a href="#Interview" title="https://w3id.org/voices/ontology#Interview">Interview</a>
+   </li>
+   <li>
+      <a href="#InterviewSegment"
+         title="https://w3id.org/voices/ontology#InterviewSegment">Interview Segment</a>
+   </li>
+   <li>
+      <a href="#MediaFragment" title="https://w3id.org/voices/ontology#MediaFragment">Media Fragment</a>
+   </li>
+   <li>
+      <a href="#MediaResource" title="https://w3id.org/voices/ontology#MediaResource">Media Resource</a>
+   </li>
+   <li>
+      <a href="#Mode" title="https://w3id.org/voices/ontology#Mode">Mode</a>
+   </li>
+   <li>
+      <a href="#NarratedEvent" title="https://w3id.org/voices/ontology#NarratedEvent">Narrated Event</a>
+   </li>
+   <li>
+      <a href="#Person" title="https://w3id.org/voices/ontology#Person">Person</a>
+   </li>
+   <li>
+      <a href="#PhysiologicalProcess"
+         title="https://w3id.org/voices/ontology#PhysiologicalProcess">Physiological Process</a>
+   </li>
+</ul><h4>Object Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#alignsWithHistoricalEvent"
+         title="https://w3id.org/voices/ontology#alignsWithHistoricalEvent">aligns with historical event</a>
+   </li>
+   <li>
+      <a href="#hasActivity" title="https://w3id.org/voices/ontology#hasActivity">has activity</a>
+   </li>
+   <li>
+      <a href="#hasCause" title="https://w3id.org/voices/ontology#hasCause">has cause</a>
+   </li>
+   <li>
+      <a href="#hasEmbedding" title="https://w3id.org/voices/ontology#hasEmbedding">has embedding</a>
+   </li>
+   <li>
+      <a href="#hasEmotion" title="https://w3id.org/voices/ontology#hasEmotion">has emotion</a>
+   </li>
+   <li>
+      <a href="#hasLocation" title="https://w3id.org/voices/ontology#hasLocation">has location</a>
+   </li>
+   <li>
+      <a href="#hasMediaFragment"
+         title="https://w3id.org/voices/ontology#hasMediaFragment">has media fragment</a>
+   </li>
+   <li>
+      <a href="#hasMediaResource"
+         title="https://w3id.org/voices/ontology#hasMediaResource">has media resource</a>
+   </li>
+   <li>
+      <a href="#hasMode" title="https://w3id.org/voices/ontology#hasMode">has mode</a>
+   </li>
+   <li>
+      <a href="#hasParticipant" title="https://w3id.org/voices/ontology#hasParticipant">has participant</a>
+   </li>
+   <li>
+      <a href="#hasPhysiologicalProcess"
+         title="https://w3id.org/voices/ontology#hasPhysiologicalProcess">has physiological process</a>
+   </li>
+   <li>
+      <a href="#hasSegment" title="https://w3id.org/voices/ontology#hasSegment">has segment</a>
+   </li>
+   <li>
+      <a href="#hasTimeInterval" title="https://w3id.org/voices/ontology#hasTimeInterval">has time interval</a>
+   </li>
+   <li>
+      <a href="#segmentRefersToEvent"
+         title="https://w3id.org/voices/ontology#segmentRefersToEvent">segment refers to event</a>
+   </li>
+   <li>
+      <a href="#similarTo" title="https://w3id.org/voices/ontology#similarTo">semantically similar to</a>
+   </li>
+</ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#collectionOwner" title="https://w3id.org/voices/ontology#collectionOwner">collection owner</a>
+   </li>
+   <li>
+      <a href="#communityId" title="https://w3id.org/voices/ontology#communityId">community id</a>
+   </li>
+   <li>
+      <a href="#computedWith" title="https://w3id.org/voices/ontology#computedWith">computed with model</a>
+   </li>
+   <li>
+      <a href="#confidence" title="https://w3id.org/voices/ontology#confidence">confidence</a>
+   </li>
+   <li>
+      <a href="#detectionMethod" title="https://w3id.org/voices/ontology#detectionMethod">detection method</a>
+   </li>
+   <li>
+      <a href="#embeddingDim" title="https://w3id.org/voices/ontology#embeddingDim">embedding dimension</a>
+   </li>
+   <li>
+      <a href="#embeddingModel" title="https://w3id.org/voices/ontology#embeddingModel">embedding model</a>
+   </li>
+   <li>
+      <a href="#emotionCategory" title="https://w3id.org/voices/ontology#emotionCategory">emotion category</a>
+   </li>
+   <li>
+      <a href="#endTimestampMs" title="https://w3id.org/voices/ontology#endTimestampMs">end timestamp (ms)</a>
+   </li>
+   <li>
+      <a href="#method" title="https://w3id.org/voices/ontology#method">extraction method</a>
+   </li>
+   <li>
+      <a href="#extractionStep" title="https://w3id.org/voices/ontology#extractionStep">extraction pipeline step</a>
+   </li>
+   <li>
+      <a href="#gender" title="https://w3id.org/voices/ontology#gender">gender</a>
+   </li>
+   <li>
+      <a href="#hasArousal" title="https://w3id.org/voices/ontology#hasArousal">has arousal</a>
+   </li>
+   <li>
+      <a href="#hasIntensity" title="https://w3id.org/voices/ontology#hasIntensity">has intensity</a>
+   </li>
+   <li>
+      <a href="#hasValence" title="https://w3id.org/voices/ontology#hasValence">has valence</a>
+   </li>
+   <li>
+      <a href="#interviewId" title="https://w3id.org/voices/ontology#interviewId">interview id</a>
+   </li>
+   <li>
+      <a href="#interviewSummary"
+         title="https://w3id.org/voices/ontology#interviewSummary">interview summary</a>
+   </li>
+   <li>
+      <a href="#linkConfidence" title="https://w3id.org/voices/ontology#linkConfidence">link confidence</a>
+   </li>
+   <li>
+      <a href="#matchConfidence" title="https://w3id.org/voices/ontology#matchConfidence">match confidence</a>
+   </li>
+   <li>
+      <a href="#matchMethod" title="https://w3id.org/voices/ontology#matchMethod">match method</a>
+   </li>
+   <li>
+      <a href="#matchedPattern" title="https://w3id.org/voices/ontology#matchedPattern">matched regex pattern</a>
+   </li>
+   <li>
+      <a href="#media_url" title="https://w3id.org/voices/ontology#media_url">media URL</a>
+   </li>
+   <li>
+      <a href="#parseConfidence" title="https://w3id.org/voices/ontology#parseConfidence">parse confidence</a>
+   </li>
+   <li>
+      <a href="#parsedFrom" title="https://w3id.org/voices/ontology#parsedFrom">parsed from expression</a>
+   </li>
+   <li>
+      <a href="#processIntensity"
+         title="https://w3id.org/voices/ontology#processIntensity">process intensity</a>
+   </li>
+   <li>
+      <a href="#processName" title="https://w3id.org/voices/ontology#processName">process name</a>
+   </li>
+   <li>
+      <a href="#recordingYear" title="https://w3id.org/voices/ontology#recordingYear">recording year</a>
+   </li>
+   <li>
+      <a href="#segmentOrdinal" title="https://w3id.org/voices/ontology#segmentOrdinal">segment ordinal</a>
+   </li>
+   <li>
+      <a href="#similarityScore" title="https://w3id.org/voices/ontology#similarityScore">similarity score</a>
+   </li>
+   <li>
+      <a href="#speakerCode" title="https://w3id.org/voices/ontology#speakerCode">speaker code</a>
+   </li>
+   <li>
+      <a href="#startTimestampMs"
+         title="https://w3id.org/voices/ontology#startTimestampMs">start timestamp (ms)</a>
+   </li>
+   <li>
+      <a href="#temporalBucket" title="https://w3id.org/voices/ontology#temporalBucket">temporal bucket</a>
+   </li>
+   <li>
+      <a href="#precision" title="https://w3id.org/voices/ontology#precision">temporal precision</a>
+   </li>
+   <li>
+      <a href="#testimonyTitle" title="https://w3id.org/voices/ontology#testimonyTitle">testimony title</a>
+   </li>
+   <li>
+      <a href="#thumbnail_url" title="https://w3id.org/voices/ontology#thumbnail_url">thumbnail URL</a>
+   </li>
+   <li>
+      <a href="#transcriptText" title="https://w3id.org/voices/ontology#transcriptText">transcript text</a>
+   </li>
+   <li>
+      <a href="#utteranceId" title="https://w3id.org/voices/ontology#utteranceId">utterance id</a>
+   </li>
+   <li>
+      <a href="#whatText" title="https://w3id.org/voices/ontology#whatText">what text</a>
+   </li>
+   <li>
+      <a href="#whenText" title="https://w3id.org/voices/ontology#whenText">when text</a>
+   </li>
+</ul><h4>Annotation Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#http://purl.org/dc/terms/creator" title="http://purl.org/dc/terms/creator">
+         <span>creator</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/description" title="http://purl.org/dc/terms/description">
+         <span>description</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/issued" title="http://purl.org/dc/terms/issued">
+         <span>issued</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/license" title="http://purl.org/dc/terms/license">
+         <span>license</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/modified" title="http://purl.org/dc/terms/modified">
+         <span>modified</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/vocab/vann/preferredNamespacePrefix"
+         title="http://purl.org/vocab/vann/preferredNamespacePrefix">
+         <span>preferred Namespace Prefix</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/vocab/vann/preferredNamespaceUri" title="http://purl.org/vocab/vann/preferredNamespaceUri">
+         <span>preferred Namespace Uri</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/publisher" title="http://purl.org/dc/terms/publisher">
+         <span>publisher</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/title" title="http://purl.org/dc/terms/title">
+         <span>title</span>
+      </a>
+   </li>
+</ul><iframe src="webvowl/index.html"></iframe> 
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">VOICES Ontology: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.
+    Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,
+    MFOEM, Web Annotation, PROV-O, Media Ontology.</span></div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for VOICES Ontology classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by VOICES Ontology.
+<div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
+ <h3 id="classes-headline" class="list">Classes</h3>
+ <ul class="hlist">
+  <li><a href="#Activity" title="https://w3id.org/voices/ontology#Activity">Activity</a></li>
+  <li><a href="#Annotation" title="https://w3id.org/voices/ontology#Annotation">Annotation</a></li>
+  <li><a href="#Cause" title="https://w3id.org/voices/ontology#Cause">Cause</a></li>
+  <li><a href="#Embedding" title="https://w3id.org/voices/ontology#Embedding">Embedding</a></li>
+  <li><a href="#EmotionAnnotation" title="https://w3id.org/voices/ontology#EmotionAnnotation">Emotion Annotation</a></li>
+  <li><a href="#HistoricalEvent" title="https://w3id.org/voices/ontology#HistoricalEvent">Historical Event</a></li>
+  <li><a href="#Interview" title="https://w3id.org/voices/ontology#Interview">Interview</a></li>
+  <li><a href="#InterviewSegment" title="https://w3id.org/voices/ontology#InterviewSegment">Interview Segment</a></li>
+  <li><a href="#MediaFragment" title="https://w3id.org/voices/ontology#MediaFragment">Media Fragment</a></li>
+  <li><a href="#MediaResource" title="https://w3id.org/voices/ontology#MediaResource">Media Resource</a></li>
+  <li><a href="#Mode" title="https://w3id.org/voices/ontology#Mode">Mode</a></li>
+  <li><a href="#NarratedEvent" title="https://w3id.org/voices/ontology#NarratedEvent">Narrated Event</a></li>
+  <li><a href="#Person" title="https://w3id.org/voices/ontology#Person">Person</a></li>
+  <li><a href="#PhysiologicalProcess" title="https://w3id.org/voices/ontology#PhysiologicalProcess">Physiological Process</a></li>
+ </ul>
+ <div class="entity" id="Activity">
+  <h3>Activity<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#Activity</p>
+  <div class="comment">
+   <span class="markdown">Type of action described (deportation, forced labor, escape, etc.).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.cidoc-crm.org/cidoc-crm/E55_Type" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/E55_Type">E55 Type</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasActivity" title="https://w3id.org/voices/ontology#hasActivity">has activity</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Annotation">
+  <h3>Annotation<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#Annotation</p>
+  <div class="comment">
+   <span class="markdown">A Web Annotation attaching an interpretive body to a narrated event or interview segment.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/oa#Annotation" target="_blank" title="http://www.w3.org/ns/oa#Annotation">Annotation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#EmotionAnnotation" title="https://w3id.org/voices/ontology#EmotionAnnotation">Emotion Annotation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Cause">
+  <h3>Cause<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#Cause</p>
+  <div class="comment">
+   <span class="markdown">Reason or circumstance that led to the event.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.cidoc-crm.org/cidoc-crm/E55_Type" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/E55_Type">E55 Type</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasCause" title="https://w3id.org/voices/ontology#hasCause">has cause</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Embedding">
+  <h3>Embedding<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#Embedding</p>
+  <div class="comment">
+   <span class="markdown">Numeric embedding representing semantic vectors for events.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#similarTo" title="https://w3id.org/voices/ontology#similarTo">semantically similar to</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasEmbedding" title="https://w3id.org/voices/ontology#hasEmbedding">has embedding</a> <sup class="type-op" title="object property">op</sup>, <a href="#similarTo" title="https://w3id.org/voices/ontology#similarTo">semantically similar to</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="EmotionAnnotation">
+  <h3>Emotion Annotation<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#EmotionAnnotation</p>
+  <div class="comment">
+   <span class="markdown">An annotation associating a narrated event with an MFOEM emotion category and valence/arousal scores.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Annotation" title="https://w3id.org/voices/ontology#Annotation">Annotation</a> <sup class="type-c" title="class">c</sup>, <a href="http://purl.obolibrary.org/obo/MFOEM_000001" target="_blank" title="http://purl.obolibrary.org/obo/MFOEM_000001">M F O E M 000001</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasEmotion" title="https://w3id.org/voices/ontology#hasEmotion">has emotion</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="HistoricalEvent">
+  <h3>Historical Event<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#HistoricalEvent</p>
+  <div class="comment">
+   <span class="markdown">A canonical historical event (e.g. Kristallnacht, Camp Liberation) for alignment.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.cidoc-crm.org/cidoc-crm/E5_Event" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/E5_Event">E5 Event</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#alignsWithHistoricalEvent" title="https://w3id.org/voices/ontology#alignsWithHistoricalEvent">aligns with historical event</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Interview">
+  <h3>Interview<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#Interview</p>
+  <div class="comment">
+   <span class="markdown">A recorded oral testimony session grouped into several segments.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.cidoc-crm.org/cidoc-crm/E31_Document" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/E31_Document">E31 Document</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasMediaResource" title="https://w3id.org/voices/ontology#hasMediaResource">has media resource</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasSegment" title="https://w3id.org/voices/ontology#hasSegment">has segment</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="InterviewSegment">
+  <h3>Interview Segment<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#InterviewSegment</p>
+  <div class="comment">
+   <span class="markdown">A time-bounded transcript fragment describing events, entities, and feelings.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object">E33 Linguistic Object</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasEmbedding" title="https://w3id.org/voices/ontology#hasEmbedding">has embedding</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasMediaFragment" title="https://w3id.org/voices/ontology#hasMediaFragment">has media fragment</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasPhysiologicalProcess" title="https://w3id.org/voices/ontology#hasPhysiologicalProcess">has physiological process</a> <sup class="type-op" title="object property">op</sup>, <a href="#segmentRefersToEvent" title="https://w3id.org/voices/ontology#segmentRefersToEvent">segment refers to event</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasSegment" title="https://w3id.org/voices/ontology#hasSegment">has segment</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="MediaFragment">
+  <h3>Media Fragment<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#MediaFragment</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/ma-ont#MediaFragment" target="_blank" title="http://www.w3.org/ns/ma-ont#MediaFragment">Media Fragment</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasMediaFragment" title="https://w3id.org/voices/ontology#hasMediaFragment">has media fragment</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="MediaResource">
+  <h3>Media Resource<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#MediaResource</p>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/ma-ont#MediaResource" target="_blank" title="http://www.w3.org/ns/ma-ont#MediaResource">Media Resource</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasMediaResource" title="https://w3id.org/voices/ontology#hasMediaResource">has media resource</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Mode">
+  <h3>Mode<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#Mode</p>
+  <div class="comment">
+   <span class="markdown">Manner or mechanism of an event (by train, on foot, etc.).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.cidoc-crm.org/cidoc-crm/E55_Type" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/E55_Type">E55 Type</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasMode" title="https://w3id.org/voices/ontology#hasMode">has mode</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NarratedEvent">
+  <h3>Narrated Event<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#NarratedEvent</p>
+  <div class="comment">
+   <span class="markdown">A life or historical episode described by the survivor, linked to participants, place, time, and emotions.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.cidoc-crm.org/cidoc-crm/E5_Event" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/E5_Event">E5 Event</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#alignsWithHistoricalEvent" title="https://w3id.org/voices/ontology#alignsWithHistoricalEvent">aligns with historical event</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasActivity" title="https://w3id.org/voices/ontology#hasActivity">has activity</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasCause" title="https://w3id.org/voices/ontology#hasCause">has cause</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasEmbedding" title="https://w3id.org/voices/ontology#hasEmbedding">has embedding</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasEmotion" title="https://w3id.org/voices/ontology#hasEmotion">has emotion</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasLocation" title="https://w3id.org/voices/ontology#hasLocation">has location</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasMode" title="https://w3id.org/voices/ontology#hasMode">has mode</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasParticipant" title="https://w3id.org/voices/ontology#hasParticipant">has participant</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasTimeInterval" title="https://w3id.org/voices/ontology#hasTimeInterval">has time interval</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#segmentRefersToEvent" title="https://w3id.org/voices/ontology#segmentRefersToEvent">segment refers to event</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Person">
+  <h3>Person<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#Person</p>
+  <div class="comment">
+   <span class="markdown">A human participant involved in the testimony or event.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.cidoc-crm.org/cidoc-crm/E21_Person" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/E21_Person">E21 Person</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasParticipant" title="https://w3id.org/voices/ontology#hasParticipant">has participant</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PhysiologicalProcess">
+  <h3>Physiological Process<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#PhysiologicalProcess</p>
+  <div class="comment">
+   <span class="markdown">An observable physiological expression during narration, such as crying, silence, or laughter, detected from transcriber annotations.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#processIntensity" title="https://w3id.org/voices/ontology#processIntensity">process intensity</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#processName" title="https://w3id.org/voices/ontology#processName">process name</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasPhysiologicalProcess" title="https://w3id.org/voices/ontology#hasPhysiologicalProcess">has physiological process</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="objectproperties">
+ <h3 id="properties" class="list">Object Properties</h3>
+ <ul class="hlist">
+  <li><a href="#alignsWithHistoricalEvent" title="https://w3id.org/voices/ontology#alignsWithHistoricalEvent">aligns with historical event</a></li>
+  <li><a href="#hasActivity" title="https://w3id.org/voices/ontology#hasActivity">has activity</a></li>
+  <li><a href="#hasCause" title="https://w3id.org/voices/ontology#hasCause">has cause</a></li>
+  <li><a href="#hasEmbedding" title="https://w3id.org/voices/ontology#hasEmbedding">has embedding</a></li>
+  <li><a href="#hasEmotion" title="https://w3id.org/voices/ontology#hasEmotion">has emotion</a></li>
+  <li><a href="#hasLocation" title="https://w3id.org/voices/ontology#hasLocation">has location</a></li>
+  <li><a href="#hasMediaFragment" title="https://w3id.org/voices/ontology#hasMediaFragment">has media fragment</a></li>
+  <li><a href="#hasMediaResource" title="https://w3id.org/voices/ontology#hasMediaResource">has media resource</a></li>
+  <li><a href="#hasMode" title="https://w3id.org/voices/ontology#hasMode">has mode</a></li>
+  <li><a href="#hasParticipant" title="https://w3id.org/voices/ontology#hasParticipant">has participant</a></li>
+  <li><a href="#hasPhysiologicalProcess" title="https://w3id.org/voices/ontology#hasPhysiologicalProcess">has physiological process</a></li>
+  <li><a href="#hasSegment" title="https://w3id.org/voices/ontology#hasSegment">has segment</a></li>
+  <li><a href="#hasTimeInterval" title="https://w3id.org/voices/ontology#hasTimeInterval">has time interval</a></li>
+  <li><a href="#segmentRefersToEvent" title="https://w3id.org/voices/ontology#segmentRefersToEvent">segment refers to event</a></li>
+  <li><a href="#similarTo" title="https://w3id.org/voices/ontology#similarTo">semantically similar to</a></li>
+ </ul>
+ <div class="entity" id="alignsWithHistoricalEvent">
+  <h3>aligns with historical event<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#alignsWithHistoricalEvent</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NarratedEvent" title="https://w3id.org/voices/ontology#NarratedEvent">Narrated Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#HistoricalEvent" title="https://w3id.org/voices/ontology#HistoricalEvent">Historical Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasActivity">
+  <h3>has activity<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasActivity</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.cidoc-crm.org/cidoc-crm/P2_has_type" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/P2_has_type">P2 has type</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NarratedEvent" title="https://w3id.org/voices/ontology#NarratedEvent">Narrated Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Activity" title="https://w3id.org/voices/ontology#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasCause">
+  <h3>has cause<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasCause</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by">P17 was motivated by</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NarratedEvent" title="https://w3id.org/voices/ontology#NarratedEvent">Narrated Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Cause" title="https://w3id.org/voices/ontology#Cause">Cause</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasEmbedding">
+  <h3>has embedding<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasEmbedding</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#InterviewSegment" title="https://w3id.org/voices/ontology#InterviewSegment">Interview Segment</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#NarratedEvent" title="https://w3id.org/voices/ontology#NarratedEvent">Narrated Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Embedding" title="https://w3id.org/voices/ontology#Embedding">Embedding</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasEmotion">
+  <h3>has emotion<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasEmotion</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/ns/oa#hasBody" target="_blank" title="http://www.w3.org/ns/oa#hasBody">has Body</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NarratedEvent" title="https://w3id.org/voices/ontology#NarratedEvent">Narrated Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#EmotionAnnotation" title="https://w3id.org/voices/ontology#EmotionAnnotation">Emotion Annotation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasLocation">
+  <h3>has location<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasLocation</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at">P7 took place at</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NarratedEvent" title="https://w3id.org/voices/ontology#NarratedEvent">Narrated Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.cidoc-crm.org/cidoc-crm/E53_Place" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/E53_Place">E53 Place</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasMediaFragment">
+  <h3>has media fragment<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasMediaFragment</p>
+  <div class="comment">
+   <span class="markdown">Links an interview segment to a temporal clip of the audiovisual recording.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#InterviewSegment" title="https://w3id.org/voices/ontology#InterviewSegment">Interview Segment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#MediaFragment" title="https://w3id.org/voices/ontology#MediaFragment">Media Fragment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasMediaResource">
+  <h3>has media resource<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasMediaResource</p>
+  <div class="comment">
+   <span class="markdown">Links an interview to the audiovisual recording representing it.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Interview" title="https://w3id.org/voices/ontology#Interview">Interview</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#MediaResource" title="https://w3id.org/voices/ontology#MediaResource">Media Resource</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasMode">
+  <h3>has mode<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasMode</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique">P32 used general technique</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NarratedEvent" title="https://w3id.org/voices/ontology#NarratedEvent">Narrated Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Mode" title="https://w3id.org/voices/ontology#Mode">Mode</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasParticipant">
+  <h3>has participant<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasParticipant</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.cidoc-crm.org/cidoc-crm/P11_had_participant" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/P11_had_participant">P11 had participant</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NarratedEvent" title="https://w3id.org/voices/ontology#NarratedEvent">Narrated Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Person" title="https://w3id.org/voices/ontology#Person">Person</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasPhysiologicalProcess">
+  <h3>has physiological process<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasPhysiologicalProcess</p>
+  <div class="comment">
+   <span class="markdown">Links an interview segment to an observed physiological process (e.g. crying).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/ns/oa#hasBody" target="_blank" title="http://www.w3.org/ns/oa#hasBody">has Body</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#InterviewSegment" title="https://w3id.org/voices/ontology#InterviewSegment">Interview Segment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#PhysiologicalProcess" title="https://w3id.org/voices/ontology#PhysiologicalProcess">Physiological Process</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasSegment">
+  <h3>has segment<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasSegment</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.cidoc-crm.org/cidoc-crm/P148_has_component" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/P148_has_component">P148 has component</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Interview" title="https://w3id.org/voices/ontology#Interview">Interview</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#InterviewSegment" title="https://w3id.org/voices/ontology#InterviewSegment">Interview Segment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasTimeInterval">
+  <h3>has time interval<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasTimeInterval</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span">P4 has time span</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#NarratedEvent" title="https://w3id.org/voices/ontology#NarratedEvent">Narrated Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2006/time#Interval" target="_blank" title="http://www.w3.org/2006/time#Interval">Interval</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="segmentRefersToEvent">
+  <h3>segment refers to event<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#segmentRefersToEvent</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.cidoc-crm.org/cidoc-crm/P67_refers_to" target="_blank" title="http://www.cidoc-crm.org/cidoc-crm/P67_refers_to">P67 refers to</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#InterviewSegment" title="https://w3id.org/voices/ontology#InterviewSegment">Interview Segment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#NarratedEvent" title="https://w3id.org/voices/ontology#NarratedEvent">Narrated Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="similarTo">
+  <h3>semantically similar to<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#similarTo</p>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Embedding" title="https://w3id.org/voices/ontology#Embedding">Embedding</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Embedding" title="https://w3id.org/voices/ontology#Embedding">Embedding</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
+ <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+ <ul class="hlist">
+  <li><a href="#collectionOwner" title="https://w3id.org/voices/ontology#collectionOwner">collection owner</a></li>
+  <li><a href="#communityId" title="https://w3id.org/voices/ontology#communityId">community id</a></li>
+  <li><a href="#computedWith" title="https://w3id.org/voices/ontology#computedWith">computed with model</a></li>
+  <li><a href="#confidence" title="https://w3id.org/voices/ontology#confidence">confidence</a></li>
+  <li><a href="#detectionMethod" title="https://w3id.org/voices/ontology#detectionMethod">detection method</a></li>
+  <li><a href="#embeddingDim" title="https://w3id.org/voices/ontology#embeddingDim">embedding dimension</a></li>
+  <li><a href="#embeddingModel" title="https://w3id.org/voices/ontology#embeddingModel">embedding model</a></li>
+  <li><a href="#emotionCategory" title="https://w3id.org/voices/ontology#emotionCategory">emotion category</a></li>
+  <li><a href="#endTimestampMs" title="https://w3id.org/voices/ontology#endTimestampMs">end timestamp (ms)</a></li>
+  <li><a href="#method" title="https://w3id.org/voices/ontology#method">extraction method</a></li>
+  <li><a href="#extractionStep" title="https://w3id.org/voices/ontology#extractionStep">extraction pipeline step</a></li>
+  <li><a href="#gender" title="https://w3id.org/voices/ontology#gender">gender</a></li>
+  <li><a href="#hasArousal" title="https://w3id.org/voices/ontology#hasArousal">has arousal</a></li>
+  <li><a href="#hasIntensity" title="https://w3id.org/voices/ontology#hasIntensity">has intensity</a></li>
+  <li><a href="#hasValence" title="https://w3id.org/voices/ontology#hasValence">has valence</a></li>
+  <li><a href="#interviewId" title="https://w3id.org/voices/ontology#interviewId">interview id</a></li>
+  <li><a href="#interviewSummary" title="https://w3id.org/voices/ontology#interviewSummary">interview summary</a></li>
+  <li><a href="#linkConfidence" title="https://w3id.org/voices/ontology#linkConfidence">link confidence</a></li>
+  <li><a href="#matchConfidence" title="https://w3id.org/voices/ontology#matchConfidence">match confidence</a></li>
+  <li><a href="#matchMethod" title="https://w3id.org/voices/ontology#matchMethod">match method</a></li>
+  <li><a href="#matchedPattern" title="https://w3id.org/voices/ontology#matchedPattern">matched regex pattern</a></li>
+  <li><a href="#media_url" title="https://w3id.org/voices/ontology#media_url">media URL</a></li>
+  <li><a href="#parseConfidence" title="https://w3id.org/voices/ontology#parseConfidence">parse confidence</a></li>
+  <li><a href="#parsedFrom" title="https://w3id.org/voices/ontology#parsedFrom">parsed from expression</a></li>
+  <li><a href="#processIntensity" title="https://w3id.org/voices/ontology#processIntensity">process intensity</a></li>
+  <li><a href="#processName" title="https://w3id.org/voices/ontology#processName">process name</a></li>
+  <li><a href="#recordingYear" title="https://w3id.org/voices/ontology#recordingYear">recording year</a></li>
+  <li><a href="#segmentOrdinal" title="https://w3id.org/voices/ontology#segmentOrdinal">segment ordinal</a></li>
+  <li><a href="#similarityScore" title="https://w3id.org/voices/ontology#similarityScore">similarity score</a></li>
+  <li><a href="#speakerCode" title="https://w3id.org/voices/ontology#speakerCode">speaker code</a></li>
+  <li><a href="#startTimestampMs" title="https://w3id.org/voices/ontology#startTimestampMs">start timestamp (ms)</a></li>
+  <li><a href="#temporalBucket" title="https://w3id.org/voices/ontology#temporalBucket">temporal bucket</a></li>
+  <li><a href="#precision" title="https://w3id.org/voices/ontology#precision">temporal precision</a></li>
+  <li><a href="#testimonyTitle" title="https://w3id.org/voices/ontology#testimonyTitle">testimony title</a></li>
+  <li><a href="#thumbnail_url" title="https://w3id.org/voices/ontology#thumbnail_url">thumbnail URL</a></li>
+  <li><a href="#transcriptText" title="https://w3id.org/voices/ontology#transcriptText">transcript text</a></li>
+  <li><a href="#utteranceId" title="https://w3id.org/voices/ontology#utteranceId">utterance id</a></li>
+  <li><a href="#whatText" title="https://w3id.org/voices/ontology#whatText">what text</a></li>
+  <li><a href="#whenText" title="https://w3id.org/voices/ontology#whenText">when text</a></li>
+ </ul>
+ <div class="entity" id="collectionOwner">
+  <h3>collection owner<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#collectionOwner</p>
+  <div class="comment">
+   <span class="markdown">Owning collection or archive of an interview.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="communityId">
+  <h3>community id<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#communityId</p>
+  <div class="comment">
+   <span class="markdown">Identifier of the community assigned by community detection.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="computedWith">
+  <h3>computed with model<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#computedWith</p>
+  <div class="comment">
+   <span class="markdown">Name of the model or algorithm used to compute a result.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="confidence">
+  <h3>confidence<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#confidence</p>
+  <div class="comment">
+   <span class="markdown">Confidence score for the annotated statement (0.0-1.0).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="detectionMethod">
+  <h3>detection method<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#detectionMethod</p>
+  <div class="comment">
+   <span class="markdown">Algorithm used for community detection (e.g. louvain).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="embeddingDim">
+  <h3>embedding dimension<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#embeddingDim</p>
+  <div class="comment">
+   <span class="markdown">Dimensionality of an embedding vector.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="embeddingModel">
+  <h3>embedding model<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#embeddingModel</p>
+  <div class="comment">
+   <span class="markdown">Name of the model used to compute an embedding vector.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="emotionCategory">
+  <h3>emotion category<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#emotionCategory</p>
+  <div class="comment">
+   <span class="markdown">Controlled emotion category label of an emotion annotation.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="endTimestampMs">
+  <h3>end timestamp (ms)<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#endTimestampMs</p>
+  <div class="comment">
+   <span class="markdown">End time of a segment in milliseconds from recording start.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="method">
+  <h3>extraction method<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#method</p>
+  <div class="comment">
+   <span class="markdown">Method used to produce the annotation (regex, llm_extraction, etc.).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="extractionStep">
+  <h3>extraction pipeline step<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#extractionStep</p>
+  <div class="comment">
+   <span class="markdown">Step in the extraction pipeline that produced this annotation.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="gender">
+  <h3>gender<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#gender</p>
+  <div class="comment">
+   <span class="markdown">Recorded gender of a person, where available.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasArousal">
+  <h3>has arousal<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasArousal</p>
+  <div class="comment">
+   <span class="markdown">Calibrated arousal score of an emotion annotation.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasIntensity">
+  <h3>has intensity<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasIntensity</p>
+  <div class="comment">
+   <span class="markdown">Intensity score of an emotion or physiological annotation.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasValence">
+  <h3>has valence<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#hasValence</p>
+  <div class="comment">
+   <span class="markdown">Calibrated valence score of an emotion annotation.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="interviewId">
+  <h3>interview id<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#interviewId</p>
+  <div class="comment">
+   <span class="markdown">Numeric identifier of the interview.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="interviewSummary">
+  <h3>interview summary<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#interviewSummary</p>
+  <div class="comment">
+   <span class="markdown">Short textual summary of the interview.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="linkConfidence">
+  <h3>link confidence<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#linkConfidence</p>
+  <div class="comment">
+   <span class="markdown">Confidence score of an outward authority link.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="matchConfidence">
+  <h3>match confidence<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#matchConfidence</p>
+  <div class="comment">
+   <span class="markdown">Confidence score for an entity match or alignment.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="matchMethod">
+  <h3>match method<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#matchMethod</p>
+  <div class="comment">
+   <span class="markdown">Method used to match or link an entity (e.g. exact_label, local_mint, external_alignment).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="matchedPattern">
+  <h3>matched regex pattern<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#matchedPattern</p>
+  <div class="comment">
+   <span class="markdown">The regex pattern that triggered a classification.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="media_url">
+  <h3>media URL<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#media_url</p>
+  <div class="comment">
+   <span class="markdown">URL of the audiovisual media resource.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="parseConfidence">
+  <h3>parse confidence<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#parseConfidence</p>
+  <div class="comment">
+   <span class="markdown">Confidence of a temporal parse result.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="parsedFrom">
+  <h3>parsed from expression<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#parsedFrom</p>
+  <div class="comment">
+   <span class="markdown">The raw text expression from which temporal information was parsed.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="processIntensity">
+  <h3>process intensity<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#processIntensity</p>
+  <div class="comment">
+   <span class="markdown">Graded intensity of the observed physiological process.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#PhysiologicalProcess" title="https://w3id.org/voices/ontology#PhysiologicalProcess">Physiological Process</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="processName">
+  <h3>process name<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#processName</p>
+  <div class="comment">
+   <span class="markdown">Name of the physiological process (e.g. crying, silence, laughter).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#PhysiologicalProcess" title="https://w3id.org/voices/ontology#PhysiologicalProcess">Physiological Process</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="recordingYear">
+  <h3>recording year<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#recordingYear</p>
+  <div class="comment">
+   <span class="markdown">Year the interview was recorded.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="segmentOrdinal">
+  <h3>segment ordinal<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#segmentOrdinal</p>
+  <div class="comment">
+   <span class="markdown">Ordinal position of a segment within its interview.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="similarityScore">
+  <h3>similarity score<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#similarityScore</p>
+  <div class="comment">
+   <span class="markdown">Cosine-similarity score of a similarTo relation.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="speakerCode">
+  <h3>speaker code<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#speakerCode</p>
+  <div class="comment">
+   <span class="markdown">Speaker label of a segment (e.g. interviewer vs interviewee).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="startTimestampMs">
+  <h3>start timestamp (ms)<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#startTimestampMs</p>
+  <div class="comment">
+   <span class="markdown">Start time of a segment in milliseconds from recording start.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="temporalBucket">
+  <h3>temporal bucket<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#temporalBucket</p>
+  <div class="comment">
+   <span class="markdown">Historical-period bucket assigned to a narrated event's time interval.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="precision">
+  <h3>temporal precision<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#precision</p>
+  <div class="comment">
+   <span class="markdown">Precision level of a temporal annotation (month, year, year_range, relative, unknown).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="testimonyTitle">
+  <h3>testimony title<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#testimonyTitle</p>
+  <div class="comment">
+   <span class="markdown">Title of the testimony.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="thumbnail_url">
+  <h3>thumbnail URL<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#thumbnail_url</p>
+  <div class="comment">
+   <span class="markdown">URL of a thumbnail image for the media resource.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="transcriptText">
+  <h3>transcript text<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#transcriptText</p>
+  <div class="comment">
+   <span class="markdown">Verbatim transcript text of a segment (not redistributed publicly).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="utteranceId">
+  <h3>utterance id<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#utteranceId</p>
+  <div class="comment">
+   <span class="markdown">Identifier of the source utterance of a segment.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="whatText">
+  <h3>what text<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#whatText</p>
+  <div class="comment">
+   <span class="markdown">Raw free-text activity description extracted for a narrated event.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="whenText">
+  <h3>when text<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/voices/ontology#whenText</p>
+  <div class="comment">
+   <span class="markdown">Raw free-text temporal reference extracted for a narrated event.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="annotationproperties">
+ <h3 id="annotationproperties" class="list">Annotation Properties</h3>
+ <ul class="hlist">
+  <li><a href="#http://purl.org/dc/terms/creator" title="http://purl.org/dc/terms/creator"> <span>creator</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/description" title="http://purl.org/dc/terms/description"> <span>description</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/issued" title="http://purl.org/dc/terms/issued"> <span>issued</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/license" title="http://purl.org/dc/terms/license"> <span>license</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/modified" title="http://purl.org/dc/terms/modified"> <span>modified</span> </a></li>
+  <li><a href="#http://purl.org/vocab/vann/preferredNamespacePrefix" title="http://purl.org/vocab/vann/preferredNamespacePrefix"> <span>preferred Namespace Prefix</span> </a></li>
+  <li><a href="#http://purl.org/vocab/vann/preferredNamespaceUri" title="http://purl.org/vocab/vann/preferredNamespaceUri"> <span>preferred Namespace Uri</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/publisher" title="http://purl.org/dc/terms/publisher"> <span>publisher</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/title" title="http://purl.org/dc/terms/title"> <span>title</span> </a></li>
+ </ul>
+ <div class="entity" id="http://purl.org/dc/terms/creator">
+  <h3>creator<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/creator</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/description">
+  <h3>description<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/description</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/issued">
+  <h3>issued<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/issued</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/license">
+  <h3>license<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/license</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/modified">
+  <h3>modified<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/modified</p>
+ </div>
+ <div class="entity" id="http://purl.org/vocab/vann/preferredNamespacePrefix">
+  <h3>preferred Namespace Prefix<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/vocab/vann/preferredNamespacePrefix</p>
+ </div>
+ <div class="entity" id="http://purl.org/vocab/vann/preferredNamespaceUri">
+  <h3>preferred Namespace Uri<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/vocab/vann/preferredNamespaceUri</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/publisher">
+  <h3>publisher<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/publisher</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/title">
+  <h3>title<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/title</p>
+ </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+</div>
+</div>
+</div>
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>

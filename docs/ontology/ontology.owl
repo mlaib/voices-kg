@@ -1,0 +1,1081 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/voices/ontology#"
+     xml:base="https://w3id.org/voices/ontology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="https://w3id.org/voices/ontology#">
+        <owl:versionIRI rdf:resource="https://w3id.org/voices/ontology/2.1"/>
+        <owl:imports rdf:resource="https://w3id.org/voices/ontology/imports/cidoc-crm"/>
+        <owl:imports rdf:resource="https://w3id.org/voices/ontology/imports/ma-ont"/>
+        <owl:imports rdf:resource="https://w3id.org/voices/ontology/imports/mfoem"/>
+        <owl:imports rdf:resource="https://w3id.org/voices/ontology/imports/oa"/>
+        <owl:imports rdf:resource="https://w3id.org/voices/ontology/imports/time"/>
+        <terms:creator>Cédric Pruski</terms:creator>
+        <terms:creator>Gabor Mihaly Toth</terms:creator>
+        <terms:creator>Marcos Da Silveira</terms:creator>
+        <terms:creator>Mohamed Laib</terms:creator>
+        <terms:description xml:lang="en">Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.
+    Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,
+    MFOEM, Web Annotation, PROV-O, Media Ontology.</terms:description>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-04</terms:issued>
+        <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-04</terms:modified>
+        <terms:publisher>Luxembourg Institute of Science and Technology (LIST)</terms:publisher>
+        <terms:title xml:lang="en">VOICES Ontology</terms:title>
+        <vann:preferredNamespacePrefix>voices</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>https://w3id.org/voices/ontology#</vann:preferredNamespaceUri>
+        <rdfs:comment xml:lang="en">Unified VOICES ontology for Holocaust survivor testimony knowledge graphs.
+    Thesaurus-free public variant. External standards: CIDOC-CRM, OWL-Time,
+    MFOEM, Web Annotation, PROV-O, Media Ontology.</rdfs:comment>
+        <rdfs:label xml:lang="en">VOICES Ontology</rdfs:label>
+        <owl:versionInfo xml:lang="en">2.1-unified</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/publisher -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/P11_had_participant -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.cidoc-crm.org/cidoc-crm/P11_had_participant"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/P148_has_component -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.cidoc-crm.org/cidoc-crm/P148_has_component"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/P2_has_type -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.cidoc-crm.org/cidoc-crm/P2_has_type"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/P67_refers_to -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.cidoc-crm.org/cidoc-crm/P67_refers_to"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at"/>
+    
+
+
+    <!-- http://www.w3.org/ns/oa#hasBody -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/oa#hasBody"/>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#alignsWithHistoricalEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#alignsWithHistoricalEvent">
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#NarratedEvent"/>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#HistoricalEvent"/>
+        <rdfs:label xml:lang="en">aligns with historical event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasActivity -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#hasActivity">
+        <rdfs:subPropertyOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P2_has_type"/>
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#NarratedEvent"/>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#Activity"/>
+        <rdfs:label xml:lang="en">has activity</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasCause -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#hasCause">
+        <rdfs:subPropertyOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by"/>
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#NarratedEvent"/>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#Cause"/>
+        <rdfs:label xml:lang="en">has cause</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasEmbedding -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#hasEmbedding">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/voices/ontology#InterviewSegment"/>
+                    <rdf:Description rdf:about="https://w3id.org/voices/ontology#NarratedEvent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#Embedding"/>
+        <rdfs:label xml:lang="en">has embedding</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasEmotion -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#hasEmotion">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/oa#hasBody"/>
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#NarratedEvent"/>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#EmotionAnnotation"/>
+        <rdfs:label xml:lang="en">has emotion</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasLocation -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#hasLocation">
+        <rdfs:subPropertyOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at"/>
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#NarratedEvent"/>
+        <rdfs:range rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E53_Place"/>
+        <rdfs:label xml:lang="en">has location</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasMediaFragment -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#hasMediaFragment">
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#InterviewSegment"/>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#MediaFragment"/>
+        <rdfs:comment xml:lang="en">Links an interview segment to a temporal clip of the audiovisual recording.</rdfs:comment>
+        <rdfs:label xml:lang="en">has media fragment</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasMediaResource -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#hasMediaResource">
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#Interview"/>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#MediaResource"/>
+        <rdfs:comment xml:lang="en">Links an interview to the audiovisual recording representing it.</rdfs:comment>
+        <rdfs:label xml:lang="en">has media resource</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasMode -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#hasMode">
+        <rdfs:subPropertyOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique"/>
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#NarratedEvent"/>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#Mode"/>
+        <rdfs:label xml:lang="en">has mode</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasParticipant -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#hasParticipant">
+        <rdfs:subPropertyOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P11_had_participant"/>
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#NarratedEvent"/>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#Person"/>
+        <rdfs:label xml:lang="en">has participant</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasPhysiologicalProcess -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#hasPhysiologicalProcess">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/oa#hasBody"/>
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#InterviewSegment"/>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#PhysiologicalProcess"/>
+        <rdfs:comment xml:lang="en">Links an interview segment to an observed physiological process (e.g. crying).</rdfs:comment>
+        <rdfs:label xml:lang="en">has physiological process</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasSegment -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#hasSegment">
+        <rdfs:subPropertyOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P148_has_component"/>
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#Interview"/>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#InterviewSegment"/>
+        <rdfs:label xml:lang="en">has segment</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasTimeInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#hasTimeInterval">
+        <rdfs:subPropertyOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span"/>
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#NarratedEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#Interval"/>
+        <rdfs:label xml:lang="en">has time interval</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#segmentRefersToEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#segmentRefersToEvent">
+        <rdfs:subPropertyOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P67_refers_to"/>
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#InterviewSegment"/>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#NarratedEvent"/>
+        <rdfs:label xml:lang="en">segment refers to event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#similarTo -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/voices/ontology#similarTo">
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#Embedding"/>
+        <rdfs:range rdf:resource="https://w3id.org/voices/ontology#Embedding"/>
+        <rdfs:label xml:lang="en">semantically similar to</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://w3id.org/voices/ontology#collectionOwner -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#collectionOwner">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Owning collection or archive of an interview.</rdfs:comment>
+        <rdfs:label xml:lang="en">collection owner</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#communityId -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#communityId">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Identifier of the community assigned by community detection.</rdfs:comment>
+        <rdfs:label xml:lang="en">community id</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#computedWith -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#computedWith">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Name of the model or algorithm used to compute a result.</rdfs:comment>
+        <rdfs:label xml:lang="en">computed with model</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#confidence -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#confidence">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">Confidence score for the annotated statement (0.0-1.0).</rdfs:comment>
+        <rdfs:label xml:lang="en">confidence</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#detectionMethod -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#detectionMethod">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Algorithm used for community detection (e.g. louvain).</rdfs:comment>
+        <rdfs:label xml:lang="en">detection method</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#embeddingDim -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#embeddingDim">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Dimensionality of an embedding vector.</rdfs:comment>
+        <rdfs:label xml:lang="en">embedding dimension</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#embeddingModel -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#embeddingModel">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Name of the model used to compute an embedding vector.</rdfs:comment>
+        <rdfs:label xml:lang="en">embedding model</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#emotionCategory -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#emotionCategory">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Controlled emotion category label of an emotion annotation.</rdfs:comment>
+        <rdfs:label xml:lang="en">emotion category</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#endTimestampMs -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#endTimestampMs">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">End time of a segment in milliseconds from recording start.</rdfs:comment>
+        <rdfs:label xml:lang="en">end timestamp (ms)</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#extractionStep -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#extractionStep">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Step in the extraction pipeline that produced this annotation.</rdfs:comment>
+        <rdfs:label xml:lang="en">extraction pipeline step</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#gender -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#gender">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Recorded gender of a person, where available.</rdfs:comment>
+        <rdfs:label xml:lang="en">gender</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasArousal -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#hasArousal">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">Calibrated arousal score of an emotion annotation.</rdfs:comment>
+        <rdfs:label xml:lang="en">has arousal</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasIntensity -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#hasIntensity">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">Intensity score of an emotion or physiological annotation.</rdfs:comment>
+        <rdfs:label xml:lang="en">has intensity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#hasValence -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#hasValence">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">Calibrated valence score of an emotion annotation.</rdfs:comment>
+        <rdfs:label xml:lang="en">has valence</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#interviewId -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#interviewId">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Numeric identifier of the interview.</rdfs:comment>
+        <rdfs:label xml:lang="en">interview id</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#interviewSummary -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#interviewSummary">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Short textual summary of the interview.</rdfs:comment>
+        <rdfs:label xml:lang="en">interview summary</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#linkConfidence -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#linkConfidence">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">Confidence score of an outward authority link.</rdfs:comment>
+        <rdfs:label xml:lang="en">link confidence</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#matchConfidence -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#matchConfidence">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">Confidence score for an entity match or alignment.</rdfs:comment>
+        <rdfs:label xml:lang="en">match confidence</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#matchMethod -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#matchMethod">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Method used to match or link an entity (e.g. exact_label, local_mint, external_alignment).</rdfs:comment>
+        <rdfs:label xml:lang="en">match method</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#matchedPattern -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#matchedPattern">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">The regex pattern that triggered a classification.</rdfs:comment>
+        <rdfs:label xml:lang="en">matched regex pattern</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#media_url -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#media_url">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">URL of the audiovisual media resource.</rdfs:comment>
+        <rdfs:label xml:lang="en">media URL</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#method -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#method">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Method used to produce the annotation (regex, llm_extraction, etc.).</rdfs:comment>
+        <rdfs:label xml:lang="en">extraction method</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#parseConfidence -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#parseConfidence">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">Confidence of a temporal parse result.</rdfs:comment>
+        <rdfs:label xml:lang="en">parse confidence</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#parsedFrom -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#parsedFrom">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">The raw text expression from which temporal information was parsed.</rdfs:comment>
+        <rdfs:label xml:lang="en">parsed from expression</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#precision -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#precision">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Precision level of a temporal annotation (month, year, year_range, relative, unknown).</rdfs:comment>
+        <rdfs:label xml:lang="en">temporal precision</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#processIntensity -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#processIntensity">
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#PhysiologicalProcess"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">Graded intensity of the observed physiological process.</rdfs:comment>
+        <rdfs:label xml:lang="en">process intensity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#processName -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#processName">
+        <rdfs:domain rdf:resource="https://w3id.org/voices/ontology#PhysiologicalProcess"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Name of the physiological process (e.g. crying, silence, laughter).</rdfs:comment>
+        <rdfs:label xml:lang="en">process name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#recordingYear -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#recordingYear">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Year the interview was recorded.</rdfs:comment>
+        <rdfs:label xml:lang="en">recording year</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#segmentOrdinal -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#segmentOrdinal">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Ordinal position of a segment within its interview.</rdfs:comment>
+        <rdfs:label xml:lang="en">segment ordinal</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#similarityScore -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#similarityScore">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">Cosine-similarity score of a similarTo relation.</rdfs:comment>
+        <rdfs:label xml:lang="en">similarity score</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#speakerCode -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#speakerCode">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Speaker label of a segment (e.g. interviewer vs interviewee).</rdfs:comment>
+        <rdfs:label xml:lang="en">speaker code</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#startTimestampMs -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#startTimestampMs">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Start time of a segment in milliseconds from recording start.</rdfs:comment>
+        <rdfs:label xml:lang="en">start timestamp (ms)</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#temporalBucket -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#temporalBucket">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Historical-period bucket assigned to a narrated event&apos;s time interval.</rdfs:comment>
+        <rdfs:label xml:lang="en">temporal bucket</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#testimonyTitle -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#testimonyTitle">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Title of the testimony.</rdfs:comment>
+        <rdfs:label xml:lang="en">testimony title</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#thumbnail_url -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#thumbnail_url">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">URL of a thumbnail image for the media resource.</rdfs:comment>
+        <rdfs:label xml:lang="en">thumbnail URL</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#transcriptText -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#transcriptText">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Verbatim transcript text of a segment (not redistributed publicly).</rdfs:comment>
+        <rdfs:label xml:lang="en">transcript text</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#utteranceId -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#utteranceId">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Identifier of the source utterance of a segment.</rdfs:comment>
+        <rdfs:label xml:lang="en">utterance id</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#whatText -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#whatText">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Raw free-text activity description extracted for a narrated event.</rdfs:comment>
+        <rdfs:label xml:lang="en">what text</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#whenText -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/voices/ontology#whenText">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Raw free-text temporal reference extracted for a narrated event.</rdfs:comment>
+        <rdfs:label xml:lang="en">when text</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MFOEM_000001 -->
+
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MFOEM_000001"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/E21_Person -->
+
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/cidoc-crm/E21_Person"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/E31_Document -->
+
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/cidoc-crm/E31_Document"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object -->
+
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/E53_Place -->
+
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/cidoc-crm/E53_Place"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/E55_Type -->
+
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/cidoc-crm/E55_Type"/>
+    
+
+
+    <!-- http://www.cidoc-crm.org/cidoc-crm/E5_Event -->
+
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/cidoc-crm/E5_Event"/>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Interval -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Interval"/>
+    
+
+
+    <!-- http://www.w3.org/ns/ma-ont#MediaFragment -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+    
+
+
+    <!-- http://www.w3.org/ns/ma-ont#MediaResource -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/ma-ont#MediaResource"/>
+    
+
+
+    <!-- http://www.w3.org/ns/oa#Annotation -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/oa#Annotation"/>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#Activity -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#Activity">
+        <rdfs:subClassOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E55_Type"/>
+        <rdfs:comment xml:lang="en">Type of action described (deportation, forced labor, escape, etc.).</rdfs:comment>
+        <rdfs:label xml:lang="en">Activity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#Annotation -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#Annotation">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/oa#Annotation"/>
+        <rdfs:comment xml:lang="en">A Web Annotation attaching an interpretive body to a narrated event or interview segment.</rdfs:comment>
+        <rdfs:label xml:lang="en">Annotation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#Cause -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#Cause">
+        <rdfs:subClassOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E55_Type"/>
+        <rdfs:comment xml:lang="en">Reason or circumstance that led to the event.</rdfs:comment>
+        <rdfs:label xml:lang="en">Cause</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#Embedding -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#Embedding">
+        <rdfs:comment xml:lang="en">Numeric embedding representing semantic vectors for events.</rdfs:comment>
+        <rdfs:label xml:lang="en">Embedding</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#EmotionAnnotation -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#EmotionAnnotation">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MFOEM_000001"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/voices/ontology#Annotation"/>
+        <rdfs:comment xml:lang="en">An annotation associating a narrated event with an MFOEM emotion category and valence/arousal scores.</rdfs:comment>
+        <rdfs:label xml:lang="en">Emotion Annotation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#HistoricalEvent -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#HistoricalEvent">
+        <rdfs:subClassOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E5_Event"/>
+        <rdfs:comment xml:lang="en">A canonical historical event (e.g. Kristallnacht, Camp Liberation) for alignment.</rdfs:comment>
+        <rdfs:label xml:lang="en">Historical Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#Interview -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#Interview">
+        <rdfs:subClassOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E31_Document"/>
+        <rdfs:comment xml:lang="en">A recorded oral testimony session grouped into several segments.</rdfs:comment>
+        <rdfs:label xml:lang="en">Interview</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#InterviewSegment -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#InterviewSegment">
+        <rdfs:subClassOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object"/>
+        <rdfs:comment xml:lang="en">A time-bounded transcript fragment describing events, entities, and feelings.</rdfs:comment>
+        <rdfs:label xml:lang="en">Interview Segment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#MediaFragment -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#MediaFragment">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+        <rdfs:label xml:lang="en">Media Fragment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#MediaResource -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#MediaResource">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/ma-ont#MediaResource"/>
+        <rdfs:label xml:lang="en">Media Resource</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#Mode -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#Mode">
+        <rdfs:subClassOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E55_Type"/>
+        <rdfs:comment xml:lang="en">Manner or mechanism of an event (by train, on foot, etc.).</rdfs:comment>
+        <rdfs:label xml:lang="en">Mode</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#NarratedEvent -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#NarratedEvent">
+        <rdfs:subClassOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E5_Event"/>
+        <rdfs:comment xml:lang="en">A life or historical episode described by the survivor, linked to participants, place, time, and emotions.</rdfs:comment>
+        <rdfs:label xml:lang="en">Narrated Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#Person -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#Person">
+        <rdfs:subClassOf rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E21_Person"/>
+        <rdfs:comment xml:lang="en">A human participant involved in the testimony or event.</rdfs:comment>
+        <rdfs:label xml:lang="en">Person</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/voices/ontology#PhysiologicalProcess -->
+
+
+    <owl:Class rdf:about="https://w3id.org/voices/ontology#PhysiologicalProcess">
+        <rdfs:comment xml:lang="en">An observable physiological expression during narration, such as crying, silence, or laughter, detected from transcriber annotations.</rdfs:comment>
+        <rdfs:label xml:lang="en">Physiological Process</rdfs:label>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/ -->
+
+
